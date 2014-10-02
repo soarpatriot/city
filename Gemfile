@@ -10,7 +10,7 @@ gem 'jquery-turbolinks'
 gem 'nokogiri'
 
 gem 'non-stupid-digest-assets'
-gem 'sass-rails', '~> 4.0.3'
+
 gem 'jquery-rails'
 gem 'coffee-rails'
 gem 'slim-rails'
@@ -18,7 +18,11 @@ gem 'underscore-rails'
 gem 'fastclick-rails'
 
 gem 'select2-rails'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'sass-rails', '~> 4.0.3'
+gem 'autoprefixer-rails'
+# gem 'sass-rails', '>= 3.2'
+
 gem 'font-awesome-sass'
 gem 'ckeditor'
 

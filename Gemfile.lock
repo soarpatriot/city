@@ -32,6 +32,8 @@ GEM
     acts_as_votable (0.10.0)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
+    autoprefixer-rails (3.1.0.20140911)
+      execjs
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -332,10 +334,11 @@ PLATFORMS
 DEPENDENCIES
   acts_as_tree
   acts_as_votable (~> 0.10.0)
+  autoprefixer-rails
   better_errors
   binding_of_caller
   bootstrap-kaminari-views
-  bootstrap-sass
+  bootstrap-sass (~> 3.2.0)
   capistrano (= 3.2.1)
   capistrano-bundler
   capistrano-rails
