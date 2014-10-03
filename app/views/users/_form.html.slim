@@ -1,0 +1,9 @@
+= simple_form_for  @user, html: {multipart: true} do |f|
+  = f.error_notification
+  = f.input :name
+  = f.input :qq
+  = f.input :weixin
+  = f.input :mobile_number
+
+  p
+  = f.button :submit, class: "btn btn-primary"

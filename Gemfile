@@ -1,6 +1,6 @@
 source 'http://ruby.taobao.org'
 
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.6'
 gem 'mysql2'
 
 gem 'rails_config'

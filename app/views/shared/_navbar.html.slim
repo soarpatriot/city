@@ -7,6 +7,8 @@ nav class="navbar navbar-default" role="navigation"
          ul class="nav navbar-nav navbar-right"
             - if user_signed_in?
               li
+                  = link_to "#{current_user.email}", user_path(current_user)
+              li
                   = link_to "退出", destroy_user_session_path, method: "delete"
             - else
               li
