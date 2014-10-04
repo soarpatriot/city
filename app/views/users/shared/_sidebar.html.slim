@@ -1,7 +1,10 @@
-div class="col-sm-3 col-md-2 sidebar"
+div class="col-sm-3 col-md-2 sidebar well"
    ul class="nav nav-sidebar"
        li
-         = link_to "商店", root_url
+         = link_to "商店", user_path(current_user)
+       li
          = link_to "编辑", edit_user_path(current_user)
+
+
 
 

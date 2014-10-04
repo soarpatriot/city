@@ -1,10 +1,23 @@
 class UsersController < ApplicationController
-   before_action :load_user, only: [:edit, :show, :update]
+
+   before_action :authenticate_user!
+   before_action :load_user, only: [:edit, :show, :update, :start_shop]
    def show
 
    end
 
    def edit
+
+   end
+
+   def start_shop
+      shop = Shop.new
+      shop.save
+      current_user.update shop:shop
+      redirect_to edit_shop_path(shop)
+   end
+
+   def  edit_shop
 
    end
 

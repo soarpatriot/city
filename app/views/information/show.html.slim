@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @information.title
+p
+  strong Description:
+  = @information.description
+p
+  strong Image:
+  = @information.image
+
+= link_to 'Edit', edit_information_path(@information)
+'|
+= link_to 'Back', information_index_path

@@ -1,4 +1,10 @@
-p class="notice"
-    = notice
-p class="alert"
-    = alert
+.container
+  .row
+    .col-md-12
+        //
+          - unless notice.blank?
+            p class="notice alert alert-info"
+                = notice
+        - unless alert.blank?
+          p class="alert alert-warning"
+              = alert

@@ -1,0 +1,25 @@
+h1 Listing information
+
+table
+  thead
+    tr
+      th Title
+      th Description
+      th Image
+      th
+      th
+      th
+
+  tbody
+    - @information.each do |information|
+      tr
+        td = information.title
+        td = information.description
+        td = information.image
+        td = link_to 'Show', information
+        td = link_to 'Edit', edit_information_path(information)
+        td = link_to 'Destroy', information, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Information', new_information_path

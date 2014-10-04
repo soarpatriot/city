@@ -1,0 +1,11 @@
+.row
+   .col-md-8.col-md-offset-2
+      p
+         | 编辑信息
+
+      == render 'form'
+
+      = link_to 'Show', @information
+      '|
+      = link_to 'Back', information_index_path
+
