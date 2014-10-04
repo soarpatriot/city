@@ -1,10 +1,11 @@
 class InformationController < ApplicationController
 
   before_action :set_information, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  layout "users"
   # GET /information
   def index
-    @information = Information.all
+    @information = current_user.information #Information.all
   end
 
   # GET /information/1
@@ -24,8 +25,8 @@ class InformationController < ApplicationController
   def create
     @information = Information.new(information_params)
 
-    if @information.save
-      redirect_to @information, notice: 'Information was successfully created.'
+    if current_user.information  <<  @information
+      redirect_to @information, notice: '信息创建成功'
     else
       render :new
     end
@@ -34,7 +35,7 @@ class InformationController < ApplicationController
   # PATCH/PUT /information/1
   def update
     if @information.update(information_params)
-      redirect_to @information, notice: 'Information was successfully updated.'
+      redirect_to @information, notice: '信息更新成功'
     else
       render :edit
     end
@@ -43,7 +44,7 @@ class InformationController < ApplicationController
   # DELETE /information/1
   def destroy
     @information.destroy
-    redirect_to information_index_url, notice: 'Information was successfully destroyed.'
+    redirect_to information_index_url, notice: '信息删除成功'
   end
 
   private

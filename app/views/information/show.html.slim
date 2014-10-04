@@ -1,15 +1,14 @@
-p#notice = notice
+.col-md-9
+  p#notice = notice
 
-p
-  strong Title:
-  = @information.title
-p
-  strong Description:
-  = @information.description
-p
-  strong Image:
-  = @information.image
+  p
+    strong 标题:
+    = @information.title
+  p
+    strong 描述:
+    = @information.description
+  p
+    strong 图片:
+    = @information.image
 
-= link_to 'Edit', edit_information_path(@information)
-'|
-= link_to 'Back', information_index_path
+  = link_to '编辑', edit_information_path(@information)
