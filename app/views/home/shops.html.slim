@@ -1,0 +1,11 @@
+.row
+   - @shops.each do |shop|
+        .col-md-3.col-sm-6
+          .thumbnail
+             img src="#{shop.image.try(:small).try(:url)}" class="img-responsive"
+             .caption
+               h5 = "#{shop.title}"
+               p
+                   == "#{shop.description}"
+               p
+                  = link_to "详情", shop
