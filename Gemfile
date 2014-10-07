@@ -18,6 +18,9 @@ gem 'underscore-rails'
 gem 'fastclick-rails'
 
 gem 'select2-rails'
+# gem 'compass'
+
+gem 'compass-rails'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'sass-rails', '~> 4.0.3'
 gem 'autoprefixer-rails'
