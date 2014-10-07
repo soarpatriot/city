@@ -1,8 +1,8 @@
 class InformationController < ApplicationController
 
-  before_action :set_information, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
-  layout "users"
+  before_action :set_information, only: [:show, :edit, :update, :destroy,:display]
+  before_action :authenticate_user!, except: [:show]
+  layout "users", except: [:show]
   # GET /information
   def index
     @information = current_user.information #Information.all
@@ -10,6 +10,11 @@ class InformationController < ApplicationController
 
   # GET /information/1
   def show
+
+  end
+
+  def display
+       render "show"
   end
 
   # GET /information/new

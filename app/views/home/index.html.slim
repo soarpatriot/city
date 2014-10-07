@@ -2,9 +2,9 @@
    - @information.each do |information|
         .col-md-3.col-sm-6
           .thumbnail
-             img src="#{information.image_url}" class="img-responsive"
-          .caption
-             h5 = "#{information.title}"
-             p
-             p
-                = link_to "详情", information
+             img src="#{information.image.try(:small).url}" class="img-responsive"
+             .caption
+               h5 = "#{information.title}"
+               p
+               p
+                  = link_to "详情", information

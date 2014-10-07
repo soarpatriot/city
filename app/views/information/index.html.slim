@@ -14,9 +14,9 @@
           td = information.title
           td = information.description
           td
-             img src="#{information.image_url}" class="img-thumbnail"
+             img src="#{information.image.thumb.url}" class="img-thumbnail"
           td
-              = link_to '查看', information
+              = link_to '查看', display_information_path(information)
               = link_to '编辑', edit_information_path(information)
               = link_to '删除', information, data: {:confirm => '确定删除吗?'}, :method => :delete
 

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-  resources :information
+
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   end
 
   resources :shops
+  resources :information do
+      member do
+           get 'display'
+      end
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

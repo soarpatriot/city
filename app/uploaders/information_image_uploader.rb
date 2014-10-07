@@ -5,11 +5,13 @@ class InformationImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
+  process :resize_to_fit => [800, 800]
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
-
+  # process :store_dimensions
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
@@ -30,6 +32,18 @@ class InformationImageUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
+  version :small do
+     process :resize_to_fill => [260, 260]
+    # process :resize_to_fit => [230, nil]
+    # process :store_dimensions
+    # process crop: '300x150+0+0'
+    # process resize_and_crop: 230
+  end
+
+  version :thumb, :from_version => :small do
+      process resize_to_fill: [50, 50]
+  end
+
 
   # Create different versions of your uploaded files:
   # version :thumb do
@@ -47,5 +61,29 @@ class InformationImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+private
 
+  # Simplest way
+  def crop(geometry)
+    manipulate! do |img|
+      img.crop(geometry)
+      img
+    end
+  end
+
+  # Resize and crop square from Center
+  def resize_and_crop(size)
+    binding.pry
+    manipulate! do |image|
+      if image[:width] < image[:height]
+        remove = ((image[:height] - image[:width])/2).round
+        image.shave("0x#{remove}")
+      elsif image[:width] > image[:height]
+        remove = ((image[:width] - image[:height])/2).round
+        image.shave("#{remove}x0")
+      end
+      image.resize("#{size}x#{size}")
+      image
+    end
+  end
 end
