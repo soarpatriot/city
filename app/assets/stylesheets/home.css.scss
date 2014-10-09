@@ -8,6 +8,14 @@ body{
    min-height:650px;
 }
 
+.item{
+  padding-left:5px;
+  padding-right:5px;
+
+  .thumbnail{
+    margin-bottom:10px;
+  }
+}
 /**
 #navbar{
   background-color: #d71345;
