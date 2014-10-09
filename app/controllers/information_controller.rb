@@ -5,7 +5,7 @@ class InformationController < ApplicationController
   layout "users", except: [:show]
   # GET /information
   def index
-    @information = current_user.information #Information.all
+    @information = current_user.information.page params[:page]
   end
 
   # GET /information/1

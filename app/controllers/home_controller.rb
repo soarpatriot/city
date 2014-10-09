@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
    def index
-      @information = Information.all
+      @information = Information.page params[:page]
    end
 
    def shops

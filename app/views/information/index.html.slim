@@ -1,6 +1,7 @@
 
 .col-md-9
-  h3 我的信息
+  h4 我的信息
+  p = link_to '新建信息', new_information_path
   table.table.table-striped.table-bordered.table-hover.table-condensed
     thead
       tr
@@ -22,4 +23,9 @@
 
   br
 
-  = link_to '新建信息', new_information_path
+
+.row
+  .col-lg-12.toolbar
+    .pull-right = paginate @information, theme: 'twitter-bootstrap-3'
+
+

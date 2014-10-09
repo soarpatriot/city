@@ -78,7 +78,7 @@ zh-CN:
         other: ! '%{count} 年多'
       x_days:
         one: 一天
-        other: ! '%{count} 天'
+        other: ! '%{count} 天前'
       x_minutes:
         one: 一分钟
         other: ! '%{count} 分钟'

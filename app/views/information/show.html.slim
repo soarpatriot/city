@@ -1,14 +1,12 @@
 .col-md-9
-  p#notice = notice
+   .panel.panel-default
+      .panel-heading
 
-  p
-    strong 标题:
-    = @information.title
-  p
-    strong 描述:
-    = @information.description
-  p
-    strong 图片:
-    = @information.image
+             = @information.title
+      .panel-body
+          img src="#{@information.image.url}" class="img-responsive img-thumbnail"
+          == @information.description
 
-  = link_to '编辑', edit_information_path(@information)
+
+
+

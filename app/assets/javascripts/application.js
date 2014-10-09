@@ -15,6 +15,8 @@
 //= require jquery_ujs
 //= require turbolinks
 
+//= require masonry.pkgd
+//= require imagesloaded.pkgd.min
 //= require ckeditor/init
 //= require ckeditor/ckeditor
 //= require ckeditor_config
