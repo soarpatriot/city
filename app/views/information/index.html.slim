@@ -2,7 +2,7 @@
 .col-md-9
   h4 我的信息
   p = link_to '新建信息', new_information_path
-  table.table.table-striped.table-bordered.table-hover.table-condensed
+  table.table.table-striped.table-hover.table-condensed
     thead
       tr
         th 标题
@@ -12,14 +12,15 @@
     tbody
       - @information.each do |information|
         tr
-          td = information.title
-          td = information.description
+          td = truncate(information.title,length:20)
+          td = truncate(information.description,length:20)
           td
              img src="#{information.image.thumb.url}" class="img-thumbnail"
           td
-              = link_to '查看', display_information_path(information)
-              = link_to '编辑', edit_information_path(information)
-              = link_to '删除', information, data: {:confirm => '确定删除吗?'}, :method => :delete
+             .btn-group
+                = link_to '查看', display_information_path(information), class:"btn btn-default"
+                = link_to '编辑', edit_information_path(information), class:"btn btn-warning"
+                = link_to '删除', information, data: {:confirm => '确定删除吗?'}, :method => :delete, class:"btn btn-danger"
 
   br
 
