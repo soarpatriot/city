@@ -1,6 +1,8 @@
 *.gem
 *.rbc
 /.idea/
+/lib/assets/bower_components/
+
 /.config
 /coverage/
 /InstalledFiles

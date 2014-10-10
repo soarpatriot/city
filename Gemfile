@@ -26,6 +26,7 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'autoprefixer-rails'
 gem 'simple_form'
 # gem 'sass-rails', '>= 3.2'
+gem "bower-rails", "~> 0.8.3"
 
 gem 'font-awesome-sass'
 gem 'ckeditor'
