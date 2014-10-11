@@ -34,7 +34,6 @@ gem 'ckeditor'
 gem 'geocoder'
 gem 'rest-client'
 gem 'devise'
-gem 'simple_form'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'kaminari'
@@ -71,7 +70,10 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'pry-rails'
-
+  gem 'capybara'
+  # gem "capybara-webkit",'~>1.1.0'
+  gem 'poltergeist'
+  gem 'selenium-webdriver'
   gem 'guard-rspec'
   gem 'rspec-rails'
   gem 'rack-test', require: 'rack/test'
@@ -80,6 +82,7 @@ end
 group :test do
   gem 'webmock'
   gem 'factory_girl_rails'
+
   gem 'database_cleaner'
   gem 'simplecov', require: false
 end
