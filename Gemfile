@@ -71,6 +71,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'pry-rails'
   gem 'capybara'
+  gem "capybara-webkit"
   # gem "capybara-webkit",'~>1.1.0'
   gem 'poltergeist'
   gem 'selenium-webdriver'

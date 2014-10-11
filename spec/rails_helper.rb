@@ -14,11 +14,23 @@ require 'webmock/rspec'
 # end with _spec.rb. You can configure this pattern with the --pattern
 # option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
 
+class ActiveRecord::Base
+  mattr_accessor :shared_connection
+  @@shared_connection = nil
+
+  def self.connection
+    @@shared_connection || retrieve_connection
+  end
+end
+ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
+
 require 'capybara/rails'
 require 'capybara/poltergeist'
 
-Capybara.javascript_driver = :poltergeist
-Capybara.current_driver = :poltergeist
+# Capybara.javascript_driver = :poltergeist
+# Capybara.current_driver = :poltergeist
+Capybara.javascript_driver = :webkit
+Capybara.current_driver = :webkit
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
@@ -36,6 +48,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   config.include Capybara::DSL
+
+  config.include Authorize
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
