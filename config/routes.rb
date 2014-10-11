@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
+
   devise_for :admins
-  mount Ckeditor::Engine => '/ckeditor'
-
-
   devise_for :users
+  mount Ckeditor::Engine => '/ckeditor'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -11,12 +10,14 @@ Rails.application.routes.draw do
   root 'home#index'
   # get '/shops' => 'home#shops', as: :shops
   # get '/myshops' => 'home#shops', as: :shops
-  resources :users do
-      member do
-          get 'start_shop'
-      end
-  end
+  resources :users
+  namespace :admins do
 
+  end
+  namespace :users do
+    resources :shops
+    resources :information
+  end
   resources :shops
   resources :information do
       member do

@@ -1,6 +1,6 @@
 .col-md-4
     - if current_user.shop.nil?
-       p.bg-info.well 您暂无商店
+       p.bg-info.well 您暂无商店，您可以：
        ul.list-group
 
           li.list-group-item
@@ -13,6 +13,6 @@
              span.badge 3
              | 发布促销信息等
        p
-          = link_to '开启我的商店', start_shop_user_path, class: 'btn btn-lg btn-success'
+          = link_to '开启我的商店', new_users_shop_path, class: 'btn btn-lg btn-success'
     - else
       p #{current_user.shop.title}
