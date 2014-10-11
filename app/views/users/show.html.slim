@@ -13,6 +13,6 @@
              span.badge 3
              | 发布促销信息等
        p
-          = link_to '开启我的商店', new_users_shop_path, class: 'btn btn-lg btn-success'
+          = link_to '开启我的商店', new_i_shop_path, class: 'btn btn-lg btn-success'
     - else
       p #{current_user.shop.title}

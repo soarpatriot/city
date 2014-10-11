@@ -10,14 +10,15 @@ Rails.application.routes.draw do
   root 'home#index'
   # get '/shops' => 'home#shops', as: :shops
   # get '/myshops' => 'home#shops', as: :shops
-  resources :users
+
   namespace :admins do
 
   end
-  namespace :users do
+  namespace :i do
     resources :shops
     resources :information
   end
+  resources :users
   resources :shops
   resources :information do
       member do

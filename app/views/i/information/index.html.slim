@@ -1,7 +1,7 @@
 
 .col-md-9
   h4 我的信息
-  p = link_to '新建信息', new_information_path
+  p = link_to '新建信息', new_i_information_path
   table.table.table-striped.table-hover.table-condensed
     thead
       tr
@@ -18,9 +18,9 @@
              img src="#{information.image.thumb.url}" class="img-thumbnail"
           td
              .btn-group
-                = link_to '查看', display_information_path(information), class:"btn btn-default"
-                = link_to '编辑', edit_information_path(information), class:"btn btn-warning"
-                = link_to '删除', information, data: {:confirm => '确定删除吗?'}, :method => :delete, class:"btn btn-danger"
+                = link_to '查看', i_information_path(information), class:"btn btn-default"
+                = link_to '编辑', edit_i_information_path(information), class:"btn btn-warning"
+                = link_to '删除', i_information_path(information), data: {:confirm => '确定删除吗?'}, :method => :delete, class:"btn btn-danger"
 
   br
 

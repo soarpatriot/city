@@ -1,9 +1,9 @@
-class Users::ShopsController < Users::BaseController
+class I::ShopsController < I::BaseController
 
   before_action :load_shop, except: [:index]
 
   def index
-    @shops = current_user.shops.page params[:page]
+    @shops = current_user.shop.page params[:page]
   end
 
   def show
