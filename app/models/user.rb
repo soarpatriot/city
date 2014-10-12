@@ -10,6 +10,14 @@ class User < ActiveRecord::Base
   has_one :shop
   has_many :information
 
+  after_create :set_random_avatar
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  private
+     def set_random_avatar
+         self.update avatar: File.open("#{Rails.root.join('app/assets/images/avatars/')}noavatar.png")
+     end
+
 end
