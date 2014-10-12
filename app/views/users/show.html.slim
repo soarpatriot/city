@@ -1,18 +1,11 @@
 .col-md-4
-    - if current_user.shop.nil?
-       p.bg-info.well 您暂无商店，您可以：
-       ul.list-group
-
-          li.list-group-item
-            span.badge 1
-            | 一键开启我的商店
-          li.list-group-item
-             span.badge 2
-             | 完善商店资料
-          li.list-group-item
-             span.badge 3
-             | 发布促销信息等
-       p
-          = link_to '开启我的商店', new_i_shop_path, class: 'btn btn-lg btn-success'
-    - else
-      p #{current_user.shop.title}
+   p
+   p
+      img src="#{@user.avatar.try(:small).url}" class="img-thumbnail"
+   p = @user.name
+   p = @user.email
+   p = @user.qq
+   p = @user.weixin
+   p = @user.mobile_number
+   p
+      = link_to "编辑我的资料", edit_user_path(@user), class:"btn btn-warning"

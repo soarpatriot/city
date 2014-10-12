@@ -10,6 +10,7 @@
         th 标题
         th 描述
         th 图片
+        th 发布
         th 操作
     tbody
       - @information.each do |information|
@@ -18,9 +19,14 @@
           td = truncate(information.description,length:20)
           td
              img src="#{information.image.thumb.url}" class="img-thumbnail"
+          th = information.publish_text_tip
           td
              .btn-group
                 = link_to '查看', i_information_path(information), class:"btn btn-default"
+                a id="#{information.id}" data-toggle="modal" href="#detail" class="btn btn-success information-preview"
+                  | 预览
+                //
+                  = link_to '预览', information_path(information), class:"btn btn-success", data-target="#modal"
                 = link_to '编辑', edit_i_information_path(information), class:"btn btn-warning"
                 = link_to '删除', i_information_path(information), data: {:confirm => '确定删除吗?'}, :method => :delete, class:"btn btn-danger"
   .row
@@ -28,3 +34,16 @@
       .pull-right = paginate @information, theme: 'twitter-bootstrap-3'
 
   p = link_to '新建信息', new_i_information_path, class:"btn btn-primary"
+
+  div.modal.fade.bs-example-modal-lg id="information-detail-modal"
+    div.modal-dialog.modal-lg
+      div.modal-content
+        div.modal-header
+          button type="button" class="close" data-dismiss="modal" aria-hidden="true" &times;
+          h4 class="modal-title" = "信息详情"
+        div.modal-body
+          .container
+             .row
+               .col-md-12
+                  #inforamtion-detail
+

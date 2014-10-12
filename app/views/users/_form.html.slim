@@ -1,5 +1,8 @@
 = simple_form_for  @user, html: {multipart: true} do |f|
   = f.error_notification
+  - unless  @user.avatar.url.blank?
+     img src="#{@user.avatar.try(:small).url}" class="img-thumbnail"
+  = f.input :avatar, as: :file,  input_html:{class:'form-control'}
   = f.input :name,autofocus: true, label: "用户名：",  input_html:{class:'form-control'}
   = f.input :qq,label: "QQ：",  input_html:{class:'form-control'}
   = f.input :weixin,label: "微信：",  input_html:{class:'form-control'}
