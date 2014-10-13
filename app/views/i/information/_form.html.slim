@@ -12,5 +12,9 @@
   - else
     img src="#{@information.image.try(:thumb).url}" class="img-thumbnail"
   = f.input :image, as: :file,  input_html:{class:'form-control'}
-
+  = f.input :contact
+  p QQ 号码，手机号，微信号至少填写一个
+  = f.input :mobile_number
+  = f.input :qq
+  = f.input :weixin
   = f.button :submit

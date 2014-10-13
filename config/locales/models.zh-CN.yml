@@ -15,6 +15,10 @@ zh-CN:
           description: "详细描述"
           image: "图片"
           publish: "发布"
+          contact: "联系人"
+          qq: "QQ"
+          mobile_number: "手机号码"
+          weixin: "微信"
       errors:
         template:
           header:

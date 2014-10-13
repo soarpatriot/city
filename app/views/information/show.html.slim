@@ -1,12 +1,28 @@
-.col-md-3
-  h4 = @information.title
-  img src="#{@information.image.url}" class="img-responsive img-thumbnail"
-.col-md-3
-  h4 = number_to_currency(@information.price, :unit => "￥")
+hr
+h4 = @information.title
+p
+   small.text-muted  #{time_ago_in_words @information.updated_at}
+.row
+  .col-md-6
+
+    img src="#{@information.image.url}" class="img-responsive img-thumbnail"
+  .col-md-3
+    .information-contact
+      p.text-danger.price
+          = number_to_currency(@information.price, :unit => "￥")
+      p  联系人： #{@information.contact}
+      - unless @information.mobile_number.blank?
+        p  手机号： #{@information.mobile_number}
+      - unless @information.qq.blank?
+        p  QQ： #{@information.qq}
+      - unless @information.weixin.blank?
+        p  微信： #{@information.weixin}
+
 
 .row
   .col-md-9
-    == @information.description
+    p
+       == @information.description
 
 
 
