@@ -1,5 +1,6 @@
 class Admin::AdminController < ApplicationController
 
-  layout "admin"
+  layout "admins"
   before_filter :authenticate_admin!
+
 end
