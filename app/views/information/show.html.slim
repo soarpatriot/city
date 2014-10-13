@@ -1,11 +1,13 @@
-.col-md-9
-  .panel.panel-default
-    .panel-heading
+.col-md-3
+  h4 = @information.title
+  img src="#{@information.image.url}" class="img-responsive img-thumbnail"
+.col-md-3
+  h4 = number_to_currency(@information.price, :unit => "￥")
 
-           = @information.title
-    .panel-body
-        img src="#{@information.image.url}" class="img-responsive img-thumbnail"
-        == @information.description
+.row
+  .col-md-9
+    == @information.description
+
 
 
 
