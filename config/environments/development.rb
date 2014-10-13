@@ -32,8 +32,17 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
-
+  config.action_mailer.raise_delivery_errors = true #改为true，并添加如下内容
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :address => "smtp.126.com",
+      :port => 25,
+      :domain => "126.com",
+      :authentication => :login,
+      :user_name => "soarpatriot@126.com", #你的邮箱
+      :password => "22143521" #你的密码
+  }
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
