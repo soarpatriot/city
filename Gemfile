@@ -28,7 +28,7 @@ gem 'simple_form'
 # gem 'sass-rails', '>= 3.2'
 gem "bower-rails", "~> 0.8.3"
 
-gem 'font-awesome-sass'
+gem 'font-awesome-sass', '~> 4.2.0'
 gem 'ckeditor'
 
 gem 'geocoder'

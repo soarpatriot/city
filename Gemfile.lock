@@ -130,7 +130,7 @@ GEM
       railties (>= 3.0.0)
     fastclick-rails (1.0.1)
     ffi (1.9.3)
-    font-awesome-sass (4.1.0)
+    font-awesome-sass (4.2.0)
       sass (~> 3.2)
     formatador (0.2.5)
     fssm (0.2.10)
@@ -385,7 +385,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   fastclick-rails
-  font-awesome-sass
+  font-awesome-sass (~> 4.2.0)
   geocoder
   grape (= 0.7.0)
   grape-entity
