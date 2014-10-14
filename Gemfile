@@ -49,12 +49,14 @@ gem 'grape-swagger'
 gem 'grape-swagger-rails'
 gem 'grape-kaminari'
 
+gem 'thin'
+
 group :production do
-  gem 'unicorn'
+
 end
 
 group :development do
-  gem 'thin'
+
 
   gem 'quiet_assets'
   gem 'better_errors'
