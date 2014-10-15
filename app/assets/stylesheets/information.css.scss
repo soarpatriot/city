@@ -1,7 +1,22 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
 .information-contact{
    margin-top:40px;
+   font-size: 18px;
+
+   line-height: 50px;
+   dl{
+     dt{
+       font-color: $brand-warning;
+       height:40px;
+     }
+     dd{
+        height:40px;
+     }
+   }
    .price{
+
       font-wight: 700;
-      font-size: 20px;
+      font-size: 24px;
    }
 }

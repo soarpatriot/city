@@ -1,4 +1,4 @@
-hr
+
 h4 = @information.title
 p
    small.text-muted  #{time_ago_in_words @information.updated_at}
@@ -6,30 +6,40 @@ p
   .col-md-6
 
     img src="#{@information.image.url}" class="img-responsive img-thumbnail"
-  .col-md-3
+  .col-md-6
     .information-contact
-      p.text-danger.price
-          = number_to_currency(@information.price, :unit => "￥")
-      p  联系人： #{@information.contact}
-      - unless @information.mobile_number.blank?
-        p
-          = icon('fa fa-2x fa-phone')
-          span   #{@information.mobile_number}
+      dl.dl-horizontal
+        dt.text-danger.price
+            = number_to_currency(@information.price, :unit => "￥")
+        dd
+        dt  联系人：
+        dd #{@information.contact}
+        - unless @information.mobile_number.blank?
+          dt
+            = icon('fa  fa-phone')
+          dd
+            span   #{@information.mobile_number}
 
-      - unless @information.qq.blank?
-        p
-          = icon('fa fa-2x fa-qq')
-          span   #{@information.qq}
-      - unless @information.weixin.blank?
-        p
-          = icon('fa fa-2x fa-weixin')
-          span   #{@information.weixin}
+        - unless @information.qq.blank?
+          dt
+              = icon('fa  fa-qq')
+          dd
+              span   #{@information.qq}
+        - unless @information.weixin.blank?
+          dt
+              = icon('fa  fa-weixin')
+          dd
+             span.text-danger   #{@information.weixin}
 
-
+hr
+ul class="nav nav-tabs" role="tablist"
+   li class="active"
+      a 详情
 .row
   .col-md-9
-    p
-       == @information.description
+    div class="tab-pane active"
+      p
+         == @information.description
 
 
 
