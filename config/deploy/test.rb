@@ -1,5 +1,5 @@
 set :stage, :local
-set :server_name, "128.199.205.154"
+set :server_name, "test.yuxian.me"
 
 set :branch, "master"
 
