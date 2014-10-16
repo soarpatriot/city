@@ -11,7 +11,7 @@ server {
   listen 80; # for Linux
 
   client_max_body_size 4G;
-  server_name <%= fetch(:server_name) %>;
+  server_name <%= fetch(:server_name) %> www.<%= fetch(:server_name) %>;
 
   access_log <%= shared_path %>/log/nginx_access.log;
   error_log <%= shared_path %>/log/nginx_error.log error;
