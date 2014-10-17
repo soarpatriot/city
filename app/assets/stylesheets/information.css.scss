@@ -1,13 +1,31 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-.information-contact{
-   margin-top:40px;
-   font-size: 18px;
 
-   line-height: 50px;
+.information-contact{
+   ul{
+      li{
+        list-style-type:none;
+        padding-left:10px;
+        padding-right:10px;
+        line-height:60px;
+        height: 60px;
+
+        i{
+          margin-top:10px;
+        }
+      }
+   }
+
+   #margin-top:40px;
+   font-size: 17px;
+   .contact-label{
+      width: 90px;
+   }
+   .contact-info{
+      padding-top:7px;
+   }
+   #line-height: 50px;
    dl{
      dt{
-       font-color: $brand-warning;
+       #font-color: #fff;
        height:40px;
      }
      dd{

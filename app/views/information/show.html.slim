@@ -6,30 +6,81 @@ p
   .col-md-6
 
     img src="#{@information.image.url}" class="img-responsive img-thumbnail"
-  .col-md-6
-    .information-contact
-      dl.dl-horizontal
-        dt.text-danger.price
-            = number_to_currency(@information.price, :unit => "￥")
-        dd
-        dt  联系人：
-        dd #{@information.contact}
-        - unless @information.mobile_number.blank?
-          dt
-            = icon('fa  fa-phone')
-          dd
-            span   #{@information.mobile_number}
+  .col-md-6.information-contact.well
+    p
+    .row
+         .col-md-3.col-md-offset-1.text-danger
+            strong = number_to_currency(@information.price, :unit => "￥")
 
-        - unless @information.qq.blank?
-          dt
-              = icon('fa  fa-qq')
+    .row
+         .col-md-2.col-md-offset-1.contact-info 联系人
+         .col-md-4.contact-info
+             | #{@information.contact}
+    p
+    - unless @information.mobile_number.blank?
+      .row
+         .col-md-2.col-md-offset-1
+             = icon('fa fa-2x fa-phone')
+         .col-md-4.contact-info
+             | #{@information.mobile_number}
+    p
+    - unless @information.qq.blank?
+          .row
+             .col-md-2.col-md-offset-1
+                 = icon('fa fa-2x fa-qq')
+             .col-md-4.contact-info
+                 | #{@information.qq}
+    p
+    - unless @information.weixin.blank?
+          .row
+             .col-md-2.col-md-offset-1
+                 = icon('fa fa-2x fa-weixin')
+             .col-md-4.contact-info
+                 | #{@information.weixin}
+    //
+      .information-contact
+        ul
+           li
+              = number_to_currency(@information.price, :unit => "￥")
+           li 联系人：　#{@information.contact}
+           - unless @information.mobile_number.blank?
+             li
+                span
+                    = icon('fa fa-2x fa-phone')
+                span
+                   |  #{@information.mobile_number}
+           - unless @information.qq.blank?
+              li
+                span
+                    = icon('fa fa-2x  fa-qq')
+                span
+                    |  #{@information.qq}
+           - unless @information.weixin.blank?
+              li
+                = icon('fa fa-2x  fa-weixin')
+                |  #{@information.weixin}
+        dl.dl-horizontal
+          dt.text-danger.price
+              = number_to_currency(@information.price, :unit => "￥")
           dd
-              span   #{@information.qq}
-        - unless @information.weixin.blank?
-          dt
-              = icon('fa  fa-weixin')
-          dd
-             span.text-danger   #{@information.weixin}
+          dt  联系人：
+          dd #{@information.contact}
+          - unless @information.mobile_number.blank?
+            dt
+              = icon('fa  fa-phone')
+            dd
+              span   #{@information.mobile_number}
+
+          - unless @information.qq.blank?
+            dt
+                = icon('fa  fa-qq')
+            dd
+                span   #{@information.qq}
+          - unless @information.weixin.blank?
+            dt
+                = icon('fa  fa-weixin')
+            dd
+               span.text-danger   #{@information.weixin}
 
 hr
 ul class="nav nav-tabs" role="tablist"
