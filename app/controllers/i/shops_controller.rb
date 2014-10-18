@@ -2,10 +2,6 @@ class I::ShopsController < I::BaseController
 
   before_action :load_shop, except: [:index]
 
-  def index
-    @shops = current_user.shop.page params[:page]
-  end
-
   def show
 
   end
@@ -15,7 +11,11 @@ class I::ShopsController < I::BaseController
   end
 
   def update
-
+    if @shop.update(shop_params)
+          redirect_to [:i,@shop], notice: '信息更新成功'
+    else
+          render :edit
+    end
   end
 
   def destroy
@@ -27,4 +27,7 @@ class I::ShopsController < I::BaseController
     @shop = Shop.find(params[:id])
   end
 
+  def shop_params
+    params.require(:shop).permit(:id, :title, :description, :image, :contact, :address, :phone)
+  end
 end

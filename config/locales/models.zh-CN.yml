@@ -3,7 +3,15 @@ zh-CN:
       models:
         user: "用户"
         information: "信息"
+        shop: "商店"
       attributes:
+        shop:
+           title: "商店名称"
+           description: "经营描述"
+           image: "店铺照片"
+           contact: "联系人"
+           phone: "电话"
+           address: "地址"
         user:
           name: "用户名"
           avatar: "头像"
