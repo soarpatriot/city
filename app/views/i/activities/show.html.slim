@@ -1,0 +1,12 @@
+.col-md-9
+  .panel.panel-default
+    .panel-heading
+
+           = @activity.title
+    .panel-body
+        img src="#{@activity.image.try(:url)}" class="img-responsive img-thumbnail"
+        == @activity.description
+
+
+
+

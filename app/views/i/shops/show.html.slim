@@ -1,14 +1,14 @@
 .col-md-9
-  p#notice = notice
+  p
+  .row
+      .col-md-9
+         = image_tag("#{@shop.image.try(:thumb).url}", size: "64x64", alt: "商店图片 ")
+         | &nbsp; &nbsp; #{@shop.title}
 
   p
-    strong 标题:
-    = @shop.title
   p
-    strong 描述:
-    = @shop.description
-  p
-    strong 图片:
-    = @shop.image
-
-= link_to "编辑我的商店", edit_i_shop_path(@shop), class:"btn btn-warning"
+         = link_to "编辑我的商店资料", edit_i_shop_path(@shop), class:"btn btn-warning"
+  hr
+  .row
+    .col-md-12
+       = render "i/activities/index"

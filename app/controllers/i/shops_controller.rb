@@ -3,7 +3,7 @@ class I::ShopsController < I::BaseController
   before_action :load_shop, except: [:index]
 
   def show
-
+      @activities = @shop.activities.page params[:page]
   end
 
   def edit

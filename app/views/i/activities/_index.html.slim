@@ -1,0 +1,30 @@
+
+.col-md-9
+  p
+
+  table.table.table-striped.table-hover.table-condensed
+    thead
+      tr
+        th 标题
+        th 描述
+        th 图片
+        th 价格
+        th 操作
+    tbody
+      - @activities.each do |activity|
+        tr
+          td = truncate(activity.title,length:20)
+          td = truncate(activity.description,length:20)
+          td
+             img src="#{activity.image.try(:thumb).try(:url)}" class="img-thumbnail"
+          th = activity.price
+          td
+             .btn-group
+                = link_to '查看', i_activity_path(activity), class:"btn btn-default"
+                = link_to '编辑', edit_i_activity_path(activity), class:"btn btn-warning"
+                = link_to '删除', i_activity_path(activity), data: {:confirm => '确定删除吗?'}, :method => :delete, class:"btn btn-danger"
+  .row
+    .col-lg-12.toolbar
+      .pull-right = paginate @activities, theme: 'twitter-bootstrap-3'
+
+  p = link_to "添加商店活动", new_i_activity_path, class:"btn btn-primary"
