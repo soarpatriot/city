@@ -1,41 +1,43 @@
 
-h4 = @information.title
+h3 = @information.title
 p
    small.text-muted  #{time_ago_in_words @information.updated_at}
+hr
 .row
   .col-md-6
 
     img src="#{@information.image.url}" class="img-responsive img-thumbnail"
-  .col-md-6.information-contact.well
+  .col-md-6.information-contact
     p
     .row
          .col-md-3.col-md-offset-1.text-danger
             strong = number_to_currency(@information.price, :unit => "￥")
-
+    p
     .row
-         .col-md-2.col-md-offset-1.contact-info 联系人
-         .col-md-4.contact-info
+         .col-md-2.col-md-offset-1.contact-info.text-warning 联系人
+         .col-md-4.contact-info.text-warning
              | #{@information.contact}
     p
+
     - unless @information.mobile_number.blank?
       .row
-         .col-md-2.col-md-offset-1
+         .col-md-2.col-md-offset-1.text-danger
              = icon('fa fa-2x fa-phone')
-         .col-md-4.contact-info
+         .col-md-4.contact-info.text-danger
              | #{@information.mobile_number}
     p
     - unless @information.qq.blank?
           .row
-             .col-md-2.col-md-offset-1
+             .col-md-2.col-md-offset-1.text-primary
                  = icon('fa fa-2x fa-qq')
-             .col-md-4.contact-info
+             .col-md-4.contact-info.text-primary
                  | #{@information.qq}
     p
     - unless @information.weixin.blank?
           .row
-             .col-md-2.col-md-offset-1
+             .col-md-2.col-md-offset-1.text-success
                  = icon('fa fa-2x fa-weixin')
-             .col-md-4.contact-info
+             .col-md-4.contact-info.text-success
                  | #{@information.weixin}
     //
       .information-contact
