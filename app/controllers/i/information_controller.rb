@@ -12,9 +12,6 @@ class I::InformationController < I::BaseController
 
   end
 
-  def display
-    render "show"
-  end
 
   # GET /information/new
   def new
@@ -30,7 +27,8 @@ class I::InformationController < I::BaseController
     @information = Information.new(information_params)
 
     if current_user.information  <<  @information
-      redirect_to [:i,@information], notice: '信息创建成功'
+      # redirect_to [:i,@information], notice: '信息创建成功'
+       redirect_to i_information_index_path, notice: '信息更新成功'
     else
       render :new
     end
@@ -39,7 +37,7 @@ class I::InformationController < I::BaseController
   # PATCH/PUT /information/1
   def update
     if @information.update(information_params)
-      redirect_to [:i,@information], notice: '信息更新成功'
+      redirect_to i_information_index_path, notice: '信息更新成功'
     else
       render :edit
     end

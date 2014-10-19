@@ -5,7 +5,10 @@ div class="col-sm-3 col-md-2 sidebar"
          = link_to "我的信息", i_information_index_path
 
        li class="#{( params[:controller].end_with?('shops')  or params[:controller].end_with?('activities') ) ? 'active':''}"
-           = link_to "我的商店", i_shop_path(current_user.shop.id)
+           - if current_user.shop.nil?
+             = link_to "我的商店", guide_i_shops_path
+           - else
+             = link_to "我的商店", i_shop_path(current_user.shop.id)
        li class="#{params[:controller].end_with?('users')?  'active':''}"
          = link_to "我的资料", user_path(current_user)
        //

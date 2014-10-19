@@ -25,10 +25,11 @@ nav id="navbar" class="navbar navbar-default navbar-fixed-top" role="navigation"
                         = link_to  user_path(current_user) do
                            span.glyphicon.glyphicon-folder-close
                            | &nbsp; 我的资料
-                     li
-                        = link_to i_shop_path(current_user.shop.id) do
-                           span.glyphicon.glyphicon-shopping-cart
-                           | &nbsp; 我的商店
+                     - unless  current_user.shop.nil?
+                       li
+                          = link_to i_shop_path(current_user.shop.id) do
+                             span.glyphicon.glyphicon-shopping-cart
+                             | &nbsp; 我的商店
 
                      li.divider
                      li

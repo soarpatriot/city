@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
-  validates :email, :encrypted_password, presence:true
-  validates :name, :email, uniqueness: true
+  validates :email,  presence:true
+  validates  :email, uniqueness: true
   validates :password, length: { minimum: 8 }, if: :password
 
   mount_uploader :avatar, UserAvatarUploader

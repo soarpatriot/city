@@ -16,7 +16,12 @@ Rails.application.routes.draw do
 
   end
   namespace :i do
-    resources :shops
+    resources :shops do
+       collection do
+           get 'guide'
+       end
+
+    end
     resources :infos
     resources :information
     resources :activities
@@ -24,11 +29,7 @@ Rails.application.routes.draw do
   resources :users
 
   get 'shops/:id/information/:information_id' => 'shops#information', as: :information_shop
-  resources :shops do
-      member do
-
-      end
-  end
+  resources :shops
   resources :information do
       member do
            get 'infomation'
