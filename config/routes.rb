@@ -22,10 +22,16 @@ Rails.application.routes.draw do
     resources :activities
   end
   resources :users
-  resources :shops
+
+  get 'shops/:id/information/:information_id' => 'shops#information', as: :information_shop
+  resources :shops do
+      member do
+
+      end
+  end
   resources :information do
       member do
-           get 'display'
+           get 'infomation'
       end
   end
 

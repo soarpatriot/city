@@ -1,4 +1,11 @@
-
+.row
+      .col-md-9
+         = image_tag("#{@shop.image.try(:thumb).url}", size: "64x64", alt: "商店图片 ")
+         | &nbsp; &nbsp;
+         = link_to shop_path(@shop) do
+            span.text-danger
+               strong #{@shop.title}
+hr
 h3 = @information.title
 p
    small.text-muted  #{time_ago_in_words @information.updated_at}
@@ -42,50 +49,7 @@ hr
                  = icon('fa fa-2x fa-weixin')
              .col-md-4.contact-info.text-success
                  | #{@information.weixin}
-    //
-      .information-contact
-        ul
-           li
-              = number_to_currency(@information.price, :unit => "￥")
-           li 联系人：　#{@information.contact}
-           - unless @information.mobile_number.blank?
-             li
-                span
-                    = icon('fa fa-2x fa-phone')
-                span
-                   |  #{@information.mobile_number}
-           - unless @information.qq.blank?
-              li
-                span
-                    = icon('fa fa-2x  fa-qq')
-                span
-                    |  #{@information.qq}
-           - unless @information.weixin.blank?
-              li
-                = icon('fa fa-2x  fa-weixin')
-                |  #{@information.weixin}
-        dl.dl-horizontal
-          dt.text-danger.price
-              = number_to_currency(@information.price, :unit => "￥")
-          dd
-          dt  联系人：
-          dd #{@information.contact}
-          - unless @information.mobile_number.blank?
-            dt
-              = icon('fa  fa-phone')
-            dd
-              span   #{@information.mobile_number}
 
-          - unless @information.qq.blank?
-            dt
-                = icon('fa  fa-qq')
-            dd
-                span   #{@information.qq}
-          - unless @information.weixin.blank?
-            dt
-                = icon('fa  fa-weixin')
-            dd
-               span.text-danger   #{@information.weixin}
 
 - unless @information.image.url.nil?
   hr
