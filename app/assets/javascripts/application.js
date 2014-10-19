@@ -17,8 +17,9 @@
 
 //= require masonry.pkgd
 //= require imagesloaded.pkgd.min
-//= require ckeditor/init
 //= require ckeditor/ckeditor
 //= require ckeditor_config
-//= require_tree .
+//= require home
+//= require i_information_new
+//= require information_new
 
