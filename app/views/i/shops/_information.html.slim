@@ -21,7 +21,7 @@ table.table.table-striped.table-hover.table-condensed
         th = information.publish_text_tip
         td
            .btn-group
-              = link_to '查看', i_info_path(information), class:"btn btn-default"
+              = link_to '预览',  information_shop_path(@shop,information), class:"btn btn-success", target: "_blank"
               = link_to '编辑', edit_i_info_path(information), class:"btn btn-warning"
               = link_to '删除', i_info_path(information), data: {:confirm => '确定删除吗?'}, :method => :delete, class:"btn btn-danger"
 .row

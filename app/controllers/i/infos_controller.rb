@@ -10,7 +10,10 @@ class I::InfosController < I::BaseController
 
   # GET /information/new
   def new
-    @information = Information.new
+    shop =  current_user.shop
+    contact = shop.contact
+    mobile_number = shop.phone
+    @information = Information.new(contact: contact, mobile_number: mobile_number)
   end
 
   # GET /information/1/edit

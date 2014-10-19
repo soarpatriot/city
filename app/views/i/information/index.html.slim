@@ -22,8 +22,9 @@
           th = information.publish_text_tip
           td
              .btn-group
-                = link_to '查看', i_information_path(information), class:"btn btn-default"
-                a id="#{information.id}" data-toggle="modal" href="#detail" class="btn btn-success information-preview"
+                = link_to '预览', information_path(information), class:"btn btn-success", target: "_blank"
+                //
+                  a id="#{information.id}" data-toggle="modal" href="#detail" class="btn btn-success information-preview"
                   | 预览
                 //
                   = link_to '预览', information_path(information), class:"btn btn-success", data-target="#modal"
@@ -35,6 +36,7 @@
 
   p = link_to '新建信息', new_i_information_path, class:"btn btn-primary"
 
+//
   div.modal.fade.bs-example-modal-lg id="information-detail-modal"
     div.modal-dialog.modal-lg
       div.modal-content
