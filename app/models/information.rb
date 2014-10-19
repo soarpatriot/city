@@ -3,10 +3,9 @@ class Information < ActiveRecord::Base
    validates :title, :publish, :contact,  presence:true
    validates :price,  numericality: { greater_than: 0}
    validate :contact_at_least_one
-   belongs_to :user
+
+   belongs_to :owner, polymorphic: true
    mount_uploader :image, InformationImageUploader
-
-
 
 
    def publish_text_tip

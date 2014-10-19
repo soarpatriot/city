@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_one :shop
-  has_many :information
+  has_many :information, as: :owner, dependent: :destroy
 
   after_create :set_random_avatar
 

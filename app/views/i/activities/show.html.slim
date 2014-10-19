@@ -4,7 +4,7 @@
 
            = @activity.title
     .panel-body
-        img src="#{@activity.image.try(:url)}" class="img-responsive img-thumbnail"
+        img src="#{@activity.image.try(:thumb).try(:url)}" class="img-responsive img-thumbnail"
         == @activity.description
 
 

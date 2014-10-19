@@ -1,0 +1,27 @@
+.row
+.col-md-8
+  #information-container.row
+     - @information.each do |information|
+          .col-md-3.col-sm-6.item
+            .thumbnail
+               img src="#{information.image.try(:small).url}" class="img-responsive"
+               .caption
+                 h5 = "#{information.title}"
+                 p.text-muted
+                    small
+                         = time_ago_in_words information.updated_at
+                 p
+                     = link_to "详情", information, class:"btn btn-primary"
+  .row
+    .col-lg-12.toolbar
+      .pull-right = paginate @information, theme: 'twitter-bootstrap-3'
+.col-md-4
+   .panel.panel-default
+      .panel-heading
+         h3 #{@shop.title}
+      .panel-body
+         p 商铺地址：  #{@shop.address}
+         p 联系人：     #{@shop.contact}
+         p 联系电话：  #{@shop.phone}
+
+

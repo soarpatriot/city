@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018145933) do
+ActiveRecord::Schema.define(version: 20141019064121) do
 
   create_table "activities", force: true do |t|
     t.string   "title"
@@ -64,13 +64,14 @@ ActiveRecord::Schema.define(version: 20141018145933) do
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.integer  "owner_id"
     t.boolean  "publish",                                default: true
     t.decimal  "price",         precision: 10, scale: 2
     t.string   "contact"
     t.string   "mobile_number"
     t.string   "qq"
     t.string   "weixin"
+    t.string   "owner_type",                             default: "User"
   end
 
   create_table "shops", force: true do |t|
