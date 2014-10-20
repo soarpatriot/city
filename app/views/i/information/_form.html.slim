@@ -18,4 +18,4 @@
   = f.input :weixin
   p.bg-info 选择是，此信息公开发布，将会被搜索到，选择否，暂不发布，只有自己可以看到
   = f.input :publish, :as => :select, required: true, collection:[["否",false],["是",true]], input_html:{class:'form-control'}
-  = f.button :submit
+  = f.button :submit, class:"btn btn-primary"
