@@ -2,7 +2,8 @@
    - @information.each do |information|
         .col-md-3.col-sm-6.item
           .thumbnail
-             img src="#{information.image.try(:small).url}" class="img-responsive"
+             - unless information.image.try(:small).try(:url).blank?
+                img src="#{information.image.try(:small).url}" class="img-responsive img-rounded img-thumbnail"
              .caption
                h5 = "#{information.title}"
                p.text-muted
