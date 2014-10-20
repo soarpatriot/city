@@ -8,6 +8,11 @@
         |  用户名：#{@user.name}
    p
      | Email:  #{@user.email}
-
+   - unless @user.mobile_number.blank?
+     p 电话： #{@user.mobile_number}
+   - unless @user.qq.blank?
+     p QQ： #{@user.qq}
+   - unless @user.weixin.blank?
+     p 微信： #{@user.weixin}
    p
       = link_to "编辑我的资料", edit_user_path(@user), class:"btn btn-warning"

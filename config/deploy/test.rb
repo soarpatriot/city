@@ -1,7 +1,7 @@
 set :stage, :local
 set :server_name, "test.yuxian.me"
 
-set :branch, "master"
+set :branch, "pps"
 
 set :log_level, :debug
 set :deploy_to, "/data/www/city"
