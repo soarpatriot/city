@@ -73,7 +73,6 @@ private
 
   # Resize and crop square from Center
   def resize_and_crop(size)
-    binding.pry
     manipulate! do |image|
       if image[:width] < image[:height]
         remove = ((image[:height] - image[:width])/2).round
