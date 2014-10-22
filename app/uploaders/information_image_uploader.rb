@@ -33,7 +33,7 @@ class InformationImageUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
   version :small do
-     process :resize_to_fill => [260, 260]
+     process :resize_to_fit => [260, 260]
     # process :resize_to_fit => [230, nil]
     # process :store_dimensions
     # process crop: '300x150+0+0'
@@ -41,7 +41,7 @@ class InformationImageUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb, :from_version => :small do
-      process resize_to_fill: [50, 50]
+      process resize_to_fit: [50, 50]
   end
 
 
