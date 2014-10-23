@@ -5,6 +5,9 @@
              - unless information.image.try(:small).try(:url).blank?
                 img src="#{information.image.try(:small).url}" class="img-responsive img-rounded img-thumbnail"
              .caption
+
+               p.text-danger
+                  strong = number_to_currency(information.price, :unit => "￥")
                h5 = "#{information.title}"
                p.text-muted
                   small
