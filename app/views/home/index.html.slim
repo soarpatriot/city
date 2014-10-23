@@ -21,7 +21,10 @@
                           span.label.label-info 个人
                           | &nbsp; #{information.contact}
                p
-                   = link_to "详情", information, class:"btn btn-primary"
+                   - if information.own_by_user?
+                      = link_to "详情", information, class:"btn btn-primary"
+                   - if information.own_by_shop?
+                      = link_to "详情", information_shop_path(information.owner,information), class:"btn btn-primary"
 .row
   .col-lg-12.toolbar
     .pull-right = paginate @information, theme: 'twitter-bootstrap-3'

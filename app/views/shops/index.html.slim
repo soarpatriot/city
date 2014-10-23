@@ -5,7 +5,11 @@
              img src="#{shop.image.try(:small).url}" class="img-responsive"
              .caption
                h5 = "#{shop.title}"
+               p
+                  span.label.label-success 掌柜
+                  |   #{shop.contact}
                p.text-muted
+                  | 创立于：
                   small
                        = time_ago_in_words shop.updated_at
                p
