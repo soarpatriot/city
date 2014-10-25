@@ -14,6 +14,10 @@ class I::ShopsController < I::BaseController
 
   end
 
+  def display
+
+  end
+
   def edit
 
   end

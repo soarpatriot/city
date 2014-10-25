@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   end
   namespace :i do
     resources :shops do
+       member do
+           get 'display'
+       end
        collection do
            get 'guide'
        end

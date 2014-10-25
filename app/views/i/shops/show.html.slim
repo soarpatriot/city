@@ -2,12 +2,14 @@
   p
   .row
       .col-md-9
-         = image_tag("#{@shop.image.try(:thumb).url}", size: "64x64", alt: "商店图片 ")
+         = image_tag("#{@shop.image.try(:thumb).url}", size: "64x64", alt: "商店图片 ", class:"img-thumbnail")
          | &nbsp; &nbsp; #{@shop.title}
 
   p
   p
          = link_to "编辑我的商店资料", edit_i_shop_path(@shop), class:"btn btn-warning"
+         | &nbsp;&nbsp;
+         = link_to "查看" , display_i_shop_path(@shop), class:"btn btn-default"
 
   hr
   = render "information"
