@@ -1,33 +1,38 @@
+.col-md-9
 
-p
-   small.text-muted  #{time_ago_in_words @shop.updated_at}
-hr
-.row
-  .col-md-4
-      img src="#{@shop.image.url}" class="img-responsive img-thumbnail"
-  .col-md-6
-    h3 = @shop.title
-    .row
-         .col-md-2.col-md-offset-1.contact-info.text-warning 联系人
-         .col-md-4.contact-info.text-warning
-             | #{@shop.contact}
-    p
-
-    - unless @shop.phone.blank?
-      .row
-         .col-md-2.col-md-offset-1.text-danger
-             = icon('fa fa-2x fa-phone')
-         .col-md-4.contact-info.text-danger
-             | #{@shop.phone}
-
-
-- unless @shop.image.url.nil?
-  hr
-  ul class="nav nav-tabs" role="tablist"
-     li class="active"
-        a 详情
   .row
-    .col-md-9
-      div class="tab-pane active"
-        p
-           == @shop.description
+    .col-md-4
+        img src="#{@shop.image.url}" class="img-responsive img-thumbnail"
+    .col-md-6
+      h3 = @shop.title
+      hr
+      .row
+           .col-md-2.col-md-offset-1.contact-info.text-warning 联系人
+           .col-md-8.contact-info.text-warning
+               | #{@shop.contact}
+
+
+      p
+      - unless @shop.phone.blank?
+        .row
+           .col-md-2.col-md-offset-1.text-danger
+               = icon('fa fa-2x fa-phone')
+           .col-md-4.contact-info.text-danger
+               | #{@shop.phone}
+      p
+      hr
+      p
+         span.label.label-success 创建于
+         span.text-danger
+           strong   #{@shop.created_at}
+
+  - unless @shop.image.url.nil?
+    hr
+    ul class="nav nav-tabs" role="tablist"
+       li class="active"
+          a 详情
+    .row
+      .col-md-9
+        div class="tab-pane active"
+          p
+             == @shop.description
