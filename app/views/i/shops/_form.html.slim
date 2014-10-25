@@ -3,6 +3,15 @@
        = simple_form_for( [:i, @shop], html:{role:"form"}) do |f|
 
           =f.input :title, required: true, autofocus: true, label: "店铺名称：",  input_html:{class:'form-control'}
+          .row
+            .col-md-4
+               = f.input :url, label: "Url: 小写字母数字或 _ 或 -   （可不填写） "
+            .col-md-10
+          p
+             span.text-info 此url 将作为访问您店铺的地址，分享此url 给您的朋友，直接进入您的店铺
+          p#shop-url-show.alert.alert-success
+              - unless @shop.url.blank?
+                | #{Settings.host}/shops/#{@shop.url}
           p
             span 店铺图片：
           - if @shop.image.url.blank?

@@ -3,11 +3,11 @@
   .row
     .col-md-4
         img src="#{@shop.image.url}" class="img-responsive img-thumbnail"
-    .col-md-6
+    .col-md-6.shop-contact
       h3 = @shop.title
       hr
       .row
-           .col-md-2.col-md-offset-1.contact-info.text-warning 联系人
+           .col-md-3.col-md-offset-1.contact-info.text-warning 联系人
            .col-md-8.contact-info.text-warning
                | #{@shop.contact}
 
@@ -15,16 +15,20 @@
       p
       - unless @shop.phone.blank?
         .row
-           .col-md-2.col-md-offset-1.text-danger
+           .col-md-3.col-md-offset-1.text-danger
                = icon('fa fa-2x fa-phone')
-           .col-md-4.contact-info.text-danger
+           .col-md-8.contact-info.text-danger
                | #{@shop.phone}
-      p
+
       hr
       p
+         | 地址
+         address
+            strong #{@shop.address}
+      p
          span.label.label-success 创建于
-         span.text-danger
-           strong   #{@shop.created_at}
+         span.text-muted.create-date
+              | &nbsp;&nbsp; #{time_ago_in_words @shop.created_at}
 
   - unless @shop.image.url.nil?
     hr

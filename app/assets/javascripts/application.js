@@ -27,3 +27,5 @@
 //= require i_information_new
 //= require information_new
 
+//= require i_shop_new
+

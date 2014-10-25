@@ -51,7 +51,7 @@ class I::ShopsController < I::BaseController
   end
 
   def shop_params
-    params.require(:shop).permit(:id, :title, :description, :image, :contact, :address, :phone)
+    params.require(:shop).permit(:id, :title, :description, :image, :contact, :address, :phone, :url)
   end
 
 
