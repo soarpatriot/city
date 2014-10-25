@@ -1,7 +1,8 @@
 class Information < ActiveRecord::Base
 
    validates :title, :publish, :contact,  presence:true
-   validates :price,  numericality: { greater_than: 0}
+   validates :price,  numericality: { greater_than: 0},  allow_nil: true
+
    validate :contact_at_least_one
 
    belongs_to :owner, polymorphic: true
