@@ -1,19 +1,4 @@
-#information-container.row
-   - @shops.each do |shop|
-        .col-md-3.col-sm-6.item
-          .thumbnail
-             img src="#{shop.image.try(:small).url}" class="img-responsive"
-             .caption
-               h5 = "#{shop.title}"
-               p
-                  span.label.label-success 掌柜
-                  |   #{shop.contact}
-               p.text-muted
-                  | 创立于：
-                  small
-                       = time_ago_in_words shop.updated_at
-               p
-                   = link_to "详情", shop, class:"btn btn-primary"
+= render "list"
 .row
   .col-lg-12.toolbar
     .pull-right = paginate @shops, theme: 'twitter-bootstrap-3'

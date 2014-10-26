@@ -1,13 +1,4 @@
-#information-container.row
-  .row
-     - @information.each_with_index do |information, index|
-        - if index <= 3
-              = render "information", information: information
-  .row
-     - @information.each_with_index do |information, index|
-        - if index > 3
-              = render "information", information: information
-
+= render "info_list"
 .row
    .col-lg-12.toolbar
       .pull-right = paginate @information, theme: 'twitter-bootstrap-3'

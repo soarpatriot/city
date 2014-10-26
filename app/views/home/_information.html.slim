@@ -1,12 +1,22 @@
-.col-md-3.col-sm-6.item
+.col-md-3.col-sm-6.col-xs-12.item
   .thumbnail
      - unless information.image.try(:small).try(:url).blank?
-        img src="#{information.image.try(:small).url}" class="img-responsive img-rounded img-thumbnail"
+        - if information.own_by_user?
+              = link_to information do
+                 img src="#{information.image.try(:small).url}" class="img-responsive img-rounded img-thumbnail"
+        - if information.own_by_shop?
+              = link_to information_shop_path(information.owner,information) do
+                 img src="#{information.image.try(:small).url}" class="img-responsive img-rounded img-thumbnail"
      .caption
 
        p.text-danger
           strong = number_to_currency(information.price, :unit => "￥")
-       h5 = "#{information.title}"
+       - if information.own_by_user?
+              = link_to information do
+                 h5 = "#{information.title}"
+       - if information.own_by_shop?
+              = link_to information_shop_path(information.owner,information) do
+                 h5 = "#{information.title}"
        p.text-muted
           small
                = time_ago_in_words information.updated_at
@@ -18,7 +28,8 @@
                   | ，
                   span.label.label-info 个人
                   | &nbsp; #{information.contact}
-       p
+       //
+         p
            - if information.own_by_user?
               = link_to "详情", information, class:"btn btn-primary"
            - if information.own_by_shop?

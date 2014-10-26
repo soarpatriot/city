@@ -1,0 +1,10 @@
+#information-container.row
+  .col-md-12
+    .row
+       - @shops.each_with_index do |shop, index|
+          - if index <= 3
+                = render "one", shop: shop
+    .row
+       - @shops.each_with_index do |shop, index|
+          - if index > 3
+                = render "one", shop: shop
