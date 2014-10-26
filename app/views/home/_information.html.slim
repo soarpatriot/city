@@ -1,0 +1,25 @@
+.col-md-3.col-sm-6.item
+  .thumbnail
+     - unless information.image.try(:small).try(:url).blank?
+        img src="#{information.image.try(:small).url}" class="img-responsive img-rounded img-thumbnail"
+     .caption
+
+       p.text-danger
+          strong = number_to_currency(information.price, :unit => "￥")
+       h5 = "#{information.title}"
+       p.text-muted
+          small
+               = time_ago_in_words information.updated_at
+               - if information.own_by_shop?
+                  | ，
+                  span.label.label-success 店铺
+                  | &nbsp; #{information.owner.title}
+               - if information.own_by_user?
+                  | ，
+                  span.label.label-info 个人
+                  | &nbsp; #{information.contact}
+       p
+           - if information.own_by_user?
+              = link_to "详情", information, class:"btn btn-primary"
+           - if information.own_by_shop?
+              = link_to "详情", information_shop_path(information.owner,information), class:"btn btn-primary"
