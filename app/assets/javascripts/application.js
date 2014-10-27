@@ -10,7 +10,10 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+
 //= require jquery
+//= require add_to_home_screen
 
 //= require jquery_ujs
 //= require ckeditor/init
@@ -18,11 +21,14 @@
 //= require ckeditor_config
 //= require turbolinks
 //= require jquery.turbolinks
+//= require addtohomescreen.min
 
 //= require bootstrap
 //= require masonry.pkgd
 //= require imagesloaded.pkgd.min
+//= require fastclick
 
+//= require click
 //= require home
 //= require i_information_new
 //= require information_new
