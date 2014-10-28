@@ -7,10 +7,9 @@
           = f.input :price,  as: :decimal
           = f.input :description,   :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'MyTooBar'} ,class:'form-control'}
 
-          p
-            span 图片：
+
           - if @information.image.url.blank?
-            span 请上传图片
+
           - else
             img src="#{@information.image.try(:thumb).url}" class="img-thumbnail"
 

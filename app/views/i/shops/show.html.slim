@@ -1,5 +1,7 @@
 .col-md-9
   p
+  h3.text-center.text-danger 商家发表信息
+  p
   .row
       .col-md-9
          = image_tag("#{@shop.image.try(:thumb).url}", size: "64x64", alt: "商店图片 ", class:"img-thumbnail")
