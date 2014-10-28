@@ -1,5 +1,6 @@
 class Information < ActiveRecord::Base
 
+   default_scope {order("updated_at desc")}
    validates :title, :publish, :contact,  presence:true
    validates :price,  numericality: { greater_than: 0},  allow_nil: true
 
