@@ -5,7 +5,7 @@
           =f.input :title, required: true, autofocus: true, label: "店铺名称：",  input_html:{class:'form-control'}
           .row
             .col-md-4
-               = f.input :url, label: "Url: 小写字母数字或 _ 或 -   （可不填写） "
+               = f.input :url, label: "店铺网址，   例如输入: hzp   ,可代表化妆品"
             .col-md-10
           p
              span.text-info 此url 将作为访问您店铺的地址，分享此url 给您的朋友，直接进入您的店铺
@@ -13,9 +13,9 @@
               - unless @shop.url.blank?
                 | #{Settings.host}/shops/#{@shop.url}
           p
-            span 店铺图片：
+
           - if @shop.image.url.blank?
-            span 请上传图片
+
           - else
             img src="#{@shop.image.try(:thumb).url}" class="img-thumbnail"
           = f.input :image, as: :file
