@@ -33,7 +33,7 @@ class ShopImageUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
   version :small do
-     process :resize_to_fill => [360, 2048]
+     process :resize_to_fit => [360, 2048]
     # process :resize_to_fit => [230, nil]
     # process :store_dimensions
     # process crop: '300x150+0+0'
@@ -41,7 +41,7 @@ class ShopImageUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb, :from_version => :small do
-      process resize_to_fill: [80, 2048]
+      process resize_to_fit: [80, 2048]
   end
 
 
@@ -61,6 +61,10 @@ class ShopImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end
+  
 private
 
   # Simplest way

@@ -33,7 +33,7 @@ class UserAvatarUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
   version :small do
-     process :resize_to_fill => [360, 2048]
+     process :resize_to_fit => [360, 2048]
     # process :resize_to_fit => [230, nil]
     # process :store_dimensions
     # process crop: '300x150+0+0'
@@ -41,10 +41,12 @@ class UserAvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb, :from_version => :small do
-      process resize_to_fill: [80, 2048]
+      process resize_to_fit: [80, 2048]
   end
-
-
+  
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end
   # Create different versions of your uploaded files:
   # version :thumb do
   #   process :resize_to_fit => [50, 50]
