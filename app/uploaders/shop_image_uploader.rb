@@ -7,7 +7,7 @@ class ShopImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
   include CarrierWave::MiniMagick
 
-  process :resize_to_fit => [800, 99999]
+  process :resize_to_fit => [800, 2048]
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -33,7 +33,7 @@ class ShopImageUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
   version :small do
-     process :resize_to_fill => [360, 99999]
+     process :resize_to_fill => [360, 2048]
     # process :resize_to_fit => [230, nil]
     # process :store_dimensions
     # process crop: '300x150+0+0'
@@ -41,7 +41,7 @@ class ShopImageUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb, :from_version => :small do
-      process resize_to_fill: [80, 99999]
+      process resize_to_fill: [80, 2048]
   end
 
 
