@@ -28,7 +28,7 @@ class I::InformationController < I::BaseController
 
     if current_user.information  <<  @information
       # redirect_to [:i,@information], notice: '信息创建成功'
-       redirect_to i_information_index_path, notice: '信息更新成功'
+       redirect_to i_information_index_path, notice: '信息创建成功'
     else
       render :new
     end

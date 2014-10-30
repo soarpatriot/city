@@ -10,7 +10,7 @@ html
         = render "shared/admin_navbar"
       - else
         = render "shared/session_navbar"
-      = render "shared/notice"
+      = render "shared/flash_messages"
 
       - if admin_signed_in?
         .container.home-container

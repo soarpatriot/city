@@ -3,7 +3,6 @@ class UsersController < ApplicationController
    before_action :authenticate_user!
    before_action :load_user, only: [:edit, :show, :update, :start_shop]
    def show
-
    end
 
    def edit
@@ -14,7 +13,7 @@ class UsersController < ApplicationController
       shop = Shop.new
       shop.save
       current_user.update shop:shop
-      redirect_to edit_shop_path(shop)
+      redirect_to edit_shop_path(shop), notice: '商店已为您开启'
    end
 
    def  edit_shop
@@ -23,7 +22,7 @@ class UsersController < ApplicationController
 
    def update
       if @user.update user_params
-          redirect_to current_user
+          redirect_to current_user,  notice: '资料更新成功'
       else
           render "edit"
       end

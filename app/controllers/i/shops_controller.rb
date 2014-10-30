@@ -24,7 +24,7 @@ class I::ShopsController < I::BaseController
 
   def update
     if @shop.update(shop_params)
-          redirect_to [:i,@shop], notice: '信息更新成功'
+          redirect_to [:i,@shop], notice: '商店更新成功'
     else
           render :edit
     end
@@ -34,7 +34,7 @@ class I::ShopsController < I::BaseController
     @shop = Shop.new(shop_params)
     @shop.user = current_user
     if @shop.save
-      redirect_to [:i,@shop], notice: '信息创建成功'
+      redirect_to [:i,@shop], notice: '商店创建成功'
     else
       render :new
     end
@@ -43,7 +43,7 @@ class I::ShopsController < I::BaseController
 
   def destroy
     @shop.destroy
-    redirect_to information_index_url, notice: '信息删除成功'
+    redirect_to information_index_url, notice: '商店删除成功'
   end
 
   def  load_shop

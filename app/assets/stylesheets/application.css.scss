@@ -22,3 +22,7 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+.alert-notice {
+  @extend .alert-success;
+}
