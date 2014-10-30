@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :information
-
+    resources :shops
   end
   namespace :i do
     resources :shops do

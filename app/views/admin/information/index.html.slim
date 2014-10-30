@@ -1,8 +1,4 @@
-
-.col-md-9
-  p
-  .alert.alert-warning
-   | 发布您的信息，例如招聘，买卖等。发布后您的信息将会被浏览本站的用户看到，如信息过期请及时登陆删除，避免您被打扰
+.col-md-12
 
   table.table.table-striped.table-hover.table-condensed
     thead
@@ -22,28 +18,9 @@
           th = information.publish_text_tip
           td
              .btn-group
-                = link_to '查看', i_information_path(information), class:"btn btn-default"
-                a id="#{information.id}" data-toggle="modal" href="#detail" class="btn btn-success information-preview"
-                  | 预览
-                //
-                  = link_to '预览', information_path(information), class:"btn btn-success", data-target="#modal"
-                = link_to '编辑', edit_i_information_path(information), class:"btn btn-warning"
-                = link_to '删除', i_information_path(information), data: {:confirm => '确定删除吗?'}, :method => :delete, class:"btn btn-danger"
+                = link_to '删除', admin_information_path(information), data: {:confirm => '确定删除吗?'}, :method => :delete, class:"btn btn-danger"
   .row
     .col-lg-12.toolbar
       .pull-right = paginate @information, theme: 'twitter-bootstrap-3'
 
-  p = link_to '新建信息', new_i_information_path, class:"btn btn-primary"
-
-  div.modal.fade.bs-example-modal-lg id="information-detail-modal"
-    div.modal-dialog.modal-lg
-      div.modal-content
-        div.modal-header
-          button type="button" class="close" data-dismiss="modal" aria-hidden="true" &times;
-          h4 class="modal-title" = "信息详情"
-        div.modal-body
-          .container
-             .row
-               .col-md-12
-                  #inforamtion-detail
 
