@@ -36,7 +36,12 @@ server {
     proxy_redirect off;
     proxy_pass http://<%= fetch(:application) %>_server;
   }
-
+  location ~ ^/(assets)/  {
+    root <%= current_path %>/public;
+    gzip_static on; # to serve pre-gzipped version
+    expires max;
+    add_header Cache-Control public;
+  }
   error_page 500 502 503 504 /500.html;
     location = /500.html {
     root <%= current_path %>/public;
