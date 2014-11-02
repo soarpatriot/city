@@ -45,15 +45,8 @@ module City
 
     config.active_record.default_timezone = :local
     config.time_zone = 'Beijing'
-=begin
 
-    config.middleware.insert_before "Rack::Runtime", "Rack::Cors" do
-      allow do
-      origins '*'
-      resource '*', :headers => :any, :methods => [:get, :post, :options]
-      end
-    end
-=end
+
 
   end
 end
