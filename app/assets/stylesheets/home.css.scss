@@ -1,7 +1,14 @@
+$global-font-family: 'Microsoft YaHei','微软雅黑',Tahoma, Arial,'Helvetica Neue', Helvetica,sans-serif,'宋体';
+$global-font-size: 14px;
+
+@mixin global-font {
+  font-family: $global-font-family;
+  font-size: $global-font-size;
+}
 
 body{
+    @include global-font;
     padding-top:80px;
-
     #background: url(http://subtlepatterns.com/patterns/scribble_light.png) ;
 }
 
