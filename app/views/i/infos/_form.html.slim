@@ -1,6 +1,8 @@
-
 = f.error_notification
+
 = f.input :title,  input_html:{class:'form-control'}
+p.text-warning
+    strong 暂无价格，或价格面议，可不填此项
 = f.input :price,  as: :decimal
 = f.input :description,   :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'MyTooBar'} ,class:'form-control'}
 
@@ -9,14 +11,21 @@
 
 - else
   img src="#{@information.image.try(:thumb).url}" class="img-thumbnail"
-= f.input :image, as: :file,  input_html:{class:'form-control'}
 
-.hidden
-    = f.input :contact, require: true
-    p QQ 号码，手机号，微信号至少填写一个
-    = f.input :mobile_number
-    = f.input :qq
-    = f.input :weixin
-    p.bg-info 选择是，此信息公开发布，将会被搜索到，选择否，暂不发布，只有自己可以看到
-    = f.input :publish, :as => :select, required: true, collection:[["否",false],["是",true]], input_html:{class:'form-control'}
-= f.button :submit
+= f.input :image, as: :file,  input_html:{class:'form-control'}
+p.text-success
+   strong
+     | 默认已设置为商店联系信息，如需更改，点击
+     a href="#contact" id="information_contact_link"
+        | 联系信息
+
+#information_contact_info.hidden
+  = f.input :contact, require: true
+  p.alert.alert-info QQ 号码，手机号，微信号至少填写一个
+  = f.input :mobile_number
+
+  = f.input :qq
+  = f.input :weixin
+  p.bg-info 选择是，此信息公开发布，将会被搜索到，选择否，暂不发布，只有自己可以看到
+  = f.input :publish, :as => :select, required: true, collection:[["否",false],["是",true]], input_html:{class:'form-control'}
+= f.button :submit, "提交", class:"btn btn-primary"
