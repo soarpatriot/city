@@ -9,4 +9,10 @@ class Shop < ActiveRecord::Base
   has_many :information, as: :owner, dependent: :destroy
   has_many :activities
   mount_uploader :image, ShopImageUploader
+
+  def access_url
+     unless self.url.blank?
+         "#{Settings.host}/shops/#{self.url}"
+     end
+  end
 end
