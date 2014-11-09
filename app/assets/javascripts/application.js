@@ -26,8 +26,9 @@
 //= require imagesloaded.pkgd.min
 //= require fastclick
 
-//= require click
 //= require home
+//= require click
+
 //= require i_information_new
 //= require information_new
 
