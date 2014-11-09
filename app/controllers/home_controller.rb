@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
    def index
-      @information = Information.where(publish:true).page params[:page]
+      @information = Information.includes(:owner).where(publish:true).page params[:page]
    end
 
    def shops
