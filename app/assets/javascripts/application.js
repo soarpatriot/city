@@ -22,8 +22,7 @@
 
 
 //= require bootstrap
-//= require masonry.pkgd
-//= require imagesloaded.pkgd.min
+
 //= require fastclick
 
 //= require home
