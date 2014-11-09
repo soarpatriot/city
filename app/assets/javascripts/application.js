@@ -19,12 +19,14 @@
 //= require ckeditor_config
 //= require turbolinks
 //= require jquery.turbolinks
+//= require faye-browser-min
 
-
+//= require underscore
 //= require bootstrap
 //= require masonry.pkgd
 //= require imagesloaded.pkgd.min
 //= require fastclick
+//= require chat
 
 //= require home
 //= require click

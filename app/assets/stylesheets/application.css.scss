@@ -18,11 +18,17 @@
  *= require nav
  *= require shop
  */
+
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "compass";
 
-.alert-notice {
+.alert-notice{
   @extend .alert-success;
+}
+.thumbnail-circle{
+   @include border-radius(50%);
 }
