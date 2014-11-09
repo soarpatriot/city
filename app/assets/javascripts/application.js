@@ -17,15 +17,19 @@
 
 //= require turbolinks
 //= require jquery.turbolinks
+
 //= require nprogress
 //= require nprogress-turbolinks
+//= require faye-browser-min
 
+//= require underscore
 //= require bootstrap
 //= require masonry.pkgd
 //= require imagesloaded.pkgd.min
 //= require fastclick
 //= require animo
 
+//= require chat
 //= require home
 //= require click
 //= require information
