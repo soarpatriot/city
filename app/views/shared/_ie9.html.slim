@@ -1,10 +1,11 @@
 /[if lt IE 9]
-  | <script src="/assets/html5shiv-printshiv.min.js"></script>
-  | <script src="/assets/respond.min.js"></script>
+   = javascript_include_tag 'html5shiv-printshiv.min', 'data-turbolinks-track' => true
+   = javascript_include_tag 'respond.min', 'data-turbolinks-track' => true
 /[if IE 10]
-  | <script src="/assets/ie10-viewport-bug-workaround.js"></script>
+   = javascript_include_tag 'ie10-viewport-bug-workaround', 'data-turbolinks-track' => true
 /[if IE]
-  | <script src="/assets/ie-emulation-modes-warning.js"></script>
+   = javascript_include_tag 'ie-emulation-modes-warning', 'data-turbolinks-track' => true
+
 
 
 
