@@ -26,13 +26,12 @@
 //= require masonry.pkgd
 //= require imagesloaded.pkgd.min
 //= require fastclick
-//= require chat
+//= require iscroll
 
+//= require chat
 //= require home
 //= require click
-
 //= require i_information_new
 //= require information_new
-
 //= require i_shop_new
 
