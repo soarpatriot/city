@@ -1,5 +1,6 @@
 $(window).bind 'page:change', ->
 
+
   isIE7 = (navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.match(/7./i)=="7.")
   isIE8 = (navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.match(/8./i)=="8.")
   isIE6 = (navigator.appName == "Microsoft Internet Explorer")
@@ -12,7 +13,4 @@ $(window).bind 'page:change', ->
           itemSelector: '.item'
      })
    )
-
-
-
 

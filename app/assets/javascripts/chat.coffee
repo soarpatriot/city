@@ -1,17 +1,29 @@
 $(window).bind 'page:change', ->
    client = new Faye.Client('http://localhost:8000/faye')
 
-   #myApp = new Framework7();
-   #$$ = Dom7;
-
    $activityArea = $("#activity-area")
-
-   if($activityArea)
+   console.log($activityArea)
+   if($activityArea.length > 0)
 
      myScroll = new IScroll('#activity-area', {
-        mouseWheel: true,
-        scrollbars: true
+       scrollbars: true,
+       mouseWheel: true,
+       interactiveScrollbars: true,
+       shrinkScrollbars: 'scale',
+       fadeScrollbars: true
+
      })
+     document.addEventListener('touchmove', ((e)->
+       e.preventDefault()),
+       false
+     )
+     # $("#message-toolbar .message-input").on "blur", ->
+       #window.scrollTo(0, 0)
+
+     #$("#scroll-wrapper, #messages").on "tap", (event) ->
+       #$("#message-toolbar .message-input").blur();
+
+
 
      myName = $("#current-user-name").val()
      myAvatar = $("#current-user-avatar").val()
@@ -31,7 +43,7 @@ $(window).bind 'page:change', ->
                                 </div>
                              </div>
                          """
-     $activityArea.append(sampleHtml)
+     #$activityArea.append(sampleHtml)
      messageHtml = """
 
                             <div class="media message">
@@ -55,7 +67,14 @@ $(window).bind 'page:change', ->
                            """
      message_temp =  _.template(messageHtml);
      subscription = client.subscribe '/chat',   (message) ->
-         $activityArea.append(message_temp({name:message.name, avatar:message.avatar, text:message.text}))
+         $("#scroller").append(message_temp({name:message.name, avatar:message.avatar, text:message.text}))
+         myScroll.refresh()
+         #myScroll.scrollToElement('#scroller div.message:last-child')
+         # myScroll.scrollBy(0, 100);
+         # myScroll.scrollToElement('#scroller div.message:last-child')
+         # myScroll.scrollToElement('#scroller div.message:last-child', 2000, 0, 1000)
+         # myScroll.scrollToElement($('#scroller .message:last-child'))
+
          # console.log(message_temp({text:message.text}))
 
 
@@ -69,6 +88,10 @@ $(window).bind 'page:change', ->
          text = $("#send-message-input").val()
          $("#send-message-input").val("")
          publication = client.publish('/chat', {name:myName, avatar: myAvatar, text: text})
+         publication.then ->
+           myScroll.scrollToElement('#scroller div.message:last-child')
+         , (error)->
+           myScroll.scrollToElement('#scroller div.message:last-child')
 
 
 
