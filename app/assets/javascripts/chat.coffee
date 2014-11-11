@@ -1,8 +1,6 @@
 $(window).bind 'page:change', ->
    client = new Faye.Client('http://localhost:8000/faye')
-
    $activityArea = $("#activity-area")
-   console.log($activityArea)
    if($activityArea.length > 0)
 
      myScroll = new IScroll('#activity-area', {
