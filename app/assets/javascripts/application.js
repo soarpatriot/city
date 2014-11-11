@@ -23,6 +23,7 @@
 //= require faye-browser-min
 
 //= require underscore
+//= require underscore.string.min
 //= require bootstrap
 //= require masonry.pkgd
 //= require imagesloaded.pkgd.min
