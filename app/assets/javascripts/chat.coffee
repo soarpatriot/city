@@ -25,10 +25,23 @@ $(window).bind 'page:change', ->
 
      myName = $("#current-user-name").val()
      myAvatar = $("#current-user-avatar").val()
-     #console.log(myName)
-     #console.log(myAvatar)
 
 
+
+     client.handshake ->
+         console.log(client._clientId)
+         client.subscribe '/channels/'+client._clientId,   (message) ->
+               console.log(JSON.stringify(message))
+               #$("#scroller").append(message_temp({name:message.name, avatar:message.avatar, text:message.text}))
+     , this
+
+     publication = client.publish('/channels/1', {id:1})
+     publication.then ->
+               console.log("success")
+           , (error)->
+               console.log("fail")
+     subscription = client.subscribe '/channels/1',   (message) ->
+          console.log(JSON.stringify(message))
      sampleHtml = """
                             <div class="page toolbar-fixed">
                                 <div class="page-content messages-content">
