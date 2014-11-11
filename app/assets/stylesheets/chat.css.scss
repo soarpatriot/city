@@ -1,5 +1,15 @@
+/*
+ *
+ *= require_self
+ *= require nav
+ */
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import "compass";
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -12,16 +22,18 @@ html {
 body {
   overflow: hidden; /* this is important to prevent the whole page to bounce */
 }
-
+.thumbnail-circle{
+   @include border-radius(50%);
+}
 #activity-area{
   position: absolute;
   z-index: 1;
 
-  left: 10px;
+  left: 5%;
   top: 45px;
   bottom: 50px;
   right: 10px;
-  width: auto;
+  //width: auto;
   //overflow: hidden;
   //background: #ccc;
   overflow: hidden;
