@@ -6,7 +6,7 @@ $(window).bind 'page:change', ->
      isLtIE9 = isIE7 || isIE8 || isIE6
 
      $container = $('#information-container')
-     if  $container && !isLtIE9
+     if  ($container.length>0) && (!isLtIE9)
        $container.imagesLoaded( ->
          $container.masonry({
               itemSelector: '.item'

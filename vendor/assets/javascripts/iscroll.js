@@ -1,4 +1,4 @@
-/*! iScroll v5.1.2 ~ (c) 2008-2014 Matteo Spinelli ~ http://cubiq.org/license */
+/*! iScroll v5.1.3 ~ (c) 2008-2014 Matteo Spinelli ~ http://cubiq.org/license */
 (function (window, document, Math) {
 var rAF = window.requestAnimationFrame	||
 	window.webkitRequestAnimationFrame	||
@@ -48,7 +48,7 @@ var utils = (function () {
 	};
 
 	me.prefixPointerEvent = function (pointerEvent) {
-		return window.MSPointerEvent ?
+		return window.MSPointerEvent ? 
 			'MSPointer' + pointerEvent.charAt(9).toUpperCase() + pointerEvent.substr(10):
 			pointerEvent;
 	};
@@ -248,10 +248,8 @@ var utils = (function () {
 function IScroll (el, options) {
 	this.wrapper = typeof el == 'string' ? document.querySelector(el) : el;
 	this.scroller = this.wrapper.children[0];
-	//this.scrollerStyle = this.scroller.style;		// cache style for better performance
-      if(this.scroller){
-	   this.scrollerStyle = this.scroller.style;		// cache style for better performance
-      }
+	this.scrollerStyle = this.scroller.style;		// cache style for better performance
+
 	this.options = {
 
 		resizeScrollbars: true,
@@ -260,7 +258,7 @@ function IScroll (el, options) {
 
 		snapThreshold: 0.334,
 
-// INSERT POINT: OPTIONS
+// INSERT POINT: OPTIONS 
 
 		startX: 0,
 		startY: 0,
@@ -315,12 +313,9 @@ function IScroll (el, options) {
 
 	this.options.invertWheelDirection = this.options.invertWheelDirection ? -1 : 1;
 
-	if ( this.options.probeType == 3 ) {
-		this.options.useTransition = false;	}
-
 // INSERT POINT: NORMALIZATION
 
-	// Some defaults
+	// Some defaults	
 	this.x = 0;
 	this.y = 0;
 	this.directionX = 0;
@@ -337,7 +332,7 @@ function IScroll (el, options) {
 }
 
 IScroll.prototype = {
-	version: '5.1.2',
+	version: '5.1.3',
 
 	_init: function () {
 		this._initEvents();
@@ -517,19 +512,13 @@ IScroll.prototype = {
 		this._translate(newX, newY);
 
 /* REPLACE START: _move */
+
 		if ( timestamp - this.startTime > 300 ) {
 			this.startTime = timestamp;
 			this.startX = this.x;
 			this.startY = this.y;
-
-			if ( this.options.probeType == 1 ) {
-				this._execEvent('scroll');
-			}
 		}
 
-		if ( this.options.probeType > 1 ) {
-			this._execEvent('scroll');
-		}
 /* REPLACE END: _move */
 
 	},
@@ -1065,8 +1054,13 @@ IScroll.prototype = {
 		}, 400);
 
 		if ( 'deltaX' in e ) {
-			wheelDeltaX = -e.deltaX;
-			wheelDeltaY = -e.deltaY;
+			if (e.deltaMode === 1) {
+				wheelDeltaX = -e.deltaX * this.options.mouseWheelSpeed;
+				wheelDeltaY = -e.deltaY * this.options.mouseWheelSpeed;
+			} else {
+				wheelDeltaX = -e.deltaX;
+				wheelDeltaY = -e.deltaY;
+			}
 		} else if ( 'wheelDeltaX' in e ) {
 			wheelDeltaX = e.wheelDeltaX / 120 * this.options.mouseWheelSpeed;
 			wheelDeltaY = e.wheelDeltaY / 120 * this.options.mouseWheelSpeed;
@@ -1123,10 +1117,6 @@ IScroll.prototype = {
 		}
 
 		this.scrollTo(newX, newY, 0);
-
-		if ( this.options.probeType > 1 ) {
-			this._execEvent('scroll');
-		}
 
 // INSERT POINT: _wheel
 	},
@@ -1533,16 +1523,11 @@ IScroll.prototype = {
 			if ( that.isAnimating ) {
 				rAF(step);
 			}
-
-			if ( that.options.probeType == 3 ) {
-				that._execEvent('scroll');
-			}
 		}
 
 		this.isAnimating = true;
 		step();
 	},
-
 	handleEvent: function (e) {
 		switch ( e.type ) {
 			case 'touchstart':
@@ -1779,15 +1764,6 @@ Indicator.prototype = {
 
 		this._pos(newX, newY);
 
-
-		if ( this.scroller.options.probeType == 1 && timestamp - this.startTime > 300 ) {
-			this.startTime = timestamp;
-			this.scroller._execEvent('scroll');
-		} else if ( this.scroller.options.probeType > 1 ) {
-			this.scroller._execEvent('scroll');
-		}
-
-
 // INSERT POINT: indicator._move
 
 		e.preventDefault();
@@ -1899,7 +1875,7 @@ Indicator.prototype = {
 				this.maxBoundaryX = this.maxPosX;
 			}
 
-			this.sizeRatioX = this.options.speedRatioX || (this.scroller.maxScrollX && (this.maxPosX / this.scroller.maxScrollX));
+			this.sizeRatioX = this.options.speedRatioX || (this.scroller.maxScrollX && (this.maxPosX / this.scroller.maxScrollX));	
 		}
 
 		if ( this.options.listenY ) {
