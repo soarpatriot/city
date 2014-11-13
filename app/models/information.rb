@@ -6,6 +6,7 @@ class Information < ActiveRecord::Base
 
    validate :contact_at_least_one
 
+   belongs_to :category
    belongs_to :owner, polymorphic: true
    mount_uploader :image, InformationImageUploader
 

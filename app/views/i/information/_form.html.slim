@@ -1,6 +1,7 @@
 = simple_form_for [:i,@information] do |f|
   = f.error_notification
   = f.input :title,  input_html:{class:'form-control'}
+  = f.association :category, collection: Category.all, label_method: :name, value_method: :id
   p.text-warning
       strong 暂无价格，或价格面议，可不填此项
   = f.input :price,  as: :decimal
@@ -13,6 +14,7 @@
       span.text-danger
         strong 已上传图片：（如需更改图片请使用上传图片）
     img src="#{@information.image.try(:thumb).url}" class="img-thumbnail"
+
   = f.input :image, as: :file,  input_html:{class:'form-control'}
   = f.input :contact, require: true
   p.alert.alert-info QQ 号码，手机号，微信号至少填写一个

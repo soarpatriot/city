@@ -57,6 +57,6 @@ class I::InformationController < I::BaseController
 
   # Only allow a trusted parameter "white list" through.
   def information_params
-    params.require(:information).permit(:id, :title, :description, :publish,:image, :price, :contact, :mobile_number, :qq, :weixin)
+    params.require(:information).permit(:id, :title, :description, :publish,:image, :price, :contact, :mobile_number, :qq, :weixin, :category_id)
   end
 end

@@ -31,6 +31,8 @@
 
        p
            - if information.own_by_user?
+              p.text-warning.pull-right 浏览更多#{information.category.try(:name)}
               = link_to "详情", information, class:"btn btn-primary"
            - if information.own_by_shop?
+              p.text-warning.pull-right 浏览更多#{information.category.try(:name)}
               = link_to "详情", information_shop_path(information.owner,information), class:"btn btn-primary"

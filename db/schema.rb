@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113132156) do
+ActiveRecord::Schema.define(version: 20141113151644) do
 
   create_table "activities", force: true do |t|
     t.string   "title"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20141113132156) do
     t.string   "qq"
     t.string   "weixin"
     t.string   "owner_type",                             default: "User"
+    t.integer  "category_id"
   end
 
   add_index "information", ["updated_at"], name: "index_information_on_updated_at", using: :btree
