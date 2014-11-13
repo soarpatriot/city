@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :users
     resources :information
     resources :shops
+    resources :categories
   end
   namespace :i do
     resources :shops do
