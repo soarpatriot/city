@@ -1,13 +1,12 @@
 class HomeController < ApplicationController
    def index
       @information = []
-      Category.all.each  do |category|
-
-          information = Information.includes(:owner).where(publish:true, category: category ).limit(4)
-          @information = @information + information
-      end
-
-
+      @information = Category.recently_one
+      #categories = Category.all
+      #categories.each  do |category|
+          #infos = category.recently
+          #@information  += infos
+      #end
    end
 
    def shops
