@@ -26,6 +26,7 @@ zh-CN:
           password_confirmation:  "确认密码"
         information:
           title: "标题"
+          category: "类别"
           price: "价格"
           description: "详细描述"
           image: "图片"

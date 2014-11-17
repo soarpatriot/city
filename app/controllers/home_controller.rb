@@ -1,15 +1,7 @@
 class HomeController < ApplicationController
    def index
       @information = []
-      @information = Category.recently_one
-      #categories = Category.all
-      #categories.each  do |category|
-          #infos = category.recently
-          #@information  += infos
-      #end
-   end
+      @information = Information.recently
 
-   def shops
-      @shops = Shop.all
    end
 end

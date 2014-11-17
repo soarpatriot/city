@@ -4,9 +4,16 @@ class InformationController < ApplicationController
 
 
   def index
-    @information = Information.where(publish:true).page params[:page]
+    @category = Category.find(params[:category_id])
+    @information = Information.where(publish:true,category: @category).page params[:page]
   end
   def show
+
+  end
+
+  def category
+     @category = Category.find("")
+     @information = Information.where(publish:true).page params[:page]
   end
 
   private

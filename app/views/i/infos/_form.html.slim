@@ -1,10 +1,9 @@
 = f.error_notification
-
 = f.input :title,  input_html:{class:'form-control'}
-= f.association :category, collection: Category.all, label_method: :name, value_method: :id
 p.text-warning
     strong 暂无价格，或价格面议，可不填此项
 = f.input :price,  as: :decimal
+= f.association :category, collection: Category.all, label_method: :name, value_method: :id
 = f.input :description,   :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'MyTooBar'} ,class:'form-control'}
 
 

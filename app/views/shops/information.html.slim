@@ -1,4 +1,8 @@
 .row
+  .col-md-12
+     = link_to "返回", :back,  class:"btn btn-default"
+p
+.row
       .col-md-9
          = image_tag("#{@shop.image.try(:thumb).url}", size: "64x64", alt: "商店图片 ")
          | &nbsp; &nbsp;
