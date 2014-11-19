@@ -1,7 +1,19 @@
 .container
+  .row.row-offcanvas.row-offcanvas-right
+    p
+      | 为获得最佳浏览本站体验，推荐使用最新版本 Chrome
+  .row
+    .col-md-3
+      h3 免费
+    .col-md-3
+      h3 发布
+    .col-md-3
+      h3 设备
+    .col-md-3
+      h3 反馈
   .row
     .col-md-12
-        = form_tag("/feedback", method: "post") do 
+        = form_tag("/feedback", method: "post",class:"form") do
 		   = text_area_tag(:content) 
 		   = submit_tag("提交")
 		
