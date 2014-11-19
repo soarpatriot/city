@@ -43,8 +43,11 @@ Rails.application.routes.draw do
   authenticated :admin do
     root to: "admin/information#index", as: :authenticated_admin_root
   end
-
+  
+  get '/about' => 'home#about', as: :about 
+  post '/feedback' => 'home#feedback', as: :feedback 
   root 'home#index'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

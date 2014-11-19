@@ -1,0 +1,7 @@
+.container
+  .row
+    .col-md-12
+        = form_tag("/feedback", method: "post") do 
+		   = text_area_tag(:content) 
+		   = submit_tag("提交")
+		
