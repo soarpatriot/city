@@ -23,16 +23,24 @@ class Information < ActiveRecord::Base
    end
 
    def self.recently
+
+      information = []
       categories = Category.all
-      first = categories.first
-      info_str = "( SELECT  `information`.* FROM `information` INNER JOIN `categories` ON `categories`.`id` = `information`.`category_id` WHERE `information`.`publish` = 1 AND `information`.`category_id` = #{first.id}  ORDER BY updated_at desc LIMIT 4)"
-      categories.each_with_index  do | item, index |
-         if index > 0
-             info_str += " UNION (SELECT  `information`.* FROM `information` INNER JOIN `categories` ON `categories`.`id` = `information`.`category_id` WHERE `information`.`publish` = 1 AND `information`.`category_id` = #{item.id}  ORDER BY updated_at desc LIMIT 4 )"
+
+      unless categories.empty?
+         first = categories.first
+         info_str = "( SELECT  `information`.* FROM `information` INNER JOIN `categories` ON `categories`.`id` = `information`.`category_id` WHERE `information`.`publish` = 1 AND `information`.`category_id` = #{first.id}  ORDER BY updated_at desc LIMIT 4)"
+         categories.each_with_index  do | item, index |
+            if index > 0
+               info_str += " UNION (SELECT  `information`.* FROM `information` INNER JOIN `categories` ON `categories`.`id` = `information`.`category_id` WHERE `information`.`publish` = 1 AND `information`.`category_id` = #{item.id}  ORDER BY updated_at desc LIMIT 4 )"
+            end
          end
+         #binding.pry
+         information = Information.find_by_sql(info_str)
+
+
       end
-      #binding.pry
-      Information.find_by_sql(info_str)
+      information
       #Information.find_by_sql( "SELECT * FROM information info1 WHERE 2>(SELECT COUNT(1) FROM information info2 WHERE category_id=info1.category_id)")
    end
    private
