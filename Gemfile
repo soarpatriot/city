@@ -7,7 +7,7 @@ gem 'rails_config'
 gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
-gem 'nokogiri'
+#gem 'nokogiri'
 
 gem 'non-stupid-digest-assets'
 
@@ -73,8 +73,8 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'pry-rails'
-  gem 'capybara'
-  gem "capybara-webkit"
+  #gem 'capybara'
+  #gem "capybara-webkit"
   # gem "capybara-webkit",'~>1.1.0'
   gem 'poltergeist'
   gem 'selenium-webdriver'
