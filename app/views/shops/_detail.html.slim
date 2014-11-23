@@ -2,8 +2,9 @@
 .col-md-3.col-sm-6.col-xs-12.item
   .thumbnail
      - unless information.image.try(:small).try(:url).blank?
-       = link_to information do
+         = link_to information_shop_path(information.owner,information) do
            img src="#{information.image.try(:small).url}" class="img-responsive img-rounded img-thumbnail"
+
 
      .caption
 
@@ -11,7 +12,7 @@
           strong = number_to_currency(information.price, :unit => "￥")
 
 
-       = link_to information do
+       = link_to information_shop_path(information.owner,information) do
            h5 = "#{information.title}"
        p.text-muted
           small
@@ -24,7 +25,6 @@
                   | ，
                   span.label.label-info 个人
                   | &nbsp; #{information.contact}
-       p #{from_shop}
        //
         p
            - if information.own_by_user?

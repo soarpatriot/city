@@ -1,18 +1,17 @@
 .col-md-3.col-sm-6.col-xs-12.item
   .thumbnail
      - unless information.image.try(:small).try(:url).blank?
-
-              = link_to information do
-                 img src="#{information.image.try(:small).url}" class="img-responsive img-rounded img-thumbnail"
+       = link_to information do
+         img src="#{information.image.try(:small).url}" class="img-responsive img-rounded img-thumbnail"
 
      .caption
 
        p.text-danger
           strong = number_to_currency(information.price, :unit => "￥")
-       - if information.own_by_user?
-              = link_to information do
-                 h5 = "#{information.title}"
-       - if information.own_by_shop?
+       = link_to information do
+           h5 = "#{information.title}"
+       //
+        - if information.own_by_shop?
               = link_to information_shop_path(information.owner,information) do
                  h5 = "#{information.title}"
        p.text-muted

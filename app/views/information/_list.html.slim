@@ -1,0 +1,10 @@
+#information-container.row
+  .col-md-12
+    .row
+       - @information.each_with_index do |information, index|
+          - if index <= 3
+            = render partial: "information/detail", information:information
+    .row
+       - @information.each_with_index do |information, index|
+          - if index > 3
+            = render "information/detail", information: information

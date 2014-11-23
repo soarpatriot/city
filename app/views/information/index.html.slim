@@ -5,7 +5,7 @@
                 = link_to "首页", root_path
              li class="active" = "#{@category.name}"
 
-= render "info_list"
+= render "list"
 .row
    .col-lg-12.toolbar
         .pull-right = paginate @information, theme: 'twitter-bootstrap-3'

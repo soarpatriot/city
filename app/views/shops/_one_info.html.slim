@@ -1,0 +1,65 @@
+p
+- if @information.own_by_shop?
+  .row
+    .col-md-9
+      = image_tag("#{@information.owner.image.try(:thumb).url}", size: "64x64", alt: "商店图片 ")
+      | &nbsp; &nbsp;
+      = link_to shop_path(@information.owner) do
+        span.text-danger
+          strong #{@information.owner.title}
+
+h3 = @information.title
+p
+  small.text-muted  #{time_ago_in_words @information.updated_at}
+hr
+.row
+  .col-md-6
+    - if @information.image.url.blank?
+      p
+        == @information.description
+    - else
+      img src="#{@information.image.url}" class="img-responsive img-thumbnail"
+  .col-md-6.information-contact.well
+    p.text-success.text-center 联系时请说明来自  yuxian.me
+    .row
+      .col-md-3.col-md-offset-1.text-danger
+        strong = number_to_currency(@information.price, :unit => "￥")
+    p
+    .row
+      .col-md-2.col-md-offset-1.contact-info.text-warning 联系人
+      .col-md-4.contact-info.text-warning
+        | #{@information.contact}
+    p
+
+    - unless @information.mobile_number.blank?
+      .row
+        .col-md-2.col-md-offset-1.text-danger
+          = icon('fa fa-2x fa-phone')
+        .col-md-4.contact-info.text-danger
+          | #{@information.mobile_number}
+    p
+    - unless @information.qq.blank?
+      .row
+        .col-md-2.col-md-offset-1.text-primary
+          = icon('fa fa-2x fa-qq')
+        .col-md-4.contact-info.text-primary
+          | #{@information.qq}
+    p
+    - unless @information.weixin.blank?
+      .row
+        .col-md-2.col-md-offset-1.text-success
+          = icon('fa fa-2x fa-weixin')
+        .col-md-4.contact-info.text-success
+          | #{@information.weixin}
+
+
+- unless @information.image.url.nil?
+  hr
+  ul class="nav nav-tabs" role="tablist"
+    li class="active"
+      a 详情
+  .row
+    .col-md-9
+      div class="tab-pane active"
+        p
+          == @information.description

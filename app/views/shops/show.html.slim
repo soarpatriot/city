@@ -1,6 +1,6 @@
 .row
   .col-md-8
-     = render "information/info_list"
+     = render "list_info", from_shop:true
      .row
         .col-lg-12.toolbar
             .pull-right = paginate @information, theme: 'twitter-bootstrap-3'

@@ -3,8 +3,8 @@
     .row
        - @information.each_with_index do |information, index|
           - if index <= 3
-                = render "information/detail", information: information
+            = render "detail",  information:information
     .row
        - @information.each_with_index do |information, index|
           - if index > 3
-                = render "information/detail", information: information
+            = render "detail", information: information
