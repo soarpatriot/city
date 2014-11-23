@@ -1,12 +1,10 @@
 .col-md-3.col-sm-6.col-xs-12.item
   .thumbnail
      - unless information.image.try(:small).try(:url).blank?
-        - if information.own_by_user?
+
               = link_to information do
                  img src="#{information.image.try(:small).url}" class="img-responsive img-rounded img-thumbnail"
-        - if information.own_by_shop?
-              = link_to information_shop_path(information.owner,information) do
-                 img src="#{information.image.try(:small).url}" class="img-responsive img-rounded img-thumbnail"
+
      .caption
 
        p.text-danger
@@ -31,14 +29,9 @@
 
        p
            hr
-           - if information.own_by_user?
               p
                   = link_to information_index_path(category_id: information.category.try(:id)) do
                       | 更多
                       span.text-warning #{information.category.try(:name)}
 
-           - if information.own_by_shop?
-              p
-                   = link_to information_index_path(category_id: information.category.try(:id)) do
-                      | 更多
-                      span.text-warning #{information.category.try(:name)}
+

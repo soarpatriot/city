@@ -1,7 +1,15 @@
 .row
   .col-md-12
      = link_to "返回", :back,  class:"btn btn-default"
-
+p
+- if @information.own_by_shop?
+  .row
+    .col-md-9
+      = image_tag("#{@information.owner.image.try(:thumb).url}", size: "64x64", alt: "商店图片 ")
+      | &nbsp; &nbsp;
+      = link_to shop_path(@information.owner) do
+        span.text-danger
+          strong #{@information.owner.title}
 
 h3 = @information.title
 p
