@@ -20,7 +20,9 @@
                - if information.own_by_shop?
                   | ，
                   span.label.label-success 店铺
-                  | &nbsp; #{information.owner.title}
+                  | &nbsp;
+                  = link_to shop_path(information.owner) do
+                      span.text-warning #{information.owner.title}
                - if information.own_by_user?
                   | ，
                   span.label.label-info 个人

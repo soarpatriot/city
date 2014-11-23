@@ -8,13 +8,10 @@ class InformationController < ApplicationController
     @information = Information.where(publish:true,category: @category).page params[:page]
   end
   def show
+    @category = Category.find(params[:category_id]) unless params[:category_id].nil?
 
   end
 
-  def category
-     @category = Category.find("")
-     @information = Information.where(publish:true).page params[:page]
-  end
 
   private
   # Use callbacks to share common setup or constraints between actions.

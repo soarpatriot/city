@@ -1,5 +1,13 @@
 .row
   .col-md-12
+    - unless @category.nil?
+          ol class="breadcrumb"
+            li
+              = link_to "首页", root_path
+            li
+              = link_to @category.name, information_index_path(category_id:@category.id, page:params[:page])
+            li class="active" = "#{@information.title.truncate(10)}"
+    - else
      = link_to "返回", root_path,  class:"btn btn-info"
 = render "one"
 
