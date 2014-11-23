@@ -18,6 +18,7 @@
           th = information.publish_text_tip
           td
              .btn-group
+                = link_to '编辑类别', edit_admin_information_path(information), class:"btn btn-warning"
                 = link_to '删除', admin_information_path(information), data: {:confirm => '确定删除吗?'}, :method => :delete, class:"btn btn-danger"
   .row
     .col-lg-12.toolbar
