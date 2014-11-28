@@ -7,6 +7,7 @@ gem 'rails_config'
 gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
+gem 'nprogress-rails'
 #gem 'nokogiri'
 
 gem 'non-stupid-digest-assets'

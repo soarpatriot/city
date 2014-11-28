@@ -19,7 +19,8 @@
 //= require ckeditor_config
 //= require turbolinks
 //= require jquery.turbolinks
-
+//= require nprogress
+//= require nprogress-turbolinks
 
 //= require bootstrap
 //= require masonry.pkgd
