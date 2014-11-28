@@ -3,6 +3,7 @@ class InformationController < ApplicationController
   before_action :set_information, only: [:show]
 
 
+
   def index
     @category = Category.find(params[:category_id])
     @information = Information.where(publish:true,category: @category).page params[:page]
@@ -18,4 +19,6 @@ class InformationController < ApplicationController
   def set_information
     @information = Information.find(params[:id])
   end
+
+
 end
