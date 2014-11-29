@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113151644) do
+ActiveRecord::Schema.define(version: 20141129030250) do
 
   create_table "activities", force: true do |t|
     t.string   "title"
@@ -72,16 +72,19 @@ ActiveRecord::Schema.define(version: 20141113151644) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_id"
-    t.boolean  "publish",                                default: true
-    t.decimal  "price",         precision: 10, scale: 2
+    t.boolean  "publish",                                  default: true
+    t.decimal  "price",           precision: 10, scale: 2
     t.string   "contact"
     t.string   "mobile_number"
     t.string   "qq"
     t.string   "weixin"
-    t.string   "owner_type",                             default: "User"
+    t.string   "owner_type",                               default: "User"
     t.integer  "category_id"
+    t.integer  "visit_count",                              default: 0
+    t.datetime "synchronized_at",                          default: '2014-11-29 11:04:48'
   end
 
+  add_index "information", ["synchronized_at"], name: "index_information_on_synchronized_at", using: :btree
   add_index "information", ["updated_at"], name: "index_information_on_updated_at", using: :btree
 
   create_table "shops", force: true do |t|

@@ -14,7 +14,8 @@
            h5 = "#{information.title}"
        p.text-muted
           small
-               = time_ago_in_words information.updated_at
+               | #{time_ago_in_words information.synchronized_at}前更新
+               | , #{information.visit_count} 次浏览&nbsp;
                - if information.own_by_shop?
                   | ，
                   span.label.label-success 店铺

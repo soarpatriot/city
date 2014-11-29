@@ -10,7 +10,7 @@ class InformationController < ApplicationController
   end
   def show
     @category = Category.find(params[:category_id]) unless params[:category_id].nil?
-
+    @information.increment_visit_count
   end
 
 

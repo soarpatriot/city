@@ -10,6 +10,7 @@ class Information < ActiveRecord::Base
    belongs_to :owner, polymorphic: true
    mount_uploader :image, InformationImageUploader
 
+   after_create :update_synchronized_at
 
    def publish_text_tip
       self.publish == true ? "是" : "否"
@@ -22,6 +23,15 @@ class Information < ActiveRecord::Base
        self.owner_type == 'User'
    end
 
+   def increment_visit_count
+      visit_count = self.visit_count + 1
+      self.update visit_count:visit_count, updated_at:self.updated_at
+   end
+
+   def update_synchronized_at
+      self.update synchronized_at:Time.now
+   end
+
    def self.recently
 
       information = []
@@ -29,10 +39,10 @@ class Information < ActiveRecord::Base
 
       unless categories.empty?
          first = categories.first
-         info_str = "( SELECT  `information`.* FROM `information` INNER JOIN `categories` ON `categories`.`id` = `information`.`category_id` WHERE `information`.`publish` = 1 AND `information`.`category_id` = #{first.id}  ORDER BY updated_at desc LIMIT 4)"
+         info_str = "( SELECT  `information`.* FROM `information` INNER JOIN `categories` ON `categories`.`id` = `information`.`category_id` WHERE `information`.`publish` = 1 AND `information`.`category_id` = #{first.id}  ORDER BY synchronized_at desc LIMIT 4)"
          categories.each_with_index  do | item, index |
             if index > 0
-               info_str += " UNION (SELECT  `information`.* FROM `information` INNER JOIN `categories` ON `categories`.`id` = `information`.`category_id` WHERE `information`.`publish` = 1 AND `information`.`category_id` = #{item.id}  ORDER BY updated_at desc LIMIT 4 )"
+               info_str += " UNION (SELECT  `information`.* FROM `information` INNER JOIN `categories` ON `categories`.`id` = `information`.`category_id` WHERE `information`.`publish` = 1 AND `information`.`category_id` = #{item.id}  ORDER BY synchronized_at desc LIMIT 4 )"
             end
          end
          #binding.pry

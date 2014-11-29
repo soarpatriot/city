@@ -37,6 +37,7 @@ class I::InformationController < I::BaseController
   # PATCH/PUT /information/1
   def update
     if @information.update(information_params)
+      @information.update_synchronized_at
       redirect_to i_information_index_path, notice: '信息更新成功'
     else
       render :edit
