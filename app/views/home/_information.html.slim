@@ -15,19 +15,21 @@
               = link_to information_shop_path(information.owner,information) do
                  h5 = "#{information.title}"
        p.text-muted
+         small
+           - if information.own_by_shop?
+             |
+             span.label.label-success 店铺
+             | &nbsp;
+             = link_to shop_path(information.owner) do
+               span.text-warning #{information.owner.title}
+           - if information.own_by_user?
+             |
+             span.label.label-info 个人
+             | &nbsp; #{information.contact}
+       p.text-muted
           small
                | #{time_ago_in_words information.synchronized_at}前
                | , #{information.visit_count} 次浏览&nbsp;
-               - if information.own_by_shop?
-                  | ，
-                  span.label.label-success 店铺
-                  | &nbsp;
-                  = link_to shop_path(information.owner) do
-                      span.text-warning #{information.owner.title}
-               - if information.own_by_user?
-                  | ，
-                  span.label.label-info 个人
-                  | &nbsp; #{information.contact}
 
        p
            hr
