@@ -27,5 +27,6 @@
 
 //= require home
 //= require click
+//= require information
 
 

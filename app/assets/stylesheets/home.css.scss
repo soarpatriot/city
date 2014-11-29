@@ -1,9 +1,20 @@
+
+@import "compass";
+
 $global-font-family: 'Microsoft YaHei','微软雅黑',Tahoma, Arial,'Helvetica Neue', Helvetica,sans-serif,'宋体';
 $global-font-size: 14px;
+
 
 @mixin global-font {
   font-family: $global-font-family;
   font-size: $global-font-size;
+}
+
+.favorite-btn{
+  @include border-radius(10px);
+}
+.favorite-heart{
+  color: #FF0000;
 }
 
 body{

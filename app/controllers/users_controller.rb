@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
    end
 
+
    def update
       if @user.update user_params
           redirect_to current_user,  notice: '资料更新成功'

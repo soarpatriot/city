@@ -26,7 +26,7 @@
 
 
 //= require i_information_new
-//= require information_new
+//= require information
 
 //= require i_shop_new
 

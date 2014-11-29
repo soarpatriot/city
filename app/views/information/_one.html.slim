@@ -11,6 +11,18 @@ p
 h3 = @information.title
 p
   small.text-muted  #{time_ago_in_words @information.updated_at}
+p
+  - if current_user.nil?
+    a href="#fav" class="btn btn-default btn-sm favorite-btn" data-toggle="tooltip" data-placement="top" title= "请登录后操作..."
+      i class="fa fa-heart favorite-heart"
+      | &nbsp;
+      span.like-count #{@information.get_likes.size}
+
+  - else
+    = link_to like_information_path(@information), class: "btn btn-default btn-sm favorite-btn", method: "post", remote:true do
+      i class="fa fa-heart favorite-heart"
+      | &nbsp;
+      span.like-count #{@information.get_likes.size}
 hr
 .row
   .col-md-6

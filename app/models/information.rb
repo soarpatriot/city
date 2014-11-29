@@ -1,5 +1,7 @@
 class Information < ActiveRecord::Base
 
+   acts_as_votable
+
    default_scope {order("updated_at desc")}
    validates :title, :publish, :contact, :category, presence:true
    validates :price,  numericality: { greater_than: 0},  allow_nil: true
@@ -11,6 +13,7 @@ class Information < ActiveRecord::Base
    mount_uploader :image, InformationImageUploader
 
    after_create :update_synchronized_at
+
 
    def publish_text_tip
       self.publish == true ? "是" : "否"

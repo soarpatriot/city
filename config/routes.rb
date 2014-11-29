@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   resources :information do
       member do
            get 'infomation'
+           post 'like'
       end
   end
 

@@ -1,6 +1,6 @@
 class InformationController < ApplicationController
 
-  before_action :set_information, only: [:show]
+  before_action :set_information, only: [:show,:like]
 
 
 
@@ -13,10 +13,21 @@ class InformationController < ApplicationController
     @information.increment_visit_count
   end
 
+  def like
+
+    #current_user.likes @information unless current_user.nil?
+
+    @has_voted = current_user.voted_for? @information
+    @has_voted ? @information.unliked_by(current_user) : @information.liked_by(current_user)
+    @has_voted ? @has_voted = false : @has_voted = true
+    @likes = @information.get_likes.size
+
+  end
 
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_information
+
     @information = Information.find(params[:id])
   end
 
