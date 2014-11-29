@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129030250) do
+ActiveRecord::Schema.define(version: 20141129034608) do
 
   create_table "activities", force: true do |t|
     t.string   "title"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20141129030250) do
     t.string   "owner_type",                               default: "User"
     t.integer  "category_id"
     t.integer  "visit_count",                              default: 0
-    t.datetime "synchronized_at",                          default: '2014-11-29 11:04:48'
+    t.datetime "synchronized_at",                          default: '2014-11-29 12:00:27'
   end
 
   add_index "information", ["synchronized_at"], name: "index_information_on_synchronized_at", using: :btree
