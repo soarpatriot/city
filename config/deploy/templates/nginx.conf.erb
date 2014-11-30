@@ -44,12 +44,14 @@ server {
   }
 }
 
+
+
 server {
   # enable one of the following if you're on Linux or FreeBSD
   listen 80; # for Linux
 
   client_max_body_size 4G;
-  server_name <%= fetch(:server_name) %> www.<%= fetch(:server_name) %>;
+  server_name www.<%= fetch(:server_name) %>;
 
   access_log <%= shared_path %>/log/nginx_access.log;
   error_log <%= shared_path %>/log/nginx_error.log error;
@@ -59,11 +61,13 @@ server {
   # path for static files
   root <%= current_path %>/public;
 
+
+
   try_files $uri/index.html $uri.html $uri @app;
 
-
-
   location @app {
+
+
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header Host $http_host;
     proxy_set_header X-Forwarded-Proto http;
@@ -75,6 +79,15 @@ server {
     proxy_pass http://<%= fetch(:application) %>_server;
   }
   location ~ ^/(assets)/  {
+    gzip on;
+    gzip_min_length 1k;
+    gzip_buffers 4 16k;
+    #gzip_http_version 1.0;
+    gzip_comp_level 9;
+    gzip_types text/plain application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+    gzip_vary off;
+    gzip_disable "MSIE [1-6]\.";
+
     root <%= current_path %>/public;
     gzip_static on; # to serve pre-gzipped version
     expires max;
@@ -84,4 +97,22 @@ server {
     location = /500.html {
     root <%= current_path %>/public;
   }
+}
+
+
+server {
+  # enable one of the following if you're on Linux or FreeBSD
+  listen 80; # for Linux
+
+  client_max_body_size 4G;
+  server_name <%= fetch(:server_name) %>;
+
+  access_log <%= shared_path %>/log/nginx_access.log;
+  error_log <%= shared_path %>/log/nginx_error.log error;
+
+  keepalive_timeout 5;
+  if ($host == 'yuxian.me' ) {
+     rewrite ^/(.*)$ http://www.yuxian.me/$1 permanent;
+  }
+
 }
