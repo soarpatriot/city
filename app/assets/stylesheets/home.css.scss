@@ -11,7 +11,11 @@ $global-font-size: 14px;
 }
 
 .favorite-btn{
-  @include border-radius(10px);
+  @include border-radius(15px);
+}
+
+.favorite-span{
+  padding: 5px 8px;
 }
 .favorite-heart{
   color: #FF0000;

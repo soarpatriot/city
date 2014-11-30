@@ -24,6 +24,7 @@
 //= require masonry.pkgd
 //= require imagesloaded.pkgd.min
 //= require fastclick
+//= require animo
 
 //= require home
 //= require click
