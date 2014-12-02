@@ -5,12 +5,14 @@
     thead
       tr
         th 名称
+        th 排序
         th 描述
         th 操作
     tbody
       - @categories.each do |category|
         tr
           td = truncate(category.name,length:20)
+          th = category.rank
           td = truncate(category.description,length:20)
           td
              .btn-group

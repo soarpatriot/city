@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129153014) do
+ActiveRecord::Schema.define(version: 20141202014302) do
 
   create_table "activities", force: true do |t|
     t.string   "title"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20141129153014) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "rank",        default: 0
   end
 
   create_table "ckeditor_assets", force: true do |t|
@@ -81,7 +82,7 @@ ActiveRecord::Schema.define(version: 20141129153014) do
     t.string   "owner_type",                               default: "User"
     t.integer  "category_id"
     t.integer  "visit_count",                              default: 0
-    t.datetime "synchronized_at",                          default: '2014-11-29 12:00:27'
+    t.datetime "synchronized_at",                          default: '2014-12-02 09:43:51'
   end
 
   add_index "information", ["synchronized_at"], name: "index_information_on_synchronized_at", using: :btree
