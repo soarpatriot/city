@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202014302) do
+ActiveRecord::Schema.define(version: 20141202021919) do
 
   create_table "activities", force: true do |t|
     t.string   "title"
@@ -73,18 +73,32 @@ ActiveRecord::Schema.define(version: 20141202014302) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_id"
-    t.boolean  "publish",                                  default: true
-    t.decimal  "price",           precision: 10, scale: 2
+    t.boolean  "publish",                                                     default: true
+    t.decimal  "price",                              precision: 10, scale: 2
     t.string   "contact"
     t.string   "mobile_number"
     t.string   "qq"
     t.string   "weixin"
-    t.string   "owner_type",                               default: "User"
+    t.string   "owner_type",                                                  default: "User"
     t.integer  "category_id"
-    t.integer  "visit_count",                              default: 0
-    t.datetime "synchronized_at",                          default: '2014-12-02 09:43:51'
+    t.integer  "visit_count",                                                 default: 0
+    t.datetime "synchronized_at",                                             default: '2014-12-02 09:43:51'
+    t.integer  "cached_votes_total",                                          default: 0
+    t.integer  "cached_votes_score",                                          default: 0
+    t.integer  "cached_votes_up",                                             default: 0
+    t.integer  "cached_votes_down",                                           default: 0
+    t.integer  "cached_weighted_score",                                       default: 0
+    t.integer  "cached_weighted_total",                                       default: 0
+    t.float    "cached_weighted_average", limit: 24,                          default: 0.0
   end
 
+  add_index "information", ["cached_votes_down"], name: "index_information_on_cached_votes_down", using: :btree
+  add_index "information", ["cached_votes_score"], name: "index_information_on_cached_votes_score", using: :btree
+  add_index "information", ["cached_votes_total"], name: "index_information_on_cached_votes_total", using: :btree
+  add_index "information", ["cached_votes_up"], name: "index_information_on_cached_votes_up", using: :btree
+  add_index "information", ["cached_weighted_average"], name: "index_information_on_cached_weighted_average", using: :btree
+  add_index "information", ["cached_weighted_score"], name: "index_information_on_cached_weighted_score", using: :btree
+  add_index "information", ["cached_weighted_total"], name: "index_information_on_cached_weighted_total", using: :btree
   add_index "information", ["synchronized_at"], name: "index_information_on_synchronized_at", using: :btree
   add_index "information", ["updated_at"], name: "index_information_on_updated_at", using: :btree
 
