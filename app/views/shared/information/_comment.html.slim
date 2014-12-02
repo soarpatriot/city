@@ -1,4 +1,7 @@
-
+hr
+h4
+  | 评论 &nbsp;
+  span class="badge" #{@information.comments.count}
 ul.media-list
   - @comments.each do |comment|
       li.media
@@ -20,7 +23,7 @@ hr
   h4 写评论
   .row
     .col-md-6
-      = simple_form_for @comment, url:comment_information_path(@information) do |f|
+      = simple_form_for @comment, url:commented_information_path(@information), method:"patch" do |f|
         = f.error_notification
         = f.input :content, label:false, as: :text
         = f.submit "发表", class:"btn btn-primary"

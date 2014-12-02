@@ -39,12 +39,12 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  # resources :information, concerns: :commentable
+  resources :information, concerns: :commentable
   resources :information do
       member do
            get 'infomation'
            post 'like'
-           post 'comment'
+           patch 'commented'
       end
   end
 

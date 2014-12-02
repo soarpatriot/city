@@ -2,7 +2,7 @@
 .col-md-3.col-sm-6.col-xs-12.item
   .thumbnail
      - unless information.image.try(:small).try(:url).blank?
-       = link_to information_path(id:information.id, category_id:@category.id, page: params[:page]) do
+       = link_to information_path(id:information.id, category_id:information.category.id, page: params[:page]) do
            img src="#{information.image.try(:small).url}" class="img-responsive img-rounded img-thumbnail"
 
      .caption
@@ -10,7 +10,7 @@
        p.text-danger
           strong = number_to_currency(information.price, :unit => "￥")
 
-       = link_to information_path(id: information.id, category_id: @category.id, page: params[:page]) do
+       = link_to information_path(id: information.id, category_id: information.category.id, page: params[:page]) do
            h5 = "#{information.title}"
 
 
@@ -37,7 +37,13 @@
            - if information.get_likes.size > 0
              i class="fa fa-heart favorite-heart"
              |   #{information.get_likes.size}
-
+       - if params[:controller].end_with?("home")
+         p
+             hr
+                p
+                    = link_to information_index_path(category_id: information.category.try(:id)) do
+                        | 更多
+                        span.text-warning #{information.category.try(:name)}
        //
         p
            - if information.own_by_user?

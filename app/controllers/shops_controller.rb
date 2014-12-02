@@ -7,6 +7,7 @@ class ShopsController < ApplicationController
    end
 
    def show
+
        @information = @shop.information.page params[:page]
    end
 
@@ -20,6 +21,11 @@ class ShopsController < ApplicationController
    end
 
    def information
-       @information = Information.find(params[:information_id])
+     @comment = Comment.new # @information.comments.build
+     @information = Information.find(params[:information_id])
+     @category = Category.find(params[:category_id]) unless params[:category_id].nil?
+     @comments = @information.comments.page params[:page]
+     @information.increment_visit_count
+      # @information = Information.find(params[:information_id])
    end
 end

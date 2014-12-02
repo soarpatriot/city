@@ -1,6 +1,6 @@
 class InformationController < ApplicationController
 
-  before_action :set_information, only: [:show,:like, :comment]
+  before_action :set_information, only: [:show,:like, :commented]
 
 
 
@@ -27,14 +27,19 @@ class InformationController < ApplicationController
 
   end
 
-  def comment
-    comment = Comment.new comment_params
+  def commented
+    @comment = Comment.new comment_params
 
-    comment.user_id = current_user.id
+    @comment.user_id = current_user.id
     ###comment.save
-    @information.comments << comment
-    @category = Category.find(params[:category_id]) unless params[:category_id].nil?
-    redirect_to information_path(@information) # "show"
+    if @information.comments << @comment
+      #@comment = Comment.new
+    end
+    #@category = @information.category
+    #@comments = @information.comments.page params[:page]
+
+    #render "show"
+    redirect_to information_path(@information)
   end
 
 

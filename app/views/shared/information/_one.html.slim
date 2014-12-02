@@ -10,7 +10,24 @@ p
 
 h3 = @information.title
 p
-  small.text-muted  #{time_ago_in_words @information.updated_at}
+  small.text-muted  #{time_ago_in_words @information.synchronized_at}
+p
+  - if current_user.nil?
+    a href="#fav" class="btn btn-default btn-sm favorite-btn" data-toggle="tooltip" data-placement="top" title= "请登录后操作..."
+      span.favorite-span
+        i class="fa fa-heart favorite-heart"
+        | &nbsp;
+        span.like-count #{@information.get_likes.size}
+
+  - else
+    = link_to like_information_path(@information), class: "btn btn-default btn-sm favorite-btn", method: "post", remote:true do
+      span.favorite-span
+        - if current_user.voted_for? @information
+          i id="favorite-icon" class="fa fa-heart favorite-heart"
+        - else
+          i id="favorite-icon" class="fa fa-heart-o favorite-heart"
+        | &nbsp;
+        span.like-count #{@information.get_likes.size}
 hr
 .row
   .col-md-6
@@ -63,3 +80,4 @@ hr
       div class="tab-pane active"
         p
           == @information.description
+= render "shared/information/comment"
