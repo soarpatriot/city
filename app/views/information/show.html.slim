@@ -11,6 +11,13 @@
      = link_to "返回", root_path,  class:"btn btn-info"
 = render "one"
 
+hr
+h4
+  | 评论 &nbsp;
+  span class="badge" #{@information.comments.count}
+
+
+= render "comment"
 
 
 

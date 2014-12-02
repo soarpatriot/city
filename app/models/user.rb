@@ -17,9 +17,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+
+  def nickname
+    name.nil?? email: name
+  end
   private
      def set_random_avatar
          self.update avatar: File.open("#{Rails.root.join('app/assets/images/avatars/')}noavatar.png")
      end
+
+
 
 end

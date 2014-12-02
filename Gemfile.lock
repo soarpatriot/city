@@ -61,7 +61,7 @@ GEM
     bootstrap-kaminari-views (0.0.3)
       kaminari (>= 0.13)
       rails (>= 3.1)
-    bootstrap-sass (3.2.0.1)
+    bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
     bower-rails (0.8.3)
     builder (3.2.2)
@@ -384,7 +384,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-kaminari-views
-  bootstrap-sass (~> 3.2.0)
+  bootstrap-sass (~> 3.3.1)
   bower-rails (~> 0.8.3)
   capistrano (= 3.2.1)
   capistrano-bundler
@@ -422,7 +422,7 @@ DEPENDENCIES
   rails_config
   rest-client
   rspec-rails
-  sass-rails (~> 4.0.3)
+  sass-rails (>= 3.2)
   select2-rails
   selenium-webdriver
   simple_form

@@ -34,10 +34,17 @@ Rails.application.routes.draw do
 
   get 'shops/:id/information/:information_id' => 'shops#information', as: :information_shop
   resources :shops
+
+  concern :commentable do
+    resources :comments
+  end
+
+  # resources :information, concerns: :commentable
   resources :information do
       member do
            get 'infomation'
            post 'like'
+           post 'comment'
       end
   end
 

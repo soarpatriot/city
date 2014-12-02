@@ -31,6 +31,9 @@
             | #{time_ago_in_words information.synchronized_at}前
             - if information.visit_count > 0
               | , #{information.visit_count} 次浏览&nbsp;
+            - comments_count = information.comments.count
+            - if comments_count > 0
+              | , #{comments_count} 评论&nbsp;
             - if information.get_likes.size > 0
               i class="fa fa-heart favorite-heart"
               |   #{information.get_likes.size}
