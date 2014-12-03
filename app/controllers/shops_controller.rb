@@ -7,10 +7,12 @@ class ShopsController < ApplicationController
    end
 
    def show
+
        @information = @shop.information.page params[:page]
    end
 
    def load_shop
+      
        @shop = nil
        @shop = Shop.where(url:params[:id]).first  unless params[:id].nil?
        if @shop.nil?
