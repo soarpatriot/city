@@ -21,6 +21,10 @@ server {
   # path for static files
   root <%= current_path %>/public;
 
+  location ~* \.(eot|ttf|woff)$ {
+    add_header Access-Control-Allow-Origin *;
+  }
+
   location  / {
       gzip on;
       gzip_min_length 1k;
@@ -51,7 +55,7 @@ server {
   listen 80; # for Linux
 
   client_max_body_size 4G;
-  server_name www.<%= fetch(:server_name) %>;
+  server_name <%= fetch(:server_name) %> www.<%= fetch(:server_name) %>;
 
   access_log <%= shared_path %>/log/nginx_access.log;
   error_log <%= shared_path %>/log/nginx_error.log error;
@@ -100,19 +104,3 @@ server {
 }
 
 
-server {
-  # enable one of the following if you're on Linux or FreeBSD
-  listen 80; # for Linux
-
-  client_max_body_size 4G;
-  server_name <%= fetch(:server_name) %>;
-
-  access_log <%= shared_path %>/log/nginx_access.log;
-  error_log <%= shared_path %>/log/nginx_error.log error;
-
-  keepalive_timeout 5;
-  if ($host == 'yuxian.me' ) {
-     rewrite ^/(.*)$ http://www.yuxian.me/$1 permanent;
-  }
-
-}
