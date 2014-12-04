@@ -12,7 +12,6 @@
 //
 
 
-
 //= require jquery
 //= require jquery_ujs
 //= require ckeditor/init
@@ -20,6 +19,7 @@
 //= require ckeditor_config
 //= require turbolinks
 //= require jquery.turbolinks
+
 
 //= require nprogress
 //= require nprogress-turbolinks

@@ -36,16 +36,11 @@ module City
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     # config.assets.precompile += Ckeditor.assets
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    config.assets.precompile += ['i.js', 'ckeditor/*', 'html5shiv-printshiv.min.js', 'respond.min.js', 'ie10-viewport-bug-workaround.js', 'ie-emulation-modes-warning.js']
-=======
-    config.assets.precompile += ['ckeditor/*', 'html5shiv-printshiv.min.js', 'respond.min.js', 'ie10-viewport-bug-workaround.js', 'ie-emulation-modes-warning.js','i.js']
->>>>>>> remove unused js and doing the chat
-=======
+
+
     config.assets.precompile += ['ckeditor/*', 'html5shiv-printshiv.min.js', 'respond.min.js', 'ie10-viewport-bug-workaround.js', 'ie-emulation-modes-warning.js','i.js',
                  'chat.css']
->>>>>>> change css for chat
+
    #config.assets.precompile += %w(error_code.css error_code.js information.css information2.css information.js information2.js iscroll.css chat.css chat.js)
     #config.autoload_paths += Dir[Rails.root.join('app', 'entities', '*')]
     #config.autoload_paths += Dir[Rails.root.join('app', 'apis', '*')]

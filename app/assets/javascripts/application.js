@@ -17,6 +17,8 @@
 
 //= require turbolinks
 //= require jquery.turbolinks
+//= require faye-browser-min
+
 
 //= require nprogress
 //= require nprogress-turbolinks
@@ -28,6 +30,8 @@
 //= require masonry.pkgd
 //= require imagesloaded.pkgd.min
 //= require fastclick
+//= require iscroll
+
 
 //= require animo
 //= require iscroll
@@ -41,6 +45,7 @@
 //= require information
 //= require i_information_new
 //= require i_shop_new
+
 
 
 

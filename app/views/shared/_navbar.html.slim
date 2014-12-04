@@ -27,5 +27,6 @@ nav id="navbar" class="navbar navbar-default navbar-fixed-top" role="navigation"
             li class="#{ (params[:controller].end_with?('home') and params[:action].end_with?('about'))?  'active':'' }"
               = link_to "关于",  about_path
 
+
          ul class="nav navbar-nav navbar-right"
             = render "shared/user_dropdown"
