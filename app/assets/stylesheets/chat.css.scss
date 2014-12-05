@@ -1,7 +1,6 @@
 /*
  *
  *= require_self
- *= require nav
  */
 
 @import "bootstrap-sprockets";
@@ -65,8 +64,9 @@ body {
 }
 
 .message{
+
    max-width:70%;
-   min-height: 100%;
+   min-height: 100px;
    @include border-radius(16px);
    .message-text{
      border-radius: 16px 16px 16px 0;

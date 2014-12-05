@@ -57,25 +57,25 @@ $(window).bind 'page:change', ->
 
      messageHtml = """
 
-                            <div class="media message">
-                               <h5 class="media-heading text-center"><%= name %>    <span class="text-muted">
-                                     <small>2014-11-11 12:22:40</small></span>
-                               </h5>
-                               <div class="user-avatar">
-                                    <a class="media-left pull-left" href="#">
-                                          <img class='thumbnail-circle' src='<%= avatar %>'>
-                                    </a>
-                               </div>
+                    <div class="media message">
+                       <h5 class="media-heading text-center"><%= name %>    <span class="text-muted">
+                             <small>2014-11-11 12:22:40</small></span>
+                       </h5>
+                       <div class="user-avatar">
+                            <a class="media-left pull-left" href="#">
+                                  <img class='thumbnail-circle' src='<%= avatar %>'>
+                            </a>
+                       </div>
 
-                              <div class="media-body ">
+                      <div class="media-body ">
 
-                                 <div class="message-text">
-                                     <%= text %>
-                                  </div>
-                              </div>
-                            </div>
+                         <div class="message-text">
+                             <%= text %>
+                          </div>
+                      </div>
+                    </div>
 
-                           """
+                   """
      message_temp =  _.template(messageHtml);
      subscription = client.subscribe '/chat',   (message) ->
          $("#scroller").append(message_temp({name:message.name, avatar:message.avatar, text:message.text}))
