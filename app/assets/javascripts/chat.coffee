@@ -30,8 +30,8 @@ $(window).bind 'page:change', ->
 
      client.handshake ->
          console.log(client._clientId)
-         client.subscribe '/channels/'+client._clientId,   (message) ->
-               console.log(JSON.stringify(message))
+         client.subscribe '/channels/'+client._clientId,   (messages) ->
+               
                #$("#scroller").append(message_temp({name:message.name, avatar:message.avatar, text:message.text}))
      , this
 
@@ -40,8 +40,20 @@ $(window).bind 'page:change', ->
                console.log("success")
            , (error)->
                console.log("fail")
-     subscription = client.subscribe '/channels/1',   (message) ->
-          console.log(JSON.stringify(message))
+     subscription = client.subscribe '/channels/1', (messages) ->
+         _.each(messages, (message)->
+
+
+           #m = message.parseJSON()
+           m = eval ("(" + message + ")");
+           console.log("message: "+m);
+           console.log("message: "+m["name"]);
+           console.log("message: "+m.avatar);
+           console.log("message: "+m.text);
+           $("#scroller").append(message_temp({name:m["name"], avatar:m.avatar, text:m.text}))
+           myScroll.refresh()
+         )
+          #console.log(JSON.stringify(message))
      sampleHtml = """
                             <div class="page toolbar-fixed">
                                 <div class="page-content messages-content">
@@ -82,6 +94,12 @@ $(window).bind 'page:change', ->
          myScroll.refresh()
 
 
+
+     subscriptionInit = client.subscribe '/init',   (messages) ->
+       _.each(messages, (message)->
+         $("#scroller").append(message_temp({name:message.name, avatar:message.avatar, text:message.text}))
+         myScroll.refresh()
+       )
 
      #publication = client.publish('/chat', {text: 'Hi there'})
 
