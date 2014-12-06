@@ -1,5 +1,5 @@
 $(window).bind 'page:change', ->
-   client = new Faye.Client('http://localhost:8000/faye')
+   client = new Faye.Client('http://192.168.1.101:8000/faye')
    $activityArea = $("#activity-area")
    if($activityArea.length > 0)
 
@@ -25,7 +25,7 @@ $(window).bind 'page:change', ->
 
      myName = $("#current-user-name").val()
      myAvatar = $("#current-user-avatar").val()
-
+     userId = $("#current-user-id").val()
 
 
      client.handshake ->
@@ -35,12 +35,12 @@ $(window).bind 'page:change', ->
                #$("#scroller").append(message_temp({name:message.name, avatar:message.avatar, text:message.text}))
      , this
 
-     publication = client.publish('/channels/1', {id:1})
+     publication = client.publish('/channels/'+userId, {id:userId})
      publication.then ->
                console.log("success")
            , (error)->
                console.log("fail")
-     subscription = client.subscribe '/channels/1', (messages) ->
+     subscription = client.subscribe '/channels/'+userId, (messages) ->
          _.each(messages, (message)->
 
 
@@ -50,8 +50,10 @@ $(window).bind 'page:change', ->
            console.log("message: "+m["name"]);
            console.log("message: "+m.avatar);
            console.log("message: "+m.text);
-           $("#scroller").append(message_temp({name:m["name"], avatar:m.avatar, text:m.text}))
+           console.log("creaate_at: "+m.created_at);
+           $("#scroller").append(message_temp({name:m["name"], avatar:m.avatar, text:m.text, created_at: m.created_at}))
            myScroll.refresh()
+           myScroll.scrollToElement('#scroller div.message:last-child')
          )
           #console.log(JSON.stringify(message))
      sampleHtml = """
@@ -71,7 +73,7 @@ $(window).bind 'page:change', ->
 
                     <div class="media message">
                        <h5 class="media-heading text-center"><%= name %>    <span class="text-muted">
-                             <small>2014-11-11 12:22:40</small></span>
+                             <small><%= created_at %></small></span>
                        </h5>
                        <div class="user-avatar">
                             <a class="media-left pull-left" href="#">
@@ -90,30 +92,19 @@ $(window).bind 'page:change', ->
                    """
      message_temp =  _.template(messageHtml);
      subscription = client.subscribe '/chat',   (message) ->
-         $("#scroller").append(message_temp({name:message.name, avatar:message.avatar, text:message.text}))
-         myScroll.refresh()
+       $("#scroller").append(message_temp({name:message.name, avatar:message.avatar, text:message.text, created_at: message.created_at}))
+       myScroll.refresh()
+       myScroll.scrollToElement('#scroller div.message:last-child')
 
 
-
-     subscriptionInit = client.subscribe '/init',   (messages) ->
-       _.each(messages, (message)->
-         $("#scroller").append(message_temp({name:message.name, avatar:message.avatar, text:message.text}))
-         myScroll.refresh()
-       )
-
-     #publication = client.publish('/chat', {text: 'Hi there'})
-
-     #publication.then ->
-        #alert('Message received by server!')
-     #, (error) ->
-        #alert('There was a problem: ' + error.message)
      $("#send-message-btn").click ->
 
          text = $("#send-message-input").val()
          isMessageBlank =  _.str.isBlank(text)
          if(!isMessageBlank)
            $("#send-message-input").val("")
-           publication = client.publish('/chat', {name:myName, avatar: myAvatar, text: text})
+           sendTime = moment().format("YYYY-MM-DD, h:mm:ss")
+           publication = client.publish('/chat', {name:myName, avatar: myAvatar, text: text, created_at:sendTime})
            publication.then ->
              myScroll.scrollToElement('#scroller div.message:last-child')
            , (error)->

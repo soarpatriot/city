@@ -1,6 +1,9 @@
 /*
  *
  *= require_self
+ *= require ngprogress
+ *= require animate+animo
+ *= require nav
  */
 
 @import "bootstrap-sprockets";
@@ -22,7 +25,9 @@ body {
   overflow: hidden; /* this is important to prevent the whole page to bounce */
 }
 .thumbnail-circle{
-   @include border-radius(50%);
+   width:64px;
+   height: 64px;
+   @include border-radius(5px);
 }
 #activity-area{
   position: absolute;

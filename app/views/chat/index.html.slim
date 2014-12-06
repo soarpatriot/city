@@ -1,6 +1,7 @@
 .hidden
-   input type="hidden" id="current-user-name" value="#{current_user.email}"
-   input type="hidden" id="current-user-avatar" value="#{current_user.avatar.try(:thumb).url}"
+  input type="hidden" id="current-user-id" value="#{current_user.id}"
+  input type="hidden" id="current-user-name" value="#{current_user.email}"
+  input type="hidden" id="current-user-avatar" value="#{current_user.avatar.try(:thumb).url}"
 
 #activity-area.row
   #scroller.col-md-12

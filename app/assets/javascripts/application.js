@@ -31,7 +31,8 @@
 //= require imagesloaded.pkgd.min
 //= require fastclick
 //= require iscroll
-
+//= require moment
+//= require moment/zh-cn
 
 //= require animo
 //= require iscroll

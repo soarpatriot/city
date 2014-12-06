@@ -19,6 +19,8 @@ gem 'underscore-rails'
 gem 'fastclick-rails'
 
 gem 'select2-rails'
+
+gem 'momentjs-rails'
 # gem 'compass'
 
 gem 'compass-rails'
