@@ -25,8 +25,9 @@ gem 'compass-rails'
 #gem 'bootstrap-sass', '~> 3.2.0'
 #gem 'sass-rails', '~> 4.0.3'
 
-gem 'bootstrap-sass', '~> 3.3.1'
-gem 'sass-rails', '>= 3.2'
+gem 'bootstrap-sass', '~> 3.2.0'
+#gem 'sass-rails', '>= 3.2'
+gem 'sass-rails', '~> 4.0.3'
 
 gem 'autoprefixer-rails'
 gem 'simple_form'
