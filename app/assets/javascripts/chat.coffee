@@ -1,5 +1,5 @@
 $(window).bind 'page:change', ->
-   client = new Faye.Client('http://192.168.1.101:8000/faye')
+   client = new Faye.Client('http://106.186.22.114:8000/faye')
    $activityArea = $("#activity-area")
    if($activityArea.length > 0)
 
