@@ -6,7 +6,7 @@ ul.media-list
   - @comments.each do |comment|
       li.media
         div.media-left class="pull-left"
-          = image_tag comment.user.try(:avatar).try(:thumb).try(:url), size:"64x64", class:"img-responsive img-rounded img-thumbnail"
+          = image_tag comment.user.try(:avatar).try(:thumb).try(:url), size:"54x54", class:"img-responsive img-rounded img-thumbnail"
 
         .media-body
           h4 class="media-heading text-muted"

@@ -5,7 +5,7 @@
             li
               = link_to "首页", root_path
             li
-              = link_to @information.category.name, information_index_path(category_id:@category.id, page:params[:page])
+              = link_to @information.category.name, information_index_path(category_id:@information.category.id, page:params[:page])
             li class="active" = "#{@information.title.truncate(10)}"
 
 = render "shared/information/one"
