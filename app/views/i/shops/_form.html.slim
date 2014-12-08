@@ -11,7 +11,7 @@
              span.text-info 此url 将作为访问您店铺的地址，分享此url 给您的朋友，直接进入您的店铺
           p#shop-url-show.alert.alert-success
               - unless @shop.url.blank?
-                | #{Settings.host}/shops/#{@shop.url}
+                | http://#{@shop.url}.#{Settings.domain}
           p
 
           - if @shop.image.url.blank?

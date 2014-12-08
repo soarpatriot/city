@@ -2,13 +2,15 @@ p
 - if @information.own_by_shop?
   .row
     .col-md-9
-      = image_tag("#{@information.owner.image.try(:thumb).url}", size: "64x64", alt: "商店图片 ")
+      = image_tag("#{@information.owner.image.try(:thumb).url}", size: "64x64", class:"img-responsive img-thumbnail", alt: "商店图片 ")
       | &nbsp; &nbsp;
       span.text-danger
         strong #{@information.owner.title}
       p
       p
-        = link_to "进入店铺", shop_url(@information.owner), class:"btn btn-default"
+        = link_to shop_url(@information.owner), class:"btn btn-default enter-shop-btn" do
+          | 进入店铺&nbsp;
+          i class="fa fa-chevron-right"
 
 
 h3 = @information.title

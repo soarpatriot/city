@@ -12,7 +12,7 @@ class Shop < ActiveRecord::Base
 
   def access_url
      unless self.url.blank?
-         "#{Settings.host}/shops/#{self.url}"
+         "http://#{self.url}.#{Settings.domain}"
      end
   end
 end
