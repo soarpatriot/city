@@ -7,7 +7,6 @@ class ShopsController < ApplicationController
    end
 
    def show
-
        @information = @shop.information.page params[:page]
    end
 

@@ -4,9 +4,12 @@ p
     .col-md-9
       = image_tag("#{@information.owner.image.try(:thumb).url}", size: "64x64", alt: "商店图片 ")
       | &nbsp; &nbsp;
-      = link_to shop_url(@information.owner) do
-        span.text-danger
-          strong #{@information.owner.title}
+      span.text-danger
+        strong #{@information.owner.title}
+      p
+      p
+        = link_to "进入店铺", shop_url(@information.owner), class:"btn btn-default"
+
 
 h3 = @information.title
 p
