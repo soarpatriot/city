@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20141202064713) do
     t.string   "owner_type",                                                  default: "User"
     t.integer  "category_id"
     t.integer  "visit_count",                                                 default: 0
-    t.datetime "synchronized_at",                                             default: '2014-11-29 12:00:27'
+    t.datetime "synchronized_at",                                             default: '2014-12-02 09:43:51'
     t.integer  "cached_votes_total",                                          default: 0
     t.integer  "cached_votes_score",                                          default: 0
     t.integer  "cached_votes_up",                                             default: 0

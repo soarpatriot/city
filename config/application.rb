@@ -40,7 +40,7 @@ module City
    #config.assets.precompile += %w(error_code.css error_code.js information.css information2.css information.js information2.js iscroll.css chat.css chat.js)
     #config.autoload_paths += Dir[Rails.root.join('app', 'entities', '*')]
     #config.autoload_paths += Dir[Rails.root.join('app', 'apis', '*')]
-
+    config.action_controller.default_url_options = { host:'localhost:3000' }
     config.action_controller.asset_host = Settings.asset_host
 
     config.active_record.default_timezone = :local

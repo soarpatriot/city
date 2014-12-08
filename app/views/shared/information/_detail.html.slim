@@ -2,7 +2,7 @@
 .col-md-3.col-sm-6.col-xs-12.item
   .thumbnail
      - unless information.image.try(:small).try(:url).blank?
-       = link_to information_path(id:information.id, category_id:information.category.id, page: params[:page]) do
+       = link_to information_url(id:information.id, category_id:information.category.id, page: params[:page]) do
            img src="#{information.image.try(:small).url}" class="img-responsive img-rounded img-thumbnail"
 
      .caption
@@ -10,7 +10,7 @@
        p.text-danger
           strong = number_to_currency(information.price, :unit => "￥")
 
-       = link_to information_path(id: information.id, category_id: information.category.id, page: params[:page]) do
+       = link_to information_url(id: information.id, category_id: information.category.id, page: params[:page]) do
            h5 = "#{information.title}"
 
 
@@ -20,7 +20,7 @@
              |
              span.label.label-success 店铺
              | &nbsp;
-             = link_to shop_path(information.owner) do
+             = link_to shop_url(information.owner) do
                span.text-warning #{information.owner.title}
            - if information.own_by_user?
              |
@@ -41,7 +41,7 @@
          p
              hr
                 p
-                    = link_to information_index_path(category_id: information.category.try(:id)) do
+                    = link_to information_index_url(category_id: information.category.try(:id)) do
                         | 更多
                         span.text-warning #{information.category.try(:name)}
        //
@@ -51,4 +51,4 @@
               = link_to "详情", information, class:"btn btn-primary"
            - if information.own_by_shop?
 
-              = link_to "详情", information_shop_path(information.owner,information), class:"btn btn-primary"
+              = link_to "详情", information_shop_url(information.owner,information), class:"btn btn-primary"

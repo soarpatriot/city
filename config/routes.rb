@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 
   constraints(Subdomain) do
-    get '/' => "shops#show"
+    get '/' => "shops#my_shop"
   end
 
   namespace :admin do
@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   resources :users
 
   get 'shops/:id/information/:information_id' => 'shops#information', as: :information_shop
+
   resources :shops
 
   concern :commentable do

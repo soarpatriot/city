@@ -12,13 +12,20 @@ class ShopsController < ApplicationController
    end
 
    def load_shop
-      
+
        @shop = nil
        @shop = Shop.where(url:params[:id]).first  unless params[:id].nil?
        if @shop.nil?
          @shop = Shop.find(params[:id])
        end
 
+   end
+
+   def my_shop
+
+     @shop = Shop.where(url:request.subdomain).first
+     @information = @shop.information.page params[:page]
+     render "show"
    end
 
    def information

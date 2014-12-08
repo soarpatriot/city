@@ -4,7 +4,7 @@ p
     .col-md-9
       = image_tag("#{@information.owner.image.try(:thumb).url}", size: "64x64", alt: "商店图片 ")
       | &nbsp; &nbsp;
-      = link_to shop_path(@information.owner) do
+      = link_to shop_url(@information.owner) do
         span.text-danger
           strong #{@information.owner.title}
 
@@ -20,7 +20,7 @@ p
         span.like-count #{@information.get_likes.size}
 
   - else
-    = link_to like_information_path(@information), class: "btn btn-default btn-sm favorite-btn", method: "post", remote:true do
+    = link_to like_information_url(@information), class: "btn btn-default btn-sm favorite-btn", method: "post", remote:true do
       span.favorite-span
         - if current_user.voted_for? @information
           i id="favorite-icon" class="fa fa-heart favorite-heart"
