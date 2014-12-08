@@ -12,6 +12,7 @@ class ShopsController < ApplicationController
    end
 
    def load_shop
+      
        @shop = nil
        @shop = Shop.where(url:params[:id]).first  unless params[:id].nil?
        if @shop.nil?
