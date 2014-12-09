@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202064713) do
+ActiveRecord::Schema.define(version: 20141209070449) do
 
   create_table "activities", force: true do |t|
     t.string   "title"
@@ -110,6 +110,12 @@ ActiveRecord::Schema.define(version: 20141202064713) do
   add_index "information", ["cached_weighted_total"], name: "index_information_on_cached_weighted_total", using: :btree
   add_index "information", ["synchronized_at"], name: "index_information_on_synchronized_at", using: :btree
   add_index "information", ["updated_at"], name: "index_information_on_updated_at", using: :btree
+
+  create_table "pictures", force: true do |t|
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "shops", force: true do |t|
     t.integer  "user_id"

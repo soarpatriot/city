@@ -14,6 +14,7 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require underscore
 //= require ckeditor/init
 //= require ckeditor/ckeditor
 //= require ckeditor_config
@@ -25,6 +26,19 @@
 //= require bootstrap
 
 
+
+//= require jquery.ui.widget
+//= require load-image.min
+//= require jquery.iframe-transport
+//= require jquery.fileupload
+//= require jquery.fileupload-process
+//= require jquery.fileupload-ui
+
+//= require tmpl
+
+
+
+//= require upload
 //= require i_information_new
 //= require information
 
