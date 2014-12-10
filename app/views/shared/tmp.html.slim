@@ -1,0 +1,35 @@
+div class="row fileupload-buttonbar"
+  div class="col-lg-7"
+    span class="btn btn-success fileinput-button"
+      i class="glyphicon glyphicon-plus"
+      span Add files...
+      = f.input :image, as: :file,  input_html:{id:'fileupload',multiple:true, name:'picture[image]'}
+
+
+    button type="submit" class="btn btn-primary start"
+      i class="glyphicon glyphicon-upload"
+      span Start upload
+
+    button type="reset" class="btn btn-warning cancel"
+      i class="glyphicon glyphicon-ban-circle"
+      span Cancel upload
+
+    button type="button" class="btn btn-danger delete"
+      i class="glyphicon glyphicon-trash"
+      span Delete
+
+    input type="checkbox" class="toggle"
+
+    span class="fileupload-process"
+
+
+  div class="col-lg-5 fileupload-progress fade"
+
+    div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+      div class="progress-bar progress-bar-success" style="width:0%;"
+
+
+    div class="progress-extended">&nbsp;
+
+  table role="presentation" class="table table-striped"
+    tbody class="files"
