@@ -31,12 +31,14 @@ class I::ShopsController < I::BaseController
   end
 
   def create
+
     @shop = Shop.new(shop_params)
-    @shop.user = current_user
+
     if @shop.save
+      @shop.update user:current_user
       redirect_to [:i,@shop], notice: '商店创建成功'
     else
-      render :new
+      render "new"
     end
 
   end
