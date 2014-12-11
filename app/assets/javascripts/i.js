@@ -7,6 +7,7 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // compiled file.
 //
+
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
@@ -29,19 +30,26 @@
 
 //= require jquery.ui.widget
 
-//= require canvas-to-blob
+//= require tmpl.min
 
 //= require load-image.all.min
+
+
+//= require canvas-to-blob.min
+
 //= require jquery.blueimp-gallery.min
-//= require jquery.image-gallery
+
+
 //= require jquery.iframe-transport
 //= require jquery.fileupload
 //= require jquery.fileupload-process
 //= require jquery.fileupload-image
+//= require jquery.fileupload-audio
+//= require jquery.fileupload-video
 //= require jquery.fileupload-validate
 //= require jquery.fileupload-ui
 
-//= require tmpl
+
 
 
 
