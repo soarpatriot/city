@@ -2,7 +2,7 @@ class InformationController < ApplicationController
 
   before_action :set_information, only: [:show,:like, :commented]
 
-
+  skip_before_filter :verify_authenticity_token, :only => [:like]
 
   def index
     @category = Category.find(params[:category_id])
