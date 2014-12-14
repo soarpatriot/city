@@ -30,14 +30,24 @@ p
         span.like-count #{@information.get_likes.size}
 
   - else
-    = link_to like_information_url(@information), class: "btn btn-default btn-sm favorite-btn", method: "post", remote:true do
-      span.favorite-span
-        - if current_user.voted_for? @information
-          i id="favorite-icon" class="fa fa-heart favorite-heart"
-        - else
-          i id="favorite-icon" class="fa fa-heart-o favorite-heart"
-        | &nbsp;
-        span.like-count #{@information.get_likes.size}
+    - if @information.own_by_shop? && !@information.owner.url.blank?
+      = link_to like_information_url(subdomain:@information.owner.url, id: @information.id), class: "btn btn-default btn-sm favorite-btn", method: "post", remote: true do
+        span.favorite-span
+          - if current_user.voted_for? @information
+            i id="favorite-icon" class="fa fa-heart favorite-heart"
+          - else
+            i id="favorite-icon" class="fa fa-heart-o favorite-heart"
+          | &nbsp;
+          span.like-count #{@information.get_likes.size}
+    - else
+      = link_to like_information_url(@information), class: "btn btn-default btn-sm favorite-btn", method: "post", remote:true do
+        span.favorite-span
+          - if current_user.voted_for? @information
+            i id="favorite-icon" class="fa fa-heart favorite-heart"
+          - else
+            i id="favorite-icon" class="fa fa-heart-o favorite-heart"
+          | &nbsp;
+          span.like-count #{@information.get_likes.size}
 hr
 .row
   .col-md-6
