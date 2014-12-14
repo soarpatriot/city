@@ -48,11 +48,13 @@ module City
     config.time_zone = 'Beijing'
 
 
-
-    config.action_dispatch.default_headers.merge!({
-                                                      'Access-Control-Allow-Origin' => '*',
-                                                      'Access-Control-Request-Method' => '*'
-                                                  })
+    config.middleware.insert_before "Rack::Runtime", "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
+ 
 
   end
 end

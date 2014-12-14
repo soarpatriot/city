@@ -9,6 +9,7 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'nprogress-rails'
 #gem 'nokogiri'
+gem 'rack-cors', :require => 'rack/cors'
 
 gem 'non-stupid-digest-assets'
 
