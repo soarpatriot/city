@@ -1,3 +1,5 @@
+//= simple_form_for Picture.new,html: {multipart: true, id:"fileupload"}  do |f|
+
 = simple_form_for [:i,@information],html: {multipart: true, id:"fileupload"}  do |f|
   = f.error_notification
   = f.input :title,  input_html:{class:'form-control'}
@@ -15,6 +17,8 @@
       span.text-danger
         strong 已上传图片：（如需更改图片请使用上传图片）
     img src="#{@information.image.try(:thumb).url}" class="img-thumbnail"
+
+
   div class="row fileupload-buttonbar"
     div class="col-lg-7"
       span class="btn btn-success fileinput-button"
@@ -50,7 +54,6 @@
 
     table role="presentation" class="table table-striped"
       tbody class="files"
-
 
   = f.input :contact, require: true
   p.alert.alert-info QQ 号码，手机号，微信号至少填写一个

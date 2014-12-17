@@ -167,7 +167,7 @@
                     deferred;
                 if (data.context) {
                     data.context.each(function (index) {
-                      console.log(data);
+
 
                       var file = data.result[index] ||
                                 {error: 'Empty file upload result'};
@@ -362,9 +362,11 @@
             },
             // Callback for file deletion:
             destroy: function (e, data) {
+                console.log('ad');
                 if (e.isDefaultPrevented()) {
                     return false;
                 }
+                console.log('ad11');
                 var that = $(this).data('blueimp-fileupload') ||
                         $(this).data('fileupload'),
                     removeNode = function () {

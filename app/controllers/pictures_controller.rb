@@ -12,7 +12,6 @@ class PicturesController < ApplicationController
     @picture = Picture.new(picture_params)
     if @picture.save
 
-
       respond_to do |format|
         format.html {
 
@@ -31,6 +30,7 @@ class PicturesController < ApplicationController
   end
 
   def destroy
+
     @picture = Picture.find(params[:id])
     @picture.destroy
     render :json => true
@@ -41,6 +41,7 @@ class PicturesController < ApplicationController
   end
 
   def picture_params
+
     params.require(:picture).permit(:id, :image)
   end
 end

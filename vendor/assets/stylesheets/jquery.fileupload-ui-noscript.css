@@ -11,7 +11,7 @@
  */
 
 .fileinput-button i,
-.fileupload-buttonbar .delete,
+/**.fileupload-buttonbar ,**/
 .fileupload-buttonbar .toggle {
   display: none;
 }

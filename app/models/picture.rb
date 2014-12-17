@@ -11,7 +11,7 @@ class Picture < ActiveRecord::Base
         "url" => image.url,
         "type" => image.content_type,
         "thumbnailUrl" => image.thumb.url,
-        "deleteUrl" => picture_path(:id => id),
+        "deleteUrl" => "#{Settings.host}/pictures/#{id}",
         "deleteType" => "DELETE"
     }
   end

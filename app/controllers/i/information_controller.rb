@@ -24,6 +24,7 @@ class I::InformationController < I::BaseController
 
   # POST /information
   def create
+
     @information = Information.new(information_params)
 
     if current_user.information  <<  @information
