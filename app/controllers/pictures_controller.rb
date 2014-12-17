@@ -11,13 +11,17 @@ class PicturesController < ApplicationController
 
     @picture = Picture.new(picture_params)
     if @picture.save
+
+
       respond_to do |format|
         format.html {
+
           render :json => [@picture.to_jq_upload].to_json,
                  :content_type => 'text/html',
                  :layout => false
         }
         format.json {
+
           render :json => [@picture.to_jq_upload].to_json
         }
       end

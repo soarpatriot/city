@@ -15,15 +15,17 @@
  *= require information
  *= require sidebar
 
+
+
+ *= require ngprogress
+ *= require shop
+ *= require animate+animo
+
  *= require blueimp-gallery.min
  *= require jquery.fileupload
  *= require jquery.fileupload-ui
  *= require jquery.fileupload-noscript
  *= require jquery.fileupload-ui-noscript
-
- *= require ngprogress
- *= require shop
- *= require animate+animo
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
