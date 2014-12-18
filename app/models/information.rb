@@ -14,6 +14,8 @@ class Information < ActiveRecord::Base
 
    mount_uploader :image, InformationImageUploader
 
+   has_many :photos, as: :imageable
+
    after_create :update_synchronized_at
 
 

@@ -16,7 +16,11 @@
     p
       span.text-danger
         strong 已上传图片：（如需更改图片请使用上传图片）
+
     img src="#{@information.image.try(:thumb).url}" class="img-thumbnail"
+  p
+
+
 
 
   div class="row fileupload-buttonbar"
@@ -26,7 +30,6 @@
         span
           | 添加文件
         input type="file" name="photo[image]" multiple="true"
-
 
 
       //
@@ -54,6 +57,27 @@
 
     table role="presentation" class="table table-striped"
       tbody class="files"
+        - @information.photos.each  do |photo|
+          tr class="template-download fade in"
+            td
+              span class="preview"
+                input name="information[photo_ids][]" type="hidden" value="#{photo.id}"
+                a href="#{photo.image.url}" title="#{photo.image.filename}" download="#{photo.image.filename}" data-gallery="data-gallery"
+                  img src="#{photo.image.try(:thumb).url}" class="img-thumbnail"
+
+
+            td
+              p class="name"
+                a href="#{photo.image.url}" title="#{photo.image.filename}" download="#{photo.image.filename}" data-gallery="data-gallery"
+                  span = "#{photo.image.filename}"
+
+            td
+              span class="size"
+                | #{photo.image.size}
+            td
+              button class="btn btn-danger delete" data-type="DELETE" data-url="#{photo_path(photo)}"
+                i class="glyphicon glyphicon-trash"
+                span 删除
 
   = f.input :contact, require: true
   p.alert.alert-info QQ 号码，手机号，微信号至少填写一个

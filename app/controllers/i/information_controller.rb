@@ -26,7 +26,8 @@ class I::InformationController < I::BaseController
   def create
 
     @information = Information.new(information_params)
-
+    photos = Photo.find(information_params[:photo_ids])
+    @information.photos = photos
     if current_user.information  <<  @information
       # redirect_to [:i,@information], notice: '信息创建成功'
        redirect_to i_information_index_path, notice: '信息创建成功'
@@ -59,6 +60,6 @@ class I::InformationController < I::BaseController
 
   # Only allow a trusted parameter "white list" through.
   def information_params
-    params.require(:information).permit(:id, :title, :description, :publish,:image, :price, :contact, :mobile_number, :qq, :weixin, :category_id)
+    params.require(:information).permit(:id, :title, :description, :publish,:image, :price, :contact, :mobile_number, :qq, :weixin, :category_id, :photo_ids=>[])
   end
 end

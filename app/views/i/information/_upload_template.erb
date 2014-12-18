@@ -35,6 +35,7 @@
     <tr class="template-download fade">
         <td>
             <span class="preview">
+                <input name="information[photo_ids][]" type="hidden" value="{%=file.id%}">
                 {% if (file.thumbnailUrl) { %}
                     <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
                 {% } %}
