@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209070449) do
+ActiveRecord::Schema.define(version: 20141218034627) do
 
   create_table "activities", force: true do |t|
     t.string   "title"
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 20141209070449) do
   add_index "information", ["synchronized_at"], name: "index_information_on_synchronized_at", using: :btree
   add_index "information", ["updated_at"], name: "index_information_on_updated_at", using: :btree
 
-  create_table "pictures", force: true do |t|
+  create_table "photos", force: true do |t|
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"

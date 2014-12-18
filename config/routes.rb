@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   get 'shops/:id/information/:information_id' => 'shops#information', as: :information_shop
 
   resources :shops
-  resources :pictures, :only => [:index, :create, :destroy] do
+  resources :photos, :only => [:index, :create, :destroy] do
     collection do
       get "upload"
     end
@@ -64,7 +64,7 @@ Rails.application.routes.draw do
   get '/about' => 'home#about', as: :about 
   post '/feedback' => 'home#feedback', as: :feedback
 
-  #mount Ckeditor::Engine => '/ckeditor'
+  mount Ckeditor::Engine => '/ckeditor'
   root 'home#index'
   
   # Example of regular route:

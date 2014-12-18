@@ -1,4 +1,5 @@
-class Picture < ActiveRecord::Base
+class Photo < ActiveRecord::Base
+
   include Rails.application.routes.url_helpers
   mount_uploader :image, InformationImageUploader
 
@@ -11,7 +12,7 @@ class Picture < ActiveRecord::Base
         "url" => image.url,
         "type" => image.content_type,
         "thumbnailUrl" => image.thumb.url,
-        "deleteUrl" => "#{Settings.host}/pictures/#{id}",
+        "deleteUrl" => "#{Settings.host}/photos/#{id}",
         "deleteType" => "DELETE"
     }
   end

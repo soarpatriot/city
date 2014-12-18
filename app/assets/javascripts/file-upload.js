@@ -19,7 +19,7 @@ $(function () {
     $('#fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
-        url: '/pictures'
+        url: '/photos'
     });
 
     // Enable iframe cross-domain access via redirect option:
@@ -35,7 +35,7 @@ $(function () {
     if (window.location.hostname === 'localhost') {
         // Demo settings:
         $('#fileupload').fileupload('option', {
-            url: '/pictures',
+            url: '/photos',
             // Enable image resizing, except for Android and Opera,
             // which actually support image resizing, but fail to
             // send Blob objects via XHR requests:
@@ -47,7 +47,7 @@ $(function () {
         // Upload server status check for browsers with CORS support:
         if ($.support.cors) {
             $.ajax({
-                url: '/pictures',
+                url: '/photos',
                 type: 'HEAD'
             }).fail(function () {
                 $('<div class="alert alert-danger"/>')
