@@ -62,14 +62,14 @@
             td
               span class="preview"
                 input name="information[photo_ids][]" type="hidden" value="#{photo.id}"
-                a href="#{photo.image.url}" title="#{photo.image.filename}" download="#{photo.image.filename}" data-gallery="data-gallery"
+                a href="#{photo.image.url}" title="#{photo.image.file.filename}" download="#{photo.image.file.filename}" data-gallery="data-gallery"
                   img src="#{photo.image.try(:thumb).url}" class="img-thumbnail"
 
 
             td
               p class="name"
-                a href="#{photo.image.url}" title="#{photo.image.filename}" download="#{photo.image.filename}" data-gallery="data-gallery"
-                  span = "#{photo.image.filename}"
+                a href="#{photo.image.url}" title="#{photo.image.file.filename}" download="#{photo.image.file.filename}" data-gallery="data-gallery"
+                  span = "#{photo.image.file.filename}"
 
             td
               span class="size"
