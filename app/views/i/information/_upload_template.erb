@@ -59,6 +59,9 @@
         <td>
 
             {% if (file.deleteUrl) { %}
+                <input type="button" id="{%=file.id%}" class="btn btn-info cover-binding" value="设为封面"/>
+
+
                 <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
                     <i class="glyphicon glyphicon-trash"></i>
                     <span>删除</span>

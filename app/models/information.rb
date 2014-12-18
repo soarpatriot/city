@@ -13,7 +13,7 @@ class Information < ActiveRecord::Base
    has_many :comments, as: :commentable
 
    mount_uploader :image, InformationImageUploader
-
+   has_one :cover, class_name:"Photo", as: :imageable
    has_many :photos, as: :imageable
 
    after_create :update_synchronized_at

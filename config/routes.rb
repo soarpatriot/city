@@ -39,6 +39,9 @@ Rails.application.routes.draw do
 
   resources :shops
   resources :photos, :only => [:index, :create, :destroy] do
+    member do
+      post 'cover'
+    end
     collection do
       get "upload"
     end

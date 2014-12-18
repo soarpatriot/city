@@ -28,6 +28,10 @@ class PhotosController < ApplicationController
     end
   end
 
+  def cover
+
+  end
+
   def destroy
 
     @photo = Photo.find(params[:id])

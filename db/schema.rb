@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20141218073557) do
     t.string   "owner_type",                                                  default: "User"
     t.integer  "category_id"
     t.integer  "visit_count",                                                 default: 0
-    t.datetime "synchronized_at",                                             default: '2014-12-02 09:43:51'
+    t.datetime "synchronized_at",                                             default: '2014-11-29 12:00:27'
     t.integer  "cached_votes_total",                                          default: 0
     t.integer  "cached_votes_score",                                          default: 0
     t.integer  "cached_votes_up",                                             default: 0
@@ -119,6 +119,13 @@ ActiveRecord::Schema.define(version: 20141218073557) do
     t.string   "imageable_type"
   end
 
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.float    "price",      limit: 24
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "shops", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -130,6 +137,12 @@ ActiveRecord::Schema.define(version: 20141218073557) do
     t.string   "contact"
     t.string   "phone"
     t.string   "url"
+  end
+
+  create_table "tests", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

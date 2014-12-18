@@ -54,30 +54,31 @@
 
 
       div class="progress-extended">&nbsp;
+  .row
+      .col-lg-12
+        table role="presentation" class="table table-striped"
+          input type="hidden" name="information[cover_id]" id="information-cover-id"
+          tbody class="files"
+            - @information.photos.each  do |photo|
+              tr class="template-download fade in"
+                td
+                  span class="preview"
+                    input name="information[photo_ids][]" type="hidden" value="#{photo.id}"
+                    a href="#{photo.image.url}" title="#{photo.image.file.filename}" download="#{photo.image.file.filename}" data-gallery="data-gallery"
+                      img src="#{photo.image.try(:thumb).url}" class="img-thumbnail"
 
-    table role="presentation" class="table table-striped"
-      tbody class="files"
-        - @information.photos.each  do |photo|
-          tr class="template-download fade in"
-            td
-              span class="preview"
-                input name="information[photo_ids][]" type="hidden" value="#{photo.id}"
-                a href="#{photo.image.url}" title="#{photo.image.file.filename}" download="#{photo.image.file.filename}" data-gallery="data-gallery"
-                  img src="#{photo.image.try(:thumb).url}" class="img-thumbnail"
+                td
+                  p class="name"
+                    a href="#{photo.image.url}" title="#{photo.image.file.filename}" download="#{photo.image.file.filename}" data-gallery="data-gallery"
+                      span = "#{photo.image.file.filename}"
 
-
-            td
-              p class="name"
-                a href="#{photo.image.url}" title="#{photo.image.file.filename}" download="#{photo.image.file.filename}" data-gallery="data-gallery"
-                  span = "#{photo.image.file.filename}"
-
-            td
-              span class="size"
-                | #{photo.image.size}
-            td
-              button class="btn btn-danger delete" data-type="DELETE" data-url="#{photo_path(photo)}"
-                i class="glyphicon glyphicon-trash"
-                span 删除
+                td
+                  span class="size"
+                    | #{photo.image.size}
+                td
+                  button class="btn btn-danger delete" data-type="DELETE" data-url="#{photo_path(photo)}"
+                    i class="glyphicon glyphicon-trash"
+                    span 删除
 
   = f.input :contact, require: true
   p.alert.alert-info QQ 号码，手机号，微信号至少填写一个

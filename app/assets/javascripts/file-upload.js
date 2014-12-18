@@ -73,6 +73,12 @@ $(function () {
         });
     }
 
+    $(document).on("click", ".cover-binding", function(){
+       console.log("fff");
+       var photoId = $(this).attr("id");
+       $("#information-cover-id").val(photoId);
+       console.log("photo id:"+$("#information-cover-id").val());
+    });
 });
 
 
