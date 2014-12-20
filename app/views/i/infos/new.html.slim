@@ -1,6 +1,7 @@
 .col-md-10
         h4
            | 创建新的信息
-        = simple_form_for [:i, @information], url: i_infos_path do |f|
+        = simple_form_for [:i, @information], url: i_infos_path,html: {multipart: true, id:"fileupload"} do |f|
            = render "form", f: f
+        = render "shared/information/upload"
 

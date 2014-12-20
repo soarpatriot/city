@@ -21,7 +21,7 @@ class Information < ActiveRecord::Base
    def cover
       c = self.photos.where(cover:true).first
       if c.nil?
-         self.photos.first
+         c = self.photos.first
       end
       c
    end

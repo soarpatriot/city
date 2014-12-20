@@ -38,13 +38,13 @@ Rails.application.routes.draw do
   get 'shops/:id/information/:information_id' => 'shops#information', as: :information_shop
 
   resources :shops
+
+  patch '/photos' => 'photos#upload'
   resources :photos, :only => [:index, :create, :destroy, :update] do
     member do
       post 'cover'
     end
-    collection do
-      get "upload"
-    end
+
   end
 
   concern :commentable do

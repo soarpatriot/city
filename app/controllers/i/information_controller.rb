@@ -26,8 +26,12 @@ class I::InformationController < I::BaseController
   def create
 
     @information = Information.new(information_params)
-    photos = Photo.find(information_params[:photo_ids])
-    @information.photos = photos
+
+    unless information_params[:photo_ids].blank?
+      photos = Photo.find(information_params[:photo_ids])
+      @information.photos = photos
+    end
+
     if current_user.information  <<  @information
       # redirect_to [:i,@information], notice: '信息创建成功'
        redirect_to i_information_index_path, notice: '信息创建成功'

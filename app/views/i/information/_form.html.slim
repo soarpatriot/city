@@ -1,104 +1,22 @@
 
-= f.error_notification
-= f.input :title,  input_html:{class:'form-control'}
+= simple_form_for [:i,@information],html: {multipart: true, id:"fileupload"}  do |f|
+  = f.error_notification
+  = f.input :title, input_html:{class: 'form-control'}
 
-p.text-warning
+  p.text-warning
     strong 暂无价格，或价格面议，可不填此项
-= f.input :price,  as: :decimal
-= f.association :category, require: true, collection: Category.all, label_method: :name, value_method: :id, class: "col-md-3"
-= f.input :description,   :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'MyTooBar'} ,class:'form-control'}
-
-p
-
-div class="row fileupload-buttonbar"
-  div class="col-lg-12"
-    span class="btn btn-success fileinput-button"
-      i class="glyphicon glyphicon-plus"
-      span
-        | 添加文件
-      input type="file" name="photo[image]" multiple="true"
-
-
-    //
-      button type="submit" class="btn btn-primary start"
-        i class="glyphicon glyphicon-upload"
-        span
-      button type="reset" class="btn btn-warning cancel"
-        i class="glyphicon glyphicon-ban-circle"
-        span Cancel upload
-      button type="button" class="btn btn-danger delete"
-        i class="glyphicon glyphicon-trash"
-        span Delete
-      input type="checkbox" class="toggle"
-
-    span class="fileupload-process"
-
-
-  div class="col-lg-5 fileupload-progress fade"
-
-    div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-      div class="progress-bar progress-bar-success" style="width:0%;"
-
-
-    div class="progress-extended">&nbsp;
-.row
-    .col-lg-12
-      table role="presentation" class="table table-striped"
-        input type="hidden" name="information[cover_id]" id="information-cover-id"
-        tbody class="files"
-          - binding.pry
-          - unless @information.photos.size > 0
-            - @information.photos.each  do |photo|
-              tr class="template-download fade in"
-                td
-                  span class="preview"
-                    input name="information[photo_ids][]" type="hidden" value="#{photo.id}"
-                    a href="#{photo.image.url}" title="#{photo.image.file.filename}" download="#{photo.image.file.filename}" data-gallery="data-gallery"
-                      img src="#{photo.image.try(:thumb).url}" class="img-thumbnail"
-
-                td
-                  p class="name"
-                    a href="#{photo.image.url}" title="#{photo.image.file.filename}" download="#{photo.image.file.filename}" data-gallery="data-gallery"
-                      span = "#{photo.image.file.filename}"
-                td
-                  - if photo.cover
-                    span class="label label-success cover-span fade in" 当前封面
-                  - else
-                    span class="label label-success cover-span fade" 当前封面
-
-                td
-                  span class="size"
-                    | #{photo.image.size}
-                td
-                  - if photo.cover
-                    input type="button" id="#{photo.id}" class="btn btn-info cover-binding fade" value="设为封面"
-                  - else
-                    input type="button" id="#{photo.id}" class="btn btn-info cover-binding" value="设为封面"
-                  button class="btn btn-danger delete" data-type="DELETE" data-url="#{photo_path(photo)}"
-                    i class="glyphicon glyphicon-trash"
-                    span 删除
-
-= f.input :contact, require: true
-p.alert.alert-info QQ 号码，手机号，微信号至少填写一个
-= f.input :mobile_number
-= f.input :qq
-= f.input :weixin
-- if action_name == 'edit' or action_name == 'update'
-  p.alert.alert-info 选择是，此信息公开发布，将会被搜索到，选择否，暂不发布，只有自己可以看到
-  = f.input :publish, :as => :select, required: true, collection:[["否",false],["是",true]], input_html:{class:'form-control'}
-= f.button :submit, class:"btn btn-primary"
-
-
-
-
-//
- = simple_form_for Photo.new,  method:"patch", remote:true, html: {multipart: true, id:"uplodate-cover"}  do |f|
-  = f.input :id, as: :hidden,  input_html:{id:"photo-id"}
-  = f.association :ids, as: :hidden, input_html: {id:"photo-ids"}
-
-
-//
- form id="uplodate-cover" method="post"
-    input type="hidden" name="_method" value="PATCH"
-    input type="hidden" name="photo[id]" id="photo-id"
-    input type="hideen" name="photo[ids]" id="photo-ids"
+  = f.input :price, as: :decimal
+  = f.association :category, require: true, collection: Category.all, label_method: :name, value_method: :id, class: "col-md-3"
+  = f.input :description, :as => :ckeditor, :input_html => {:ckeditor => {:toolbar => 'MyTooBar'}, class: 'form-control'}
+  //
+    = render partial: "shared/information/file_upload", locals: {information: @information}
+  = render "shared/information/file_upload"
+  = f.input :contact, require: true
+  p.alert.alert-info QQ 号码，手机号，微信号至少填写一个
+  = f.input :mobile_number
+  = f.input :qq
+  = f.input :weixin
+  - if action_name == 'edit' or action_name == 'update'
+    p.alert.alert-info 选择是，此信息公开发布，将会被搜索到，选择否，暂不发布，只有自己可以看到
+    = f.input :publish, :as => :select, required: true, collection: [["否", false], ["是", true]], input_html: {class: 'form-control'}
+  = f.button :submit, class: "btn btn-primary"

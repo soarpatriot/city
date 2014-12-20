@@ -6,6 +6,10 @@ class PhotosController < ApplicationController
     render :json => @photos.collect { |p| p.to_jq_upload }.to_json
   end
 
+  def upload
+    create
+  end
+
   def create
 
     @photo = Photo.new(photo_params)
@@ -51,9 +55,7 @@ class PhotosController < ApplicationController
     render :json => true
   end
 
-  def upload
-    render "index"
-  end
+
 
   def photo_params
 
