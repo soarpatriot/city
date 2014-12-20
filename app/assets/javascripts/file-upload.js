@@ -80,13 +80,10 @@ $(function () {
        var photoIdsArr = $($("input[name='information[photo_ids][]']")).each(function(){
            ids += ($(this).val() +",");
        });
-        console.log(ids);
-        console.log(photoIdsArr.size());
        $("#photo-id").val(photoId);
-        $("#photo-ids").val(ids);
+       $("#photo-ids").val(ids);
        $("#uplodate-cover").attr("action","/photos/"+photoId);
-        $("#uplodate-cover").submit();
-
+       $("#uplodate-cover").submit();
 
     });
 
