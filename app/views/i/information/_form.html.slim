@@ -71,11 +71,20 @@
                   p class="name"
                     a href="#{photo.image.url}" title="#{photo.image.file.filename}" download="#{photo.image.file.filename}" data-gallery="data-gallery"
                       span = "#{photo.image.file.filename}"
+                td
+                  - if photo.cover
+                    span class="label label-success cover-span fade in" 当前封面
+                  - else
+                    span class="label label-success cover-span fade" 当前封面
 
                 td
                   span class="size"
                     | #{photo.image.size}
                 td
+                  - if photo.cover
+                    input type="button" id="#{photo.id}" class="btn btn-info cover-binding fade" value="设为封面"
+                  - else
+                    input type="button" id="#{photo.id}" class="btn btn-info cover-binding" value="设为封面"
                   button class="btn btn-danger delete" data-type="DELETE" data-url="#{photo_path(photo)}"
                     i class="glyphicon glyphicon-trash"
                     span 删除
@@ -106,3 +115,19 @@ div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-f
 
 
 = render "upload_template"
+
+
+= form_tag Photo.new, method:"patch", remote:true, multipart: true, id:"uplodate-cover"  do
+  = hidden_field_tag "photo[id]", nil, id:"photo-id"
+  = hidden_field_tag "photo[ids]", nil, id:"photo-ids"
+//
+ = simple_form_for Photo.new,  method:"patch", remote:true, html: {multipart: true, id:"uplodate-cover"}  do |f|
+  = f.input :id, as: :hidden,  input_html:{id:"photo-id"}
+  = f.association :ids, as: :hidden, input_html: {id:"photo-ids"}
+
+
+//
+ form id="uplodate-cover" method="post"
+    input type="hidden" name="_method" value="PATCH"
+    input type="hidden" name="photo[id]" id="photo-id"
+    input type="hideen" name="photo[ids]" id="photo-ids"

@@ -74,11 +74,26 @@ $(function () {
     }
 
     $(document).on("click", ".cover-binding", function(){
-       console.log("fff");
        var photoId = $(this).attr("id");
        $("#information-cover-id").val(photoId);
-       console.log("photo id:"+$("#information-cover-id").val());
+       var ids ="";
+       var photoIdsArr = $($("input[name='information[photo_ids][]']")).each(function(){
+           ids += ($(this).val() +",");
+       });
+        console.log(ids);
+        console.log(photoIdsArr.size());
+       $("#photo-id").val(photoId);
+        $("#photo-ids").val(ids);
+       $("#uplodate-cover").attr("action","/photos/"+photoId);
+        $("#uplodate-cover").submit();
+
+
     });
+
+
+
+
+
 });
 
 

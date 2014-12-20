@@ -175,7 +175,7 @@
                         that._transition($(this)).done(
                             function () {
                                 var node = $(this);
-                                console.log(file);
+                                //console.log(file);
                                 template = that._renderDownload([file])
                                     .replaceAll(node);
                                 that._forceReflow(template);

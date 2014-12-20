@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   get 'shops/:id/information/:information_id' => 'shops#information', as: :information_shop
 
   resources :shops
-  resources :photos, :only => [:index, :create, :destroy] do
+  resources :photos, :only => [:index, :create, :destroy, :update] do
     member do
       post 'cover'
     end

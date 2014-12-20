@@ -34,11 +34,11 @@ p
 hr
 .row
   .col-md-6
-    - if @information.image.url.blank?
+    - if @information.cover.image.url.blank?
       p
         == @information.description
     - else
-      img src="#{@information.image.url}" class="img-responsive img-thumbnail"
+      img src="#{@information.cover.image.url}" class="img-responsive img-thumbnail"
   .col-md-6.information-contact.well
     p.text-success.text-center 联系时请说明来自  yuxian.me
     .row
@@ -73,7 +73,7 @@ hr
           | #{@information.weixin}
 
 
-- unless @information.image.url.nil?
+- unless @information.cover.image.url.nil?
   hr
   ul class="nav nav-tabs" role="tablist"
     li class="active"

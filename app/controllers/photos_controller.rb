@@ -28,6 +28,18 @@ class PhotosController < ApplicationController
     end
   end
 
+  def update
+
+    ids =photo_params[:ids].split(',')
+    photos = Photo.where(id: ids)
+    photos.update_all cover:false
+
+    id = photo_params[:id]
+    @photo = Photo.find(id)
+    @photo.update cover:true
+    @covered = true
+    render "i/information/cover"
+  end
   def cover
 
   end
@@ -45,6 +57,6 @@ class PhotosController < ApplicationController
 
   def photo_params
 
-    params.require(:photo).permit(:id, :image)
+    params.require(:photo).permit(:id, :image, :ids)
   end
 end

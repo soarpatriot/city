@@ -1,9 +1,9 @@
 
 .col-md-3.col-sm-6.col-xs-12.item
   .thumbnail
-     - unless information.image.try(:small).try(:url).blank?
+     - unless information.cover.try(:image).try(:small).try(:url).blank?
        = link_to information_url(id:information.id, category_id:information.category.id, page: params[:page]) do
-           img src="#{information.image.try(:small).url}" class="img-responsive img-rounded img-thumbnail"
+           img src="#{information.cover.try(:image).try(:small).url}" class="img-responsive img-rounded img-thumbnail"
 
      .caption
 

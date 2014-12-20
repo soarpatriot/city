@@ -54,13 +54,15 @@
             {% } %}
         </td>
         <td>
+           <span class="label label-success cover-span fade">当前封面</span>
+        </td>
+        <td>
             <span class="size">{%=o.formatFileSize(file.size)%}</span>
         </td>
         <td>
 
             {% if (file.deleteUrl) { %}
                 <input type="button" id="{%=file.id%}" class="btn btn-info cover-binding" value="设为封面"/>
-
 
                 <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
                     <i class="glyphicon glyphicon-trash"></i>
