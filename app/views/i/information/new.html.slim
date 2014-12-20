@@ -1,4 +1,11 @@
 .col-md-10
         p
            | 创建新的信息
-        == render 'form'
+        - binding.pry
+        = simple_form_for [:i,@information],html: {multipart: true, id:"fileupload"}  do |f|
+          = render partial: 'form', locals: {f: f, object: @information}
+
+        = render "upload"
+
+
+

@@ -24,7 +24,7 @@ class I::InformationController < I::BaseController
 
   # POST /information
   def create
-    binding.pry
+
     @information = Information.new(information_params)
     photos = Photo.find(information_params[:photo_ids])
     @information.photos = photos

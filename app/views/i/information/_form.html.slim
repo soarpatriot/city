@@ -1,64 +1,53 @@
 
+= f.error_notification
+= f.input :title,  input_html:{class:'form-control'}
 
-= simple_form_for [:i,@information],html: {multipart: true, id:"fileupload"}  do |f|
-  = f.error_notification
-  = f.input :title,  input_html:{class:'form-control'}
+p.text-warning
+    strong 暂无价格，或价格面议，可不填此项
+= f.input :price,  as: :decimal
+= f.association :category, require: true, collection: Category.all, label_method: :name, value_method: :id, class: "col-md-3"
+= f.input :description,   :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'MyTooBar'} ,class:'form-control'}
 
-  p.text-warning
-      strong 暂无价格，或价格面议，可不填此项
-  = f.input :price,  as: :decimal
-  = f.association :category, require: true, collection: Category.all, label_method: :name, value_method: :id, class: "col-md-3"
-  = f.input :description,   :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'MyTooBar'} ,class:'form-control'}
+p
 
-
-  - if @information.image.url.blank?
-  - else
-    p
-      span.text-danger
-        strong 已上传图片：（如需更改图片请使用上传图片）
-
-    img src="#{@information.image.try(:thumb).url}" class="img-thumbnail"
-  p
+div class="row fileupload-buttonbar"
+  div class="col-lg-12"
+    span class="btn btn-success fileinput-button"
+      i class="glyphicon glyphicon-plus"
+      span
+        | 添加文件
+      input type="file" name="photo[image]" multiple="true"
 
 
-
-
-  div class="row fileupload-buttonbar"
-    div class="col-lg-12"
-      span class="btn btn-success fileinput-button"
-        i class="glyphicon glyphicon-plus"
+    //
+      button type="submit" class="btn btn-primary start"
+        i class="glyphicon glyphicon-upload"
         span
-          | 添加文件
-        input type="file" name="photo[image]" multiple="true"
+      button type="reset" class="btn btn-warning cancel"
+        i class="glyphicon glyphicon-ban-circle"
+        span Cancel upload
+      button type="button" class="btn btn-danger delete"
+        i class="glyphicon glyphicon-trash"
+        span Delete
+      input type="checkbox" class="toggle"
+
+    span class="fileupload-process"
 
 
-      //
-        button type="submit" class="btn btn-primary start"
-          i class="glyphicon glyphicon-upload"
-          span
-        button type="reset" class="btn btn-warning cancel"
-          i class="glyphicon glyphicon-ban-circle"
-          span Cancel upload
-        button type="button" class="btn btn-danger delete"
-          i class="glyphicon glyphicon-trash"
-          span Delete
-        input type="checkbox" class="toggle"
+  div class="col-lg-5 fileupload-progress fade"
 
-      span class="fileupload-process"
+    div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+      div class="progress-bar progress-bar-success" style="width:0%;"
 
 
-    div class="col-lg-5 fileupload-progress fade"
-
-      div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-        div class="progress-bar progress-bar-success" style="width:0%;"
-
-
-      div class="progress-extended">&nbsp;
-  .row
-      .col-lg-12
-        table role="presentation" class="table table-striped"
-          input type="hidden" name="information[cover_id]" id="information-cover-id"
-          tbody class="files"
+    div class="progress-extended">&nbsp;
+.row
+    .col-lg-12
+      table role="presentation" class="table table-striped"
+        input type="hidden" name="information[cover_id]" id="information-cover-id"
+        tbody class="files"
+          - binding.pry
+          - unless @information.photos.size > 0
             - @information.photos.each  do |photo|
               tr class="template-download fade in"
                 td
@@ -89,37 +78,19 @@
                     i class="glyphicon glyphicon-trash"
                     span 删除
 
-  = f.input :contact, require: true
-  p.alert.alert-info QQ 号码，手机号，微信号至少填写一个
-  = f.input :mobile_number
-  = f.input :qq
-  = f.input :weixin
-  - if action_name == 'edit' or action_name == 'update'
-    p.alert.alert-info 选择是，此信息公开发布，将会被搜索到，选择否，暂不发布，只有自己可以看到
-    = f.input :publish, :as => :select, required: true, collection:[["否",false],["是",true]], input_html:{class:'form-control'}
-  = f.button :submit, class:"btn btn-primary"
-
-
-
-div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even"
-  div class="slides"
-  h3 class="title"
-  a class="prev"
-  a class="next" ›
-  a class="close" ×
-  a class="play-pause"
-  ol class="indicator"
+= f.input :contact, require: true
+p.alert.alert-info QQ 号码，手机号，微信号至少填写一个
+= f.input :mobile_number
+= f.input :qq
+= f.input :weixin
+- if action_name == 'edit' or action_name == 'update'
+  p.alert.alert-info 选择是，此信息公开发布，将会被搜索到，选择否，暂不发布，只有自己可以看到
+  = f.input :publish, :as => :select, required: true, collection:[["否",false],["是",true]], input_html:{class:'form-control'}
+= f.button :submit, class:"btn btn-primary"
 
 
 
 
-
-= render "upload_template"
-
-
-= form_tag Photo.new, method:"patch", remote:true, multipart: true, id:"uplodate-cover"  do
-  = hidden_field_tag "photo[id]", nil, id:"photo-id"
-  = hidden_field_tag "photo[ids]", nil, id:"photo-ids"
 //
  = simple_form_for Photo.new,  method:"patch", remote:true, html: {multipart: true, id:"uplodate-cover"}  do |f|
   = f.input :id, as: :hidden,  input_html:{id:"photo-id"}
