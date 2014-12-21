@@ -34,11 +34,21 @@ p
 hr
 .row
   .col-md-6
-    - if @information.cover.image.url.blank?
+    - if @information.photos.empty?
       p
         == @information.description
     - else
-      img src="#{@information.cover.image.url}" class="img-responsive img-thumbnail"
+      = render "shared/information/gallery"
+      p
+        
+        img src="#{@information.cover.image.url}" class="img-thumbnail"
+      p
+        div id="photos"
+          - @information.photos.each do |photo|
+            - unless photo.image.url.blank?
+                a href="#{photo.image.url}" title="#{photo.image.file.filename}" download="#{photo.image.file.filename}" data-gallery="data-gallery-photos"
+                  img src="#{photo.image.try(:thumb).url}" class="img-thumbnail"
+                | &nbsp;&nbsp;
   .col-md-6.information-contact.well
     p.text-success.text-center 联系时请说明来自  yuxian.me
     .row
