@@ -40,12 +40,12 @@ hr
     - else
       = render "shared/information/gallery"
       p
-        
-        img src="#{@information.cover.image.url}" class="img-thumbnail"
+        a href="#{@information.cover.image.url}" title="#{@information.cover.image.file.filename}" download="#{@information.cover.image.file.filename}" data-gallery="data-gallery-photos"
+          img src="#{@information.cover.image.url}" class="img-thumbnail"
       p
         div id="photos"
           - @information.photos.each do |photo|
-            - unless photo.image.url.blank?
+            - if (not photo.image.url.blank?) and (photo.id != @information.cover.id)
                 a href="#{photo.image.url}" title="#{photo.image.file.filename}" download="#{photo.image.file.filename}" data-gallery="data-gallery-photos"
                   img src="#{photo.image.try(:thumb).url}" class="img-thumbnail"
                 | &nbsp;&nbsp;
