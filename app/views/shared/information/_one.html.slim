@@ -34,12 +34,13 @@ p
 hr
 .row
   .col-md-6
-    - if @information.photos.empty?
+    - if @information.cover.image.try(:url).blank?
       p
         == @information.description
     - else
       = render "shared/information/gallery"
       p
+
         a href="#{@information.cover.image.url}" title="#{@information.cover.image.file.filename}" download="#{@information.cover.image.file.filename}" data-gallery="data-gallery-photos"
           img src="#{@information.cover.image.url}" class="img-thumbnail"
       p
