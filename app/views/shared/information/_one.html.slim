@@ -2,7 +2,7 @@ p
 - if @information.own_by_shop?
   .row
     .col-md-9
-      = image_tag("#{@information.owner.image.try(:thumb).url}", size: "64x64", class:"img-responsive img-thumbnail", alt: "商店图片 ")
+      = image_tag("#{@information.owner.image.try(:thumb).url}", size: "64x64", class:"img-thumbnail", alt: "商店图片 ")
       | &nbsp; &nbsp;
       span.text-danger
         strong #{@information.owner.title}
