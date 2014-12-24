@@ -47,6 +47,16 @@ module City
     config.active_record.default_timezone = :local
     config.time_zone = 'Beijing'
 
+    config.action_mailer.raise_delivery_errors = true #改为true，并添加如下内容
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        :address => Settings.email_address,
+        :port => Settings.email_port,
+        :domain => Settings.email_domain,
+        :authentication => :login,
+        :user_name => Settings.email_user_name, #你的邮箱
+        :password => Settings.email_password #你的密码
+    }
 
     config.middleware.insert_before "Rack::Runtime", "Rack::Cors" do
       allow do

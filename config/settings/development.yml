@@ -1,4 +1,0 @@
-domain: "localhost"
-host: "http://localhost:3000"
-asset_host: "http://localhost:3000"
-paginate_per_page: 2

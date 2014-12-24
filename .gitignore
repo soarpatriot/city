@@ -3,6 +3,7 @@
 *.rbc
 /.idea/
 /lib/assets/bower_components/
+/config/settings/development.yml
 
 /.config
 /coverage/
