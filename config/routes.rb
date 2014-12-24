@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :admins
   devise_for :users
-  mount Ckeditor::Engine => '/ckeditor'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -39,6 +39,14 @@ Rails.application.routes.draw do
 
   resources :shops
 
+  patch '/photos' => 'photos#upload'
+  resources :photos, :only => [:index, :create, :destroy, :update] do
+    member do
+      post 'cover'
+    end
+
+  end
+
   concern :commentable do
     resources :comments
   end
@@ -57,7 +65,9 @@ Rails.application.routes.draw do
   end
   
   get '/about' => 'home#about', as: :about 
-  post '/feedback' => 'home#feedback', as: :feedback 
+  post '/feedback' => 'home#feedback', as: :feedback
+
+  mount Ckeditor::Engine => '/ckeditor'
   root 'home#index'
   
   # Example of regular route:

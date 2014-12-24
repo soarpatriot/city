@@ -14,10 +14,17 @@
  *= require home
  *= require information
  *= require sidebar
- *= require nav
+
+
+
  *= require ngprogress
  *= require shop
  *= require animate+animo
+
+ *= require blueimp-gallery.min
+ *= require jquery.fileupload
+ *= require jquery.fileupload-ui
+
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";

@@ -10,6 +10,7 @@ class InformationController < ApplicationController
   end
 
   def show
+    #binding.pry
     @comment = Comment.new # @information.comments.build
     @category = Category.find(params[:category_id]) unless params[:category_id].nil?
     @comments = @information.comments.page params[:page]

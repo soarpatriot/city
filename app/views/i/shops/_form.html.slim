@@ -14,9 +14,9 @@
                 | http://#{@shop.url}.#{Settings.domain}
           p
 
-          - if @shop.image.url.blank?
 
-          - else
+
+          - unless @shop.image.url.blank?
             img src="#{@shop.image.try(:thumb).url}" class="img-thumbnail"
           = f.input :image, as: :file
           = f.input :description, required: true,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'MyTooBar'} ,class:'form-control'}

@@ -1,0 +1,12 @@
+<% if @covered %>
+  var photoId = <%= @photo.id %>;
+
+  $(".cover-binding").removeClass("fade");
+
+  $(".cover-span").removeClass("in");
+  $("#"+photoId).addClass("fade");
+  $("#"+photoId).parent().parent().find(".cover-span").addClass("in");
+
+
+<% end %>
+

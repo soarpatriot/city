@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202064713) do
+ActiveRecord::Schema.define(version: 20141219170619) do
 
   create_table "activities", force: true do |t|
     t.string   "title"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20141202064713) do
     t.string   "owner_type",                                                  default: "User"
     t.integer  "category_id"
     t.integer  "visit_count",                                                 default: 0
-    t.datetime "synchronized_at",                                             default: '2014-12-02 09:43:51'
+    t.datetime "synchronized_at",                                             default: '2014-11-29 12:00:27'
     t.integer  "cached_votes_total",                                          default: 0
     t.integer  "cached_votes_score",                                          default: 0
     t.integer  "cached_votes_up",                                             default: 0
@@ -111,6 +111,22 @@ ActiveRecord::Schema.define(version: 20141202064713) do
   add_index "information", ["synchronized_at"], name: "index_information_on_synchronized_at", using: :btree
   add_index "information", ["updated_at"], name: "index_information_on_updated_at", using: :btree
 
+  create_table "photos", force: true do |t|
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.boolean  "cover"
+  end
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.float    "price",      limit: 24
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "shops", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -122,6 +138,12 @@ ActiveRecord::Schema.define(version: 20141202064713) do
     t.string   "contact"
     t.string   "phone"
     t.string   "url"
+  end
+
+  create_table "tests", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

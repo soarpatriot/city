@@ -26,6 +26,12 @@
 //= require fastclick
 //= require animo
 
+//= require blueimp-helper
+//= require blueimp-gallery
+//= require blueimp-gallery-fullscreen
+//= require blueimp-gallery-indicator
+//= require jquery.blueimp-gallery
+
 //= require home
 //= require click
 //= require information

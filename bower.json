@@ -2,9 +2,7 @@
   "lib": {
     "name": "bower-rails generated lib assets",
     "dependencies": {
-      "underscore": "git@github.com:jashkenas/underscore.git",
-      "masonry":"git@github.com:desandro/masonry.git",
-      "mason":"git@github.com:DrewDahlman/Mason.git"
+      "underscore": "git@github.com:jashkenas/underscore.git"
       // "threex"      : "git@github.com:rharriso/threex.git",
       // "gsvpano.js"  : "https://github.com/rharriso/GSVPano.js/blob/master/src/GSVPano.js"
     }

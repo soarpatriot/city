@@ -22,7 +22,8 @@
           td = truncate(information.title,length:20)
           td = truncate(information.description,length:20)
           td
-             img src="#{information.image.thumb.url}" class="img-thumbnail"
+            - unless information.cover.nil?
+             img src="#{information.cover.image.thumb.url}" class="img-thumbnail"
           th = information.publish_text_tip
           td
              .btn-group

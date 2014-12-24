@@ -51,11 +51,22 @@ p
 hr
 .row
   .col-md-6
-    - if @information.image.url.blank?
+    - if @information.cover.image.try(:url).blank?
       p
         == @information.description
     - else
-      img src="#{@information.image.url}" class="img-responsive img-thumbnail"
+      = render "shared/information/gallery"
+      p
+
+        a href="#{@information.cover.image.url}" title="#{@information.cover.image.file.filename}" download="#{@information.cover.image.file.filename}" data-gallery="data-gallery-photos"
+          img src="#{@information.cover.image.url}" class="img-thumbnail"
+      p
+        div id="photos"
+          - @information.photos.each do |photo|
+            - if (not photo.image.url.blank?) and (photo.id != @information.cover.id)
+                a href="#{photo.image.url}" title="#{photo.image.file.filename}" download="#{photo.image.file.filename}" data-gallery="data-gallery-photos"
+                  img src="#{photo.image.try(:thumb).url}" class="img-thumbnail"
+                | &nbsp;&nbsp;
   .col-md-6.information-contact.well
     p.text-success.text-center 联系时请说明来自  yuxian.me
     .row
@@ -90,7 +101,7 @@ hr
           | #{@information.weixin}
 
 
-- unless @information.image.url.nil?
+- unless @information.cover.image.url.nil?
   hr
   ul class="nav nav-tabs" role="tablist"
     li class="active"

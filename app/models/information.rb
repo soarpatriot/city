@@ -13,9 +13,18 @@ class Information < ActiveRecord::Base
    has_many :comments, as: :commentable
 
    mount_uploader :image, InformationImageUploader
+   # has_one :cover, class_name:"Photo", as: :imageable
+   has_many :photos, as: :imageable
 
    after_create :update_synchronized_at
 
+   def cover
+      c = self.photos.where(cover:true).first
+      if c.nil?
+         c = self.photos.first
+      end
+      c
+   end
 
    def publish_text_tip
       self.publish == true ? "是" : "否"
