@@ -101,7 +101,7 @@ hr
           | #{@information.weixin}
 
 
-- unless @information.cover.image.url.nil?
+- unless @information.cover.try(:image).try(:url).blank?
   hr
   ul class="nav nav-tabs" role="tablist"
     li class="active"
