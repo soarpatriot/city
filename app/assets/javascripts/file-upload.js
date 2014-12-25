@@ -32,13 +32,14 @@ $(function () {
         )
     );
 
-    if (window.location.hostname === 'localhost') {
+    //if (window.location.hostname === 'localhost') {
         // Demo settings:
         $('#fileupload').fileupload('option', {
             url: '/photos',
             // Enable image resizing, except for Android and Opera,
             // which actually support image resizing, but fail to
             // send Blob objects via XHR requests:
+            dropZone: $('#dropzone'),
             disableImageResize: /Android(?!.*Chrome)|Opera/
                 .test(window.navigator.userAgent),
             maxFileSize: 5000000,
@@ -56,8 +57,9 @@ $(function () {
                     .appendTo('#fileupload');
             });
         }
-    } else {
+    //} else {
         // Load existing files:
+
         $('#fileupload').addClass('fileupload-processing');
         $.ajax({
             // Uncomment the following to send cross-domain cookies:
@@ -71,7 +73,7 @@ $(function () {
             $(this).fileupload('option', 'done')
                 .call(this, $.Event('done'), {result: result});
         });
-    }
+    //}
 
     $(document).on("click", ".cover-binding", function(){
        var photoId = $(this).attr("id");
@@ -88,7 +90,37 @@ $(function () {
     });
 
 
+    $(document).bind('dragover', function(e) {
+        var dropZone = $('#dropzone');
+        var timeout = window.dropZoneTimeout;
+        if (!timeout) {
+            dropZone.addClass('in');
+        }else{
+            clearTimeout(timeout);
+        }
 
+        var found = false;
+        var node = e.target;
+        while (node!==null){
+            if (node == dropZone[0]){
+                found = true;
+            }
+            break;
+            node = node.parentNode;
+        }
+
+        if (found){
+            dropZone.addClass('hover');
+        }else{
+            dropZone.removeClass('hover');
+        }
+
+        window.dropZoneTimeout = setTimeout(function(){
+            window.dropZoneTimeout = null
+            dropZone.removeClass('in hover')}
+          , 3000
+        );
+    });
 
 
 });

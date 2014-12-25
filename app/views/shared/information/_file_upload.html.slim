@@ -1,4 +1,8 @@
-.clearfix
+
+.row
+  .col-md-4
+    #dropzone
+      | 拖动文件到此区域可上传
 p
 
 div class="row fileupload-buttonbar"
@@ -8,7 +12,6 @@ div class="row fileupload-buttonbar"
       span
         | 上传图片
       input type="file" name="photo[image]" multiple="true"
-
 
     //
       button type="submit" class="btn btn-primary start"
@@ -32,6 +35,7 @@ div class="row fileupload-buttonbar"
 
 
     div class="progress-extended">&nbsp;
+
 .row
   .col-lg-12
     table role="presentation" class="table table-striped"
