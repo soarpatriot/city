@@ -51,7 +51,7 @@ p
 hr
 .row
   .col-md-6
-    - if @information.cover.image.try(:url).blank?
+    - if @information.cover.try(:image).try(:url).blank?
       p
         == @information.description
     - else
