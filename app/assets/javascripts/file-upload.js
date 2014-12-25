@@ -59,7 +59,7 @@ $(function () {
         }
     //} else {
         // Load existing files:
-
+        /**
         $('#fileupload').addClass('fileupload-processing');
         $.ajax({
             // Uncomment the following to send cross-domain cookies:
@@ -72,7 +72,7 @@ $(function () {
         }).done(function (result) {
             $(this).fileupload('option', 'done')
                 .call(this, $.Event('done'), {result: result});
-        });
+        });**/
     //}
 
     $(document).on("click", ".cover-binding", function(){

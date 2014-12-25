@@ -10,7 +10,7 @@
                span.glyphicon.glyphicon-folder-close
                | &nbsp; 我的资料
          li
-            = link_to  i_information_index_url(current_user) do
+            = link_to  i_information_index_url do
                span.glyphicon.glyphicon-info-sign
                | &nbsp; 我的信息
          - unless  current_user.shop.nil?
