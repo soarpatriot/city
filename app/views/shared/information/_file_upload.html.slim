@@ -62,7 +62,7 @@ div class="row fileupload-buttonbar"
 
               td
                 span class="size"
-                  | #{photo.image.size}
+                  | #{human_file_size(photo.image.size)}
               td
                 - if photo.cover
                   input type="button" id="#{photo.id}" class="btn btn-info cover-binding fade" value="设为封面"
