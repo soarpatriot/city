@@ -7,7 +7,7 @@ class InformationImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
   include CarrierWave::MiniMagick
 
-  process :resize_to_fit => [800, 2048]
+  process :resize_to_limit => [800, 1500]
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -33,7 +33,7 @@ class InformationImageUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
   version :small do
-     process :resize_to_fit => [360, 2048]
+     process :resize_to_limit => [360, 800]
     # process :resize_to_fit => [230, nil]
     # process :store_dimensions
     # process crop: '300x150+0+0'
@@ -41,7 +41,7 @@ class InformationImageUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb, :from_version => :small do
-      process resize_to_fit: [80, 2048]
+      process resize_to_limit: [80, 360]
   end
 
 
@@ -65,7 +65,16 @@ class InformationImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-private
+protected
+
+
+  def init_process picture
+    image = MiniMagick::Image.open(picture.path)
+    unless image[:width] > 800
+      resize_to_fit(800,2048)
+    end
+    image
+  end
 
   # Simplest way
   def crop(geometry)
@@ -77,7 +86,7 @@ private
 
   # Resize and crop square from Center
   def resize_and_crop(size)
-    binding.pry
+
     manipulate! do |image|
       if image[:width] < image[:height]
         remove = ((image[:height] - image[:width])/2).round

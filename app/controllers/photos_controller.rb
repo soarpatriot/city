@@ -14,7 +14,6 @@ class PhotosController < ApplicationController
 
     @photo = Photo.new(photo_params)
     if @photo.save
-
       respond_to do |format|
         format.html {
 
