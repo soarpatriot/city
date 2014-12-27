@@ -45,12 +45,14 @@ module City
    #config.assets.precompile += %w(error_code.css error_code.js information.css information2.css information.js information2.js iscroll.css chat.css chat.js)
     #config.autoload_paths += Dir[Rails.root.join('app', 'entities', '*')]
     #config.autoload_paths += Dir[Rails.root.join('app', 'apis', '*')]
+
     config.action_controller.default_url_options = { host: Settings.host }
     config.action_controller.asset_host = Settings.asset_host
 
     config.active_record.default_timezone = :local
     config.time_zone = 'Beijing'
 
+    config.action_mailer.default_url_options = {host: Settings.host }
     config.action_mailer.raise_delivery_errors = true #改为true，并添加如下内容
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
