@@ -47,8 +47,7 @@ class Information < ActiveRecord::Base
    end
 
    def self.recently
-      ###
-=begin
+
       information = []
       categories = Category.all
 
@@ -68,8 +67,8 @@ class Information < ActiveRecord::Base
 
       end
       information
-=end
-      Information.group("category_id")
+
+      # Information.group("category_id")
       #Information.find_by_sql( "SELECT * FROM information info1 WHERE 2>(SELECT COUNT(1) FROM information info2 WHERE category_id=info1.category_id)")
    end
    private
