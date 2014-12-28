@@ -58,9 +58,11 @@
          p
              hr
                 p
-                    = link_to information_index_url(category_id: information.category.try(:id)) do
-                        | 更多
-                        span.text-warning #{information.category.try(:name)}
+                    = link_to information_index_url(category_id: information.category.try(:id)),class:"btn btn-default favorite-btn" do
+                        span.text-success
+                          strong 更多
+                        span.text-warning
+                          strong #{information.category.try(:name)}
        //
         p
            - if information.own_by_user?
