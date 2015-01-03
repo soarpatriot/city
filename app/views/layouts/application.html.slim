@@ -3,6 +3,7 @@ html
     head
         = render "shared/meta"
         = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+        = render "shared/ie9"
         = javascript_include_tag 'application', 'data-turbolinks-track' => true
         = csrf_meta_tags
     body
@@ -11,5 +12,5 @@ html
         .container.home-container
            = yield
         = render "shared/footer"
-        = render "shared/ie9"
+
 
