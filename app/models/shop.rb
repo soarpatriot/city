@@ -16,7 +16,7 @@ class Shop < ActiveRecord::Base
      unless self.url.blank?
        "http://#{self.url}.#{Settings.domain}"
      else
-       shop_url self
+       nil 
      end
   end
 
