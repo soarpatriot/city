@@ -10,6 +10,9 @@ class HomeController < ApplicationController
    def about
    	 
    end
+   def download
+     render layout: "logo" 
+   end
    def feedback
 
      FeedbackMailer.feed(current_user, params[:content]).deliver

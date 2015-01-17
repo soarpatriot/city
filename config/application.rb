@@ -39,6 +39,7 @@ module City
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     config.assets.precompile += Ckeditor.assets
 
+    config.assets.precompile += ['logo.js']
     config.assets.precompile += ['i.js', 'ckeditor/*', 'html5shiv-printshiv.min.js', 'respond.min.js', 'ie10-viewport-bug-workaround.js', 'ie-emulation-modes-warning.js']
     config.assets.precompile += ['jquery.iframe-transport.js','jquery.fileupload.js','jquery.fileupload-ui.js']
 

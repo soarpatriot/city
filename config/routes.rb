@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   end
   
   get '/about' => 'home#about', as: :about 
+  get '/download' => 'home#download', as: :download
   post '/feedback' => 'home#feedback', as: :feedback
 
   mount Ckeditor::Engine => '/ckeditor'
