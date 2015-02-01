@@ -4,10 +4,10 @@
      - unless information.cover.try(:image).try(:small).try(:url).blank?
        - if information.own_by_shop? && !information.owner.url.blank?
         = link_to information_url(subdomain:information.owner.url, id:information.id, category_id:information.category.id, page: params[:page]) do
-          img src="#{information.cover.try(:image).try(:small).url}" class="img-responsive img-rounded img-thumbnail"
+          img src="#{information.cover.try(:image).try(:small).url}" class="img-responsive"
        - else
          = link_to information_url(id: information.id, category_id: information.category.id, page: params[:page]) do
-           img src="#{information.cover.try(:image).try(:small).url}" class="img-responsive img-rounded img-thumbnail"
+           img src="#{information.cover.try(:image).try(:small).url}" class="img-responsive"
 
      .caption
 
