@@ -1,3 +1,8 @@
+- content_for :title do
+  title = "商店"
+- meta_description "商家 店铺 蔚县商家店铺,#{@shops.map(&:title).join(",")}"
+- meta_keywords "商店 蔚县商店"
+
 = render "list"
 .row
   .col-lg-12.toolbar

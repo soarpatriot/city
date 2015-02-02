@@ -1,3 +1,8 @@
+- content_for :title do
+  title = @information.title
+- meta_description "#{@information.title},#{@information.description}"
+- meta_keywords "#{@information.category.name} #{@information.title}"
+
 .row
   .col-md-12
 

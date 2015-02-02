@@ -1,3 +1,8 @@
+- content_for :title do
+  title = @shop.title
+- meta_description "#{@shop.description}"
+- meta_keywords "商店 蔚县商店 #{@shop.title}"
+
 .row
   .col-md-8
      = render "shared/information/list", from_shop:true
