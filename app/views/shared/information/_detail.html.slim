@@ -15,10 +15,10 @@
           strong = number_to_currency(information.price, :unit => "￥")
        - if information.own_by_shop? && !information.owner.url.blank?
          = link_to information_url(subdomain:information.owner.url, id: information.id, category_id: information.category.id, page: params[:page]) do
-             h5 = "#{information.title}"
+             h5.word-break-text = "#{information.title}"
        - else
          = link_to information_url(id: information.id, category_id: information.category.id, page: params[:page]) do
-           h5 = "#{information.title}"
+           h5.word-break-text = "#{information.title}"
 
 
        p.text-muted

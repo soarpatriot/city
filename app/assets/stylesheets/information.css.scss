@@ -1,4 +1,10 @@
 
+@import "compass";
+
+.word-break-text{
+  @include word-break(break-all);
+}
+
 .information-contact{
    ul{
       li{

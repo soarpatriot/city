@@ -10,6 +10,14 @@ module ApplicationHelper
     end
   end
 
+  def title(title = nil)
+    if title.present?
+      content_for :title, title
+    else
+      content_for?(:title) ? content_for(:title) : "蔚县@我"
+    end
+  end
+
   def meta_keywords(tags = nil)
     if tags.present?
       content_for :meta_keywords, tags
