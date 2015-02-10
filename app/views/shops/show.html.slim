@@ -22,6 +22,12 @@
            p 联系电话：  #{@shop.phone}
            p 店铺介绍：
            p  == @shop.description
-
+           p
+             span.text-success 用微信扫描二维码分享，发送给盆友:（扫描后使用微信右上角菜单按钮分享）
+           p
+             - if @shop.access_url.nil?
+               img src="http://qr.liantu.com/api.php?bg=f3f3f3&fg=ff0000&gc=222222&el=l&w=200&m=10&text=#{shop_url(@shop)}"
+             - else
+               img src="http://qr.liantu.com/api.php?bg=f3f3f3&fg=ff0000&gc=222222&el=l&w=200&m=10&text=#{@shop.access_url}"
 
 

@@ -4,7 +4,7 @@ p
     .col-md-2
       = image_tag("#{@information.owner.image.try(:thumb).url}", size: "64x64", class:"img-thumbnail", alt: "商店图片 ")
       | &nbsp; &nbsp;
-      span.text-danger
+      span.text-danger.text-justify
         strong #{@information.owner.title}
       p
       p
@@ -67,7 +67,7 @@ hr
                 a href="#{photo.image.url}" title="#{photo.image.file.filename}" download="#{photo.image.file.filename}" data-gallery="data-gallery-photos"
                   img src="#{photo.image.try(:thumb).url}" class="img-thumbnail"
                 | &nbsp;&nbsp;
-  .col-md-6.information-contact.well
+  .col-md-6.information-contact.small-well
     p.text-success.text-center 联系时请说明来自  yuxian.me
     .row
       .col-md-3.col-md-offset-1.text-danger
@@ -99,8 +99,13 @@ hr
           = icon('fa fa-2x fa-weixin')
         .col-md-4.contact-info.text-success
           | #{@information.weixin}
+    hr
 
-
+    p
+      p
+        span.text-success 用微信扫描二维码分享，发送给盆友:（扫描后使用微信右上角菜单按钮分享）
+      p
+        img src="http://qr.liantu.com/api.php?bg=f3f3f3&fg=ff0000&gc=222222&el=l&w=150&m=10&text=#{information_url(@information)}"
 - unless @information.cover.try(:image).try(:url).blank?
   hr
   ul class="nav nav-tabs" role="tablist"

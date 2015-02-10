@@ -9,15 +9,22 @@
         span.text-danger 商品信息以点赞数和最近更新排序，即赞数量越多的信息排名越靠前同时最近更新过的信息排前
   p
   .row
-      .col-md-9
+      .col-md-3
          = image_tag("#{@shop.image.try(:thumb).url}", size: "64x64", alt: "商店图片 ", class:"img-thumbnail")
          | &nbsp; &nbsp; #{@shop.title}
 
-  p
-  p
-         = link_to "编辑我的商店资料", edit_i_shop_path(@shop), class:"btn btn-warning"
-         | &nbsp;&nbsp;
-         = link_to "查看" , display_i_shop_path(@shop), class:"btn btn-default"
-
+         p
+         p
+           = link_to "编辑我的商店资料", edit_i_shop_path(@shop), class:"btn btn-warning"
+           | &nbsp;&nbsp;
+           = link_to "查看" , display_i_shop_path(@shop), class:"btn btn-default"
+      .col-md-6
+        p.text-danger
+          strong 打开微信扫描二维码，直接分享店铺到微信朋友圈（点击微信右上角菜单按钮分享）
+        p
+          - if @shop.access_url.nil?
+            img src="http://qr.liantu.com/api.php?bg=f3f3f3&fg=ff0000&gc=222222&el=l&w=100&m=10&text=#{shop_url(@shop)}"
+          - else
+            img src="http://qr.liantu.com/api.php?bg=f3f3f3&fg=ff0000&gc=222222&el=l&w=100&m=10&text=#{@shop.access_url}"
   hr
   = render "information"

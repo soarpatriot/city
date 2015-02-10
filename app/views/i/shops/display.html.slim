@@ -11,7 +11,12 @@
              = link_to "#{shop_url(@shop)}", shop_url(@shop), class:"alert-link"
          - else 
              a  href="#{@shop.access_url}"  class="alert-link" #{@shop.access_url}
-         -      
+      p 打开微信扫描二维码，直接分享店铺到微信朋友圈（点击微信右上角菜单按钮分享）
+      p
+        - if @shop.access_url.nil?
+          img src="http://qr.liantu.com/api.php?bg=f3f3f3&fg=ff0000&gc=222222&el=l&w=200&m=10&text=#{shop_url(@shop)}"
+        - else
+          img src="http://qr.liantu.com/api.php?bg=f3f3f3&fg=ff0000&gc=222222&el=l&w=200&m=10&text=#{@shop.access_url}"
       hr
       .row
            .col-md-3.col-md-offset-1.contact-info.text-warning 联系人

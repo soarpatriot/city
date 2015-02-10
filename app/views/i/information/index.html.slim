@@ -8,6 +8,9 @@
    span.text-warning 个人信息发布适合偶尔有商品服务交易的个人，
    strong
       span.text-danger 商品信息以点赞数和最近更新排序，即赞数量越多的信息排名越靠前同时最近更新过的信息排前
+   br
+   strong
+      span.text-success 提示：打开微信扫描二维码可直接分享信息到朋友圈（点击微信右上角菜单按钮分享）
   table.table.table-striped.table-hover.table-condensed
     thead
       tr
@@ -15,6 +18,7 @@
         th 描述
         th 图片
         th 发布
+        th 二维码
         th 操作
     tbody
       - @information.each do |information|
@@ -24,7 +28,9 @@
           td
             - unless information.cover.nil?
              img src="#{information.cover.image.thumb.url}" class="img-thumbnail"
-          th = information.publish_text_tip
+          td = information.publish_text_tip
+          td
+            img src="http://qr.liantu.com/api.php?bg=f3f3f3&fg=ff0000&gc=222222&el=l&w=100&m=10&text=#{information_url(information)}"
           td
              .btn-group
                 = link_to '预览', information_path(information), class:"btn btn-success", target: "_blank"
