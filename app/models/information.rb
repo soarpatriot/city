@@ -71,6 +71,27 @@ class Information < ActiveRecord::Base
       # Information.group("category_id")
       #Information.find_by_sql( "SELECT * FROM information info1 WHERE 2>(SELECT COUNT(1) FROM information info2 WHERE category_id=info1.category_id)")
    end
+
+   def self.categories
+      categories_information = []
+      categories = Category.all
+
+      unless categories.empty?
+
+         categories.each_with_index  do | item, index |
+            info_str = "( SELECT  `information`.* FROM `information` INNER JOIN `categories` ON `categories`.`id` = `information`.`category_id` WHERE `information`.`publish` = 1 AND `information`.`category_id` = #{item.id}  ORDER BY cached_votes_up desc LIMIT 2)"
+            info_str += " UNION ( SELECT  `information`.* FROM `information` INNER JOIN `categories` ON `categories`.`id` = `information`.`category_id` WHERE `information`.`publish` = 1 AND `information`.`category_id` = #{item.id}  ORDER BY synchronized_at desc LIMIT 2)"
+            information = Information.find_by_sql(info_str)
+            infos = { categrory: item, information: information }
+            categories_information.push infos
+         end
+         # binding.pry
+         # information = Information.find_by_sql(info_str)
+
+      end
+      categories_information
+   end
+
    private
       def contact_at_least_one
           if  !mobile_number.present? && !qq.present? && !weixin.present?

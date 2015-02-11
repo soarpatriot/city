@@ -1,7 +1,29 @@
 
-= render "shared/information/list"
-.row
-   .col-lg-12.toolbar
-      //.pull-right = paginate @information, theme: 'twitter-bootstrap-3'
+div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"
+    - @categories_information.each_with_index do | item ,index |
+        div class="panel panel-#{panel_value(index%5)}"
+            div class="panel-heading" role="tab" id="headingOne"
+                h4 class="panel-title"
+                    a data-toggle="collapse" data-parent="#accordion" href="##{index}" aria-expanded="true" aria-controls="collapseOne"
+                        | #{item[:categrory].name}
+
+
+
+            div id="#{index}" class="panel-collapse collapse #{index == 0? 'in':''}" role="tabpanel" aria-labelledby="headingOne"
+                .panel-body
+                   .hidden-xs
+                      .row
+                          - item[:information].each do | information |
+                                = render "shared/information/detail", information: information
+                   .visible-xs-block
+                      .row
+                           - item[:information].each_with_index do |information,index|
+                               - if index <=1
+                                  = render "shared/information/detail", information: information
+                      .row
+                          - item[:information].each_with_index do |information, index|
+                            - if index > 1
+                              = render "shared/information/detail", information: information
+
 
 
