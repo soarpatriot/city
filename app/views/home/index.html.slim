@@ -1,21 +1,21 @@
 
 
+
 .main-category
-  .container
-      - @categories.each_with_index do |category,index|
-           - if index < 3
-              = link_to information_index_url(category_id: category.id),class:"btn btn-#{panel_value(index%5)}" do
-                  | #{category.name}
-      a class="btn" data-toggle="collapse" href="#more-category" aria-expanded="false" aria-controls="collapseExample" 更多...
-
-      //
-        = link_to "#", class:"btn", "data-toggle":"collapse" do
-          | 更多...
-
-  .container.collapse#more-category
     - @categories.each_with_index do |category,index|
-          -if index >= 3
+         - if index < 3
             = link_to information_index_url(category_id: category.id),class:"btn btn-#{panel_value(index%5)}" do
+                | #{category.name}
+    a class="btn" data-toggle="collapse" href="#more-category" aria-expanded="false" aria-controls="collapseExample" 更多...
+
+    //
+      = link_to "#", class:"btn", "data-toggle":"collapse" do
+        | 更多...
+
+.collapse.main-category#more-category
+  - @categories.each_with_index do |category,index|
+        -if index >= 3
+          = link_to information_index_url(category_id: category.id),class:"btn btn-#{panel_value(index%5)}" do
                 | #{category.name}
 
 = render "shared/information/list"

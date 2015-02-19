@@ -74,11 +74,11 @@ body{
   @media(max-width:767px){
     .btn {
       padding: 0;
-      font-size: 14px;
-      margin: 10px 4px;
-      width: 68px;
-      height: 68px;
-      line-height: 68px;
+      font-size: 13px;
+      margin: 10px 2px;
+      width: 64px;
+      height: 64px;
+      line-height: 64px;
       @include border-radius(20%);
       border: 1px solid #acacac;
     }
