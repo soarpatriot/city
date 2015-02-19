@@ -1,5 +1,7 @@
 
 @import "compass";
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 $global-font-family: 'Microsoft YaHei','微软雅黑',Tahoma, Arial,'Helvetica Neue', Helvetica,sans-serif,'宋体';
 $global-font-size: 14px;
@@ -23,6 +25,7 @@ $global-font-size: 14px;
 
 body{
     @include global-font;
+    background-color: #f9f9f9;
     padding-top:80px;
     #background: url(http://subtlepatterns.com/patterns/scribble_light.png) ;
 }
@@ -40,7 +43,7 @@ body{
   padding-right:5px;
   .thumbnail{
     # background-color: #E6E6FA;
-    background-color:#f7f7f9;
+    # background-color:#f7f7f9;
     margin-bottom:10px;
   }
 }
@@ -53,4 +56,54 @@ body{
 
 .footer{
    padding-bottom:15px;
+}
+
+.main-category{
+  margin-bottom: 30px;
+  # background-color: #f7f7f9;
+  .btn{
+    padding: 0;
+    font-size: 18px;
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    @include border-radius(50%);
+    border: 1px solid #acacac;
+  }
+  @media(max-width:767px){
+    .btn {
+      padding: 0;
+      font-size: 14px;
+      margin: 5px;
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      @include border-radius(50%);
+      border: 1px solid #acacac;
+    }
+  }
+
+}
+.nav-rect{
+
+  font-size: 18px;
+  margin: 20px;
+  width: 100px;
+  height: 100px;
+  line-height: 80px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  @include border-radius(50%);
+  border: 1px solid #acacac;
+}
+.nav-rect-content{
+  margin: auto;
+}
+.nav-rect-blue{
+  color: #2299dd;
 }

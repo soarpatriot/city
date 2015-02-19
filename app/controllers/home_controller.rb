@@ -2,9 +2,9 @@ class HomeController < ApplicationController
 
    def index
 
-      @categories_information = []
-      @categories_information = Information.categories
-
+      # @categories_information = []
+      # @categories_information = Information.recently
+      @information = Information.recently
    end
    
    def about

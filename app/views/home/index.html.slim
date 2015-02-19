@@ -1,29 +1,53 @@
 
-div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"
-    - @categories_information.each_with_index do | item ,index |
-        div class="panel panel-#{panel_value(index%5)}"
-            div class="panel-heading" role="tab" id="headingOne"
-                h4 class="panel-title"
-                    a data-toggle="collapse" data-parent="#accordion" href="##{index}" aria-expanded="true" aria-controls="collapseOne"
-                        | #{item[:categrory].name}
+
+.main-category
+  .container
+      - @categories.each_with_index do |category,index|
+           - if index < 3
+              = link_to information_index_url(category_id: category.id),class:"btn btn-#{panel_value(index%5)}" do
+                  | #{category.name}
+      a class="btn" data-toggle="collapse" href="#more-category" aria-expanded="false" aria-controls="collapseExample" 更多...
+
+      //
+        = link_to "#", class:"btn", "data-toggle":"collapse" do
+          | 更多...
+
+  .container.collapse#more-category
+    - @categories.each_with_index do |category,index|
+          -if index >= 3
+            = link_to information_index_url(category_id: category.id),class:"btn btn-#{panel_value(index%5)}" do
+                | #{category.name}
+
+= render "shared/information/list"
 
 
 
-            div id="#{index}" class="panel-collapse collapse #{index == 0? 'in':''}" role="tabpanel" aria-labelledby="headingOne"
-                .panel-body
-                   .hidden-xs
-                      .row
-                          - item[:information].each do | information |
-                                = render "shared/information/detail", information: information
-                   .visible-xs-block
-                      .row
-                           - item[:information].each_with_index do |information,index|
-                               - if index <=1
+//
+  div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"
+      - @categories_information.each_with_index do | item ,index |
+          div class="panel panel-#{panel_value(index%5)}"
+              div class="panel-heading" role="tab" id="headingOne"
+                  h4 class="panel-title"
+                      a data-toggle="collapse" data-parent="#accordion" href="##{index}" aria-expanded="true" aria-controls="collapseOne"
+                          | #{item[:categrory].name}
+
+
+
+              div id="#{index}" class="panel-collapse collapse #{index == 0? 'in':''}" role="tabpanel" aria-labelledby="headingOne"
+                  .panel-body
+                     .hidden-xs
+                        .row
+                            - item[:information].each do | information |
                                   = render "shared/information/detail", information: information
-                      .row
-                          - item[:information].each_with_index do |information, index|
-                            - if index > 1
-                              = render "shared/information/detail", information: information
+                     .visible-xs-block
+                        .row
+                             - item[:information].each_with_index do |information,index|
+                                 - if index <=1
+                                    = render "shared/information/detail", information: information
+                        .row
+                            - item[:information].each_with_index do |information, index|
+                              - if index > 1
+                                = render "shared/information/detail", information: information
 
 
 

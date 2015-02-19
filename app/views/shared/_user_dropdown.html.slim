@@ -13,9 +13,14 @@
             = link_to  i_information_index_url do
                span.glyphicon.glyphicon-info-sign
                | &nbsp; 我的信息
-         - unless  current_user.shop.nil?
-           li
-              = link_to i_shop_url(current_user.shop.id) do
+
+         li class="#{( params[:controller].end_with?('shops')  or params[:controller].end_with?('infos') ) ? 'active':''}"
+           - if current_user.shop.nil?
+             = link_to  guide_i_shops_path do
+                span.glyphicon.glyphicon-shopping-cart
+                | &nbsp; 我的商店
+           - else
+             = link_to i_shop_path(current_user.shop.id)
                  span.glyphicon.glyphicon-shopping-cart
                  | &nbsp; 我的商店
 
