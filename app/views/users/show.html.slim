@@ -8,6 +8,9 @@
         |  用户名：#{@user.name}
    p
      | Email:  #{@user.email}
+
+   p  
+     | 性别：#{@user.gender}
    - unless @user.mobile_number.blank?
      p 电话： #{@user.mobile_number}
    - unless @user.qq.blank?
